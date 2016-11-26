@@ -1,0 +1,1399 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="第1章 Swift 介绍
+本章重点：
+使用 var 声明一个变量，let 声明一个常量
+利用 if 和 switch 语言有条件地执行代码块
+利用 for 、for-in 、while 和 do-while 循环语句重复执行代码块
+基本数据类型都是通过结构体实现的，它们在代码中以值得方式进行传递
+由于基本数据类型都是结构体，它们可能会有一些可用的附加属性和方法
+Swift 中的数组和字典要比 O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《写给大忙人看的Swift》总结">
+<meta property="og:url" content="http://yoursite.com/20165/07/22/《写给大忙人看的Swift》总结/index.html">
+<meta property="og:site_name" content="雨亭之秋">
+<meta property="og:description" content="第1章 Swift 介绍
+本章重点：
+使用 var 声明一个变量，let 声明一个常量
+利用 if 和 switch 语言有条件地执行代码块
+利用 for 、for-in 、while 和 do-while 循环语句重复执行代码块
+基本数据类型都是通过结构体实现的，它们在代码中以值得方式进行传递
+由于基本数据类型都是结构体，它们可能会有一些可用的附加属性和方法
+Swift 中的数组和字典要比 O">
+<meta property="og:image" content="http://michaelqiu.cn/wordpress/wp-content/uploads/2016/07/30AC14F6-1CC8-4961-A948-AA542FDA0A9C.jpg">
+<meta property="og:updated_time" content="2016-11-26T06:47:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《写给大忙人看的Swift》总结">
+<meta name="twitter:description" content="第1章 Swift 介绍
+本章重点：
+使用 var 声明一个变量，let 声明一个常量
+利用 if 和 switch 语言有条件地执行代码块
+利用 for 、for-in 、while 和 do-while 循环语句重复执行代码块
+基本数据类型都是通过结构体实现的，它们在代码中以值得方式进行传递
+由于基本数据类型都是结构体，它们可能会有一些可用的附加属性和方法
+Swift 中的数组和字典要比 O">
+<meta name="twitter:image" content="http://michaelqiu.cn/wordpress/wp-content/uploads/2016/07/30AC14F6-1CC8-4961-A948-AA542FDA0A9C.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6356749571380479000',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/20165/07/22/《写给大忙人看的Swift》总结/"/>
+
+
+
+
+
+  <title> 《写给大忙人看的Swift》总结 | 雨亭之秋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">雨亭之秋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/20165/07/22/《写给大忙人看的Swift》总结/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Qiu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="雨亭之秋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="雨亭之秋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《写给大忙人看的Swift》总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="20165-07-22T00:17:16+08:00">
+                20165-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://michaelqiu.cn/wordpress/wp-content/uploads/2016/07/30AC14F6-1CC8-4961-A948-AA542FDA0A9C.jpg" alt=""></p>
+<h2 id="第1章-Swift-介绍"><a href="#第1章-Swift-介绍" class="headerlink" title="第1章 Swift 介绍"></a>第1章 Swift 介绍</h2><ul>
+<li><strong>本章重点：</strong><ul>
+<li>使用 var 声明一个变量，let 声明一个常量</li>
+<li>利用 if 和 switch 语言有条件地执行代码块</li>
+<li>利用 for 、for-in 、while 和 do-while 循环语句重复执行代码块</li>
+<li>基本数据类型都是通过结构体实现的，它们在代码中以值得方式进行传递</li>
+<li>由于基本数据类型都是结构体，它们可能会有一些可用的附加属性和方法</li>
+<li>Swift 中的数组和字典要比 Objective-C 中的对应的集合类型更强大<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-1-基本语法"><a href="#1-1-基本语法" class="headerlink" title="1.1 基本语法"></a>1.1 基本语法</h3><ul>
+<li>要点：<ul>
+<li>Swift 的 Hello World 程序<br>[swift]<br>print(“Hello World!”)<br>[/swift][c][/c]</li>
+<li>不需要包含或者导入某个标准库，不需要配置一个初始化 main() 函数已供系统调用，不要在每行代码尾部包含一个分号</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-1-变量和常量"><a href="#1-1-1-变量和常量" class="headerlink" title="1.1.1 变量和常量"></a>1.1.1 变量和常量</h4><ul>
+<li>要点：<ul>
+<li>变量中存储的内容在代码执行的整个过程中都可能发生变化，常量在初始化之后就不能再更改。</li>
+<li>用 var 关键字声明一个常量，用 let 关键字声明一个变量</li>
+<li>在 Objective-C 中，由类型本身决定其是可变的还是不可变的，例如 NSArray 和 NSMutableArray</li>
+<li>在 Swift 中，一个对象的可变版本与不可变版本具有相同的类型</li>
+<li>Swift 中所有的数据类型的数据结构由枚举(enum)、结构体(struct)、类(class)组成</li>
+<li>枚举或结构体在代码中以值得方式进行传递，类是通过引用的方式进行传递的</li>
+<li>本书介绍的所有的基本类型都是基于结构体实现的，都是以值的方式进行传递。他们都可能通过属性 和\或 方法实现一些额外的功能</li>
+<li>Swift 是一门强类型语言，每一个变量的类型在编译时期就已经确定，并且在其整个生命周期里只能固定存储固定类型的值</li>
+<li>任何一种类型都不能隐式地转换为另外一种类型（安全性，编译器会阻止这种混合类型之间进行操作，并可能引发异常结果）</li>
+<li>类型推断。如果编译器能够从初始值中获取足够多的信息，进而推断出初始值的类型，那么在声明变量时可以忽略掉具体的类型</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-2-字符串插值"><a href="#1-1-2-字符串插值" class="headerlink" title="1.1.2 字符串插值"></a>1.1.2 字符串插值</h4><ul>
+<li>要点：<ul>
+<li>利用字符串的插值操作，将变量、常量和其他表达式的值添加到输出中</li>
+<li>在括号中，包含一个变量或表达式，再用一个反斜杠进行转义，最后将其直接添加至字符串中<br>[swift]<br>var firstName = “Geoff”<br>var lastName = “Cawthorne”<br>var userName = “(firstName) (lastName)”<br>[/swift][c][/c]</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-3-流程控制"><a href="#1-1-3-流程控制" class="headerlink" title="1.1.3 流程控制"></a>1.1.3 流程控制</h4><ul>
+<li><p>要点：</p>
+<ul>
+<li><p><strong>条件语句</strong></p>
+<ul>
+<li>if 和 switch 两种语法结构</li>
+<li>Swift 的 if 语句和 Objective-C 的 if 语句相似，不同之处在：<ul>
+<li>if 语句并非必须将检测表达式放入括号中</li>
+<li>条件语句的代码块必须在大括号中</li>
+<li>检测表达式的结果必须明确地为 true 或 false</li>
+</ul>
+</li>
+<li>switch 语句是基于 Objective-C 的，但是比其更强大<ul>
+<li>switch 中必须覆盖每一种可能的情况</li>
+<li>当遇到下一个 case 分支开始时，switch 语句会自动结束。若想像C语言中行为，在 switch 中使用 fallthrough 关键词</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>循环语句</strong></p>
+<ul>
+<li><p>用于循环执行代码块的关键词有: for、for-in、while 和 do-while<br>[swift]<br>// for 语句<br>for var i = 0; i &lt; 10; ++i {<br>print(“i = (i)”)<br>}<br>[/swift][c][/c]</p>
+</li>
+<li><p>Swift有两种新的区间运算符。<code>..&lt;</code> 是半开区间运算符，包含最左端的值，但是不包含最右端的值；<code>...</code> 是闭区间运算符，它包括区间两端的值</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>[swift]<br>// for-in 语句<br>for i in 0 ..&lt; 10 {<br>    print(“i = (i)”)<br>}<br>for i in 1 … 10 {<br>    print(“i = (i)”)<br>}<br>var itemIds: [Int] = generateItemIds()<br>for itemId in itemIds {<br>    print(“itemId: (itemId)”)<br>}<br>[/swift][c][/c]</p>
+<pre><code>- while 循环语句则只要检测条件为 true，就会一直进行迭代。如果一开始检测条件就为 false，循环语句不会迭代任何内容
+- do-while 循环语句会在循环的尾部计算检测条件，这样可以保证循环语句至少被迭代一次
+- break 和 continue 完成迭代次数的调整。使用 break 可以立即跳出当前循环，并取消之后的迭代。使用 continue 可以终止当前迭代，并立即开启下一个迭代。在嵌套循环中，break 和 continue 只会影响内部循环
+- Swift 比 Objective-C 中增加：给循环语句添加一个标签(label)，然后在内部循环中指定希望 break 或 continue 到哪个循环中
+</code></pre><h3 id="1-2-基本数据类型"><a href="#1-2-基本数据类型" class="headerlink" title="1.2 基本数据类型"></a>1.2 基本数据类型</h3><ul>
+<li>要点：<ul>
+<li>Swift 中的类型使用驼峰命名法进行命名，在标准类型名称之前并没有任何前缀</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-1-整型"><a href="#1-2-1-整型" class="headerlink" title="1.2.1 整型"></a>1.2.1 整型</h4><ul>
+<li>要点：<ul>
+<li>通过访问 Int 的 min 和 max 两个静态属性，可以知道其能存储的最小值和最大值</li>
+<li>Int 类型同样有无符号版本</li>
+<li>由于 Swift 是一门强类型语言，代码中不能随意混合搭配使用 Int 的各种类型，并且不能在混合类型之间做数学运算和比较操作</li>
+<li>苹果公司建议使用 Int 类型，除非确实是非常大的数字</li>
+<li>当在设备间传输文件时，为了确保兼容性，写入到文件中所有的整型变量都应该明确指定长度</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-2-Double-和-Float"><a href="#1-2-2-Double-和-Float" class="headerlink" title="1.2.2 Double 和 Float"></a>1.2.2 Double 和 Float</h4><ul>
+<li>要点：<ul>
+<li>Float 是32位值，Double 是64位值</li>
+<li>使用小数时，编译器总是将其推断为 Double 类型，而不是Float。如果不需要64位的高精度，需要显示地将变量声明为 Float</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-3-布尔型"><a href="#1-2-3-布尔型" class="headerlink" title="1.2.3 布尔型"></a>1.2.3 布尔型</h4><ul>
+<li>Swift 使用 true 和 false，而 Objective-C 使用 YES 和 NO</li>
+<li>Swift 只有表达式显式地返回一个布尔类型才能被用于布尔值的声明。在代码中不能将布尔值与 0 或 nil 隐式地进行比较。而 Objective-C 中，许多类型都可以转换为布尔类型</li>
+</ul>
+<h4 id="1-2-4-字符串"><a href="#1-2-4-字符串" class="headerlink" title="1.2.4 字符串"></a>1.2.4 字符串</h4><ul>
+<li>字符串只需简单地至于双引号内即可</li>
+<li>String 是 Character 类型值得集合，每一个 Character 代表一个 Unicode 字符，Character 被实现为不同字符串编码方法中的一种，例如 UTF-8 或 UTF-16，在代码中无法通过计算字符在内存中所占字节数的方法判断一个字符串的长度，而在 Objective-C 中是可以的</li>
+<li>Swift 的 String 兼容 Objective-C 中的 NSString</li>
+<li>使用 <code>+</code> 运算符可以将字符串拼接起来：<br>[swift]<br>var firstName = “Geoff”<br>var lastName = “Cawthorne”<br>var userName = firstName + “ “ + lastName<br>[/swift][c][/c]</li>
+<li>使用 <code>+=</code> 运算符将一个字符串追加至另一个字符串中：<br>[swift]<br>var name = “Geoff”<br>name += “ Cawthorne”<br>[/swift][c][/c]</li>
+<li>由于 String 是 Character 的集合，可以使用 for-in 循环语句对其进行迭代，注意，不能直接将 Character 与 String 进行拼接<br>[swift]<br>var originalMessage = “Secret Message”<br>var unbreakableCode = “”<br>for character in originalMessage.characters {<br>  unbreakableCode = String(character) + unbreakableCode<br>}<br>[/swift][c][/c]</li>
+<li>字符串进行比较<br>[swift]<br>var string1 = “String”<br>var string2 = “String”<br>var isEqual = (string1 == string2)<br>[/swift][c][/c]</li>
+</ul>
+<h4 id="1-2-5-数组"><a href="#1-2-5-数组" class="headerlink" title="1.2.5 数组"></a>1.2.5 数组</h4><ul>
+<li>声明数组时，必须指定数组所包含的类型，一旦确定类型，数组中就只能包含确定的这一类型</li>
+<li>通过在方括号中列出数组元素的方式，确定一个数组字面量<br>[swift]<br>var dogs = [“Harlow”, “Cliff”, “Rusty”]<br>[/swift][c][/c]</li>
+<li>数组中的每一项必须是相同类型</li>
+<li>两种方法声明数组<ul>
+<li>长形式：<code>Array&lt;ValueType&gt;</code></li>
+<li>短形式：<code>[ValueType]</code></li>
+</ul>
+</li>
+<li>下面是利用短形式声明和初始化一个数组：<br>[swift]<br>var people: [String] = [] // 显式类型<br>var people: <a href="">String</a> // 隐式类型<br>[/swift][c][/c]</li>
+<li>声明中提供足够多的信息，就可以使用类型推断，让编译器推断出数组中所包含对象的类型</li>
+<li>在 Swift 中创建一个不可变的数组时，无法对数组做添加、修改和删除操作，不过可以修改数组中元素的属性</li>
+<li>对数组内容进行访问和修改的方法：<br>[swift]<br>var primaryIds: [Int] = [1, 2, 3]<br>print(primaryIds.count)<br>primaryIds.append(4)<br>primaryIds.insert(5, atIndex: 0)<br>primaryIds.removeAtIndex(1)<br>primaryIds.removeLast()<br>primaryIds.removeAll()<br>print(primaryIds.isEmpty)<br>[/swift][c][/c]</li>
+<li>使用下标访问数组中特定元素，或某一范围内的元素：<br>[swift]<br>var primaryIds: [Int] = [1, 2, 3]<br>print(primaryIds[2])<br>primaryIds[2] = 12<br>primaryIds[0…1]  = [10]<br>print(primaryIds)<br>[/swift][c][/c]</li>
+<li>在 Objective-C 中，NSArray 中只能存储 NSObject (或其子类)类型的对象。这也是为什么在 Objective-C 中会存在 NSNumber 的原因：NSNumber 对基本类型做了封装，使得在集合中可以使用基本的类型。而在 Swift 中，可以把结构体、枚举、类天骄到数组中，由于所有的基本类型都是利用结构体实现的，所以它们都能直接添加到数组中，包括字面量</li>
+<li>将枚举或结构体添加至数组中，此时添加的是对象的副本；由于数组属于结构体，所以数组传递是一个副本，而数组中的副本还是引用，则要取决于该元素是枚举、结构体还是类</li>
+<li>由于数组是集合的一种，可以利用 for-in 循环语句对数组中的内容进行迭代</li>
+</ul>
+<h4 id="1-2-6-字典"><a href="#1-2-6-字典" class="headerlink" title="1.2.6 字典"></a>1.2.6 字典</h4><ul>
+<li>存储在字典中的每个对象都有唯一的 key</li>
+<li>两种方法声明字典<ul>
+<li>长形式：<code>Dictionary&lt;KeyType, ValueType&gt;</code></li>
+<li>短形式：<code>[KeyType: ValueType]</code></li>
+</ul>
+</li>
+<li>下面是利用短形式声明和初始化一个字典：<br>[swift]<br>var people: [String: SomePersonClass] = [:] // 显式类型<br>var people = <a href="">String: SomePersonClass</a> // 隐式类型<br>[/swift][c][/c]</li>
+<li>声明中提供足够多的信息，就可以使用类型推断，让编译器推断出字典中所包含对象的类型</li>
+<li>字典中 KeyType 值得类型必须要遵循 Hashable 协议，Swift 中所有的基本类型都遵循 Hashable 协议</li>
+<li>可以通过下标方法访问 和\或 操作字典中的某个值</li>
+<li>由于字典是集合的一种，可以利用 for-in 循环语句对字典中的内容进行迭代</li>
+<li>使用 count 属性可以判断出字典中元素的总数</li>
+</ul>
+<hr>
+<h2 id="第2章-深入学习-Swift"><a href="#第2章-深入学习-Swift" class="headerlink" title="第2章 深入学习 Swift"></a>第2章 深入学习 Swift</h2><p><strong>本章重点：</strong></p>
+<ul>
+<li>可空类型能让我们在处理那些可能为空的值时更加安全</li>
+<li>泛型使我们在保持类型安全的情况下，编写出表现力更强和高度可重用的代码</li>
+<li>Swift 类型声明和类型推断能帮助我们写出更简洁的代码，同时不需要以牺牲类型安全为代价</li>
+<li>闭包是一种隔离代码的有力手段，而函数（及其参数和返回值）则让我们编写 Swift 代码时更加得心应手</li>
+<li>元祖是一种将多个相关值组合在一起的简单、灵活的手段</li>
+<li>switch 语句（及其模式匹配）大大提高了控制流的安全性和表达力</li>
+</ul>
+<h3 id="2-1-可空类型"><a href="#2-1-可空类型" class="headerlink" title="2.1 可空类型"></a>2.1 可空类型</h3><ul>
+<li>可空类型能够安全地检查某个值是否为空，当值不为空时，才会被访问</li>
+<li>可控类型有两种不同的表示方式：Some 或者 None。当值不为空时，可空类型用 Optional.Some(Value) 表示，否则用 Optional.None 表示</li>
+<li>在类型后面添加一个 <code>?</code> 修饰符</li>
+<li>任意类型都可以修饰为可空类型</li>
+<li>可空类型对值进行装箱处理，因此不能像对待非可空类型一样对待它们</li>
+<li>如果要访问可空类型的值，必须进行拆箱，即在变量名后添加一个<code>!</code></li>
+<li>运行时，对一个不存在的值进行拆箱，应用程序将崩溃</li>
+<li>在 Objective-C 中，可以用 nil 或者 NSNotFound 来表示数据为空。Objective-C 并不是类型安全的，一个方法任何时候都有可能返回 nil，那么很可能导致我们在不允许为空的地方错误地使用 nil。而在 Swift 中，非可空类型不允许为空，因此完全不会出现此类问题</li>
+<li>在拆箱操作之前，必须检查可空类型是否包含有效值（不为空）</li>
+<li>Swift 使用一种将检查和拆箱操作合并到一个步骤的语法，即所谓的可空绑定，它为数据提供了一种简短安全的方法<br>[swift]<br>if someOptional != nil {<br>let someValue = someOptional!<br>// 正常使用  someValue<br>}<br>[/swift][c][/c]<br>可以被可空绑定替换为<br>[swift]<br>if let someValue = someOptional {<br>// 正常使用  someValue<br>}<br>[/swift][c][/c]</li>
+</ul>
+<h3 id="2-2-泛型"><a href="#2-2-泛型" class="headerlink" title="2.2 泛型"></a>2.2 泛型</h3><ul>
+<li>Swift 有，而 Objective-C 没有</li>
+<li>用泛型创建善于表达的、可重用的、类型安全的代码</li>
+<li>泛型能够减少重复的代码，能充分利用 Swift 强大的类型系统编写善于表达和抽象的函数及对象<br>接收两个 Int 参数并将其中较大的一个作为返回值：<br>[swift]<br>func maxInt(lhs: Int, rhs: Int) -&gt; Int {<br>  if lhs &gt; rhs {<pre><code>return lhs
+</code></pre>  }<br>  return rhs<br>}<br>[/swift][c][/c]<br>接收两个 Double 参数并将其中较大的一个作为返回值：<br>[swift]<br>func maxDouble(lhs: Double, rhs: Double) -&gt; Double {<br>  if lhs &gt; rhs {<pre><code>return lhs
+</code></pre>  }<br>  return rhs<br>}<br>[/swift][c][/c]<br>泛型提供了一种简单的方案<br>[swift]<br>func maxValue<t: comparable=""> (lhs: T, rhs: T) -&gt; T {<br>  if lhs &gt; rhs {<pre><code>return lhs
+</code></pre>  }<br>  return rhs<br>}<br>[/swift][c][/c]<br>在参数列表前面，我们使用了一个 <t: comparable="">，这表明我们正在定义一个泛型函数。<t: comparable=""> 告诉编译器，这个函数要使用一个泛型 T，同时 T 必须实现 Comparable 协议（该协议定义了运算符函数）。在函数定义中，T 起到一个类型占位符的作用，当函数被调用时 T 将被具体的类型所替换。不同类型的调用都会产生一个不同的函数，只不过这是由编译器来进行的。</t:></t:></t:></li>
+<li>Array 个 Dictionary 就是两个泛型集合</li>
+<li>类型化得集合内置了类型安全，它不允许不符合条件的类型作为其元素</li>
+</ul>
+<h3 id="2-3-类型声明和类型推断"><a href="#2-3-类型声明和类型推断" class="headerlink" title="2.3 类型声明和类型推断"></a>2.3 类型声明和类型推断</h3><ul>
+<li>Swift 编译器的类型系统和类型推断允许在保证最简性的同时创建出安全的代码</li>
+<li>有时，编译器无法推断出正确的类型信息，这是必须显式指明值得类型</li>
+</ul>
+<h3 id="2-4-函数和闭包"><a href="#2-4-函数和闭包" class="headerlink" title="2.4 函数和闭包"></a>2.4 函数和闭包</h3><ul>
+<li>闭包提供了一种创建自包含代码片段的函数式的方法，同时还能从上下文中自动捕获值</li>
+<li>Swift 的闭包类似 Objective-C 中的块(block)</li>
+<li>闭包有三种不同的形式：<ul>
+<li>全局函数</li>
+<li>嵌套函数</li>
+<li>闭包表达式</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-4-1-全局函数"><a href="#2-4-1-全局函数" class="headerlink" title="2.4.1 全局函数"></a>2.4.1 全局函数</h4><ul>
+<li>是用的最多的一种闭包</li>
+<li>一个全局函数带有函数名，但不捕获任何值</li>
+<li>全局函数通过关键字 func 加上一个函数名、一个圆括号括起来的以逗号分隔的参数列表，以及一个可选的 <code>-&gt;</code> 加返回类型构成</li>
+<li>一个无参也没有返回值的全局函数定义如下：<br>[swift]<br>func globalFunction() {<br>  print(“hello”)<br>}<br>[/swift][c][/c]<br>无返回值的函数其返回类型为 Void，用一个空的元组表示：()</li>
+</ul>
+<h4 id="2-4-2-嵌套函数"><a href="#2-4-2-嵌套函数" class="headerlink" title="2.4.2 嵌套函数"></a>2.4.2 嵌套函数</h4><ul>
+<li>函数还可以嵌套至别的函数内部</li>
+<li>嵌套函数无法从声明此函数上下文的外部调用，但嵌套函数可以被它们的容器函数以返回值的形式暴露给外部</li>
+<li>嵌套函数能自动捕获容器函数中的所有变量和常量</li>
+</ul>
+<h4 id="2-4-3-闭包表达式"><a href="#2-4-3-闭包表达式" class="headerlink" title="2.4.3 闭包表达式"></a>2.4.3 闭包表达式</h4><ul>
+<li>闭包表达式提供了一种轻量级的代码隔离的方法，同时从上下文捕获值</li>
+<li>下面是一个闭包表达式的例子<br>[swift]<br>var aFnewNumbers = [1, 2, 3]<br>var squares = aFnewNumbers.map { (num: Int) -&gt; Int in<br>  return num * num<br>}<br>[/swift][c][/c]</li>
+<li>在一对大括号间，定义了一个参数列表，一个返回类型，一个 in 关键字，以及闭包中所包含的 Swift 语句：<br>[swift]<br>{ (parameters) -&gt; return type in<br>   statements<br>}<br>[/swift][c][/c]</li>
+<li>Swift 闭包语法中有很多使代码更清晰和简洁的用法</li>
+</ul>
+<h3 id="2-5-元组"><a href="#2-5-元组" class="headerlink" title="2.5 元组"></a>2.5 元组</h3><ul>
+<li>元祖是一种轻巧实用的数据结构，允许你将多个值结合成一个单个的对象</li>
+<li>每个值都可以有单独的类型和长度，通过在括号中用逗号将各种类型的值分割开</li>
+<li>可以在创建元组时，为每个成员进行命名，以便通过名称来访问元组成员</li>
+<li>可以将函数的返回值声明为元组，这样函数可以一次返回多个值</li>
+<li>可以为返回值中的元组成员指定名称</li>
+<li>元组中的某个值不需要，在分解是你可以用下划线 <code>_</code> 替代，这样分解时，编译器会忽略该值</li>
+<li>元组可以看作是一种简单的数据结构，其作用和自定义类或 Any 数组。元组拥有确定的类型，而 Any 数组则不然，Any 数组存在安全隐患</li>
+</ul>
+<h3 id="2-6-switch-语句和模式匹配"><a href="#2-6-switch-语句和模式匹配" class="headerlink" title="2.6 switch 语句和模式匹配"></a>2.6 switch 语句和模式匹配</h3><ul>
+<li>Swift 中的 switch 语句可以利用模式匹配提供更加灵活的代码</li>
+<li>case 语句不再提供自动贯穿的功能，若想贯穿到下一分支，必须显式地使用 fallthrough 关键字</li>
+<li>所有可能的值都必须在 case 语句中列出</li>
+<li>case 语句可以匹配值、范围、模式并进行值绑定</li>
+<li>提供 switch 语句与元组结合，可以让控制流变得更强大</li>
+<li>在 case 中使用 where 子句，会更加灵活</li>
+<li>在 case 中使用值绑定，可以使代码更加紧凑，可读性更好</li>
+<li>当 switch 语句中出现值同时匹配多个模式的情况时，只有第一个匹配的 case 语句会被执行。在出现多模式匹配时，确保比较特殊的模式位于一般模式之前</li>
+</ul>
+<hr>
+<h2 id="第3章-对象和类"><a href="#第3章-对象和类" class="headerlink" title="第3章 对象和类"></a>第3章 对象和类</h2><p><strong>本章重点：</strong></p>
+<ul>
+<li>Swift 中的枚举和结构体与类十分相似，可以包含类型，属性和方法</li>
+<li>Swift 中枚举和结构体都是值类型，在代码中它们是以值复制方式传递的；类是引用类型，即在代码中类是以对象的引用方式传递的</li>
+<li>枚举、结构体和类都支持方法重载以接受不同的参数</li>
+<li>类可以按父类中设置的规则进行继承，例如在方法上加上 final 关键字以防止被覆盖，将 init() 方法加上 required 关键字以确保编译器能正常编译</li>
+<li>在子类覆盖一个方法时，必须使用 override 关键字以确保编译器能正常编译</li>
+<li>子类提供自己指派的 init() 方法，不继承父类的 init() 方法</li>
+<li>属性在更新前、更新中、更新后均可被存储、计算、附加观察者，属性在改变前后都会执行相关的方法</li>
+<li>自定义类可使用下标方法</li>
+<li>协议定义了一套相关的属性 和\或 方法，只有包含这些属性 和/或 方法的类型才称得上遵循该协议</li>
+<li>协议可以用来指定参数或者返回值得类型</li>
+<li>枚举、结构体和类都可以被扩展，具备增加计算属性 和/或 方法的功能，甚至禁用其代码的类型</li>
+<li>可以使用访问控制隐藏类中的实现细节或将某些功能标记为公共的，供其他模块使用</li>
+</ul>
+<h3 id="3-1-枚举"><a href="#3-1-枚举" class="headerlink" title="3.1 枚举"></a>3.1 枚举</h3><ul>
+<li>通过枚举，可以利用一组预定义的值创建一个自定义数据类型<br>[swift]<br>enum NetworkConnection {<br>case NotConnected<br>case WiFi<br>case Cellular<br>[/swift][c][/c]</li>
+<li>由于编译器可以推断出对象的类型，因此可以使用省略类型的点表一法来更新该变量的值</li>
+<li>默认情况下，Swift 中的 enum 并不像其它类 C 语言一样将成员映射成基本的 Int 类型，如果没有明确指定的话，并不是按顺序排列的，所以无法比较大小</li>
+<li>若想定义有序的枚举类型，可以使用枚举的原始类型，并给每个枚举成员设置一个原始值<br>[swift]<br>enum NetworkConnection: Int {<br>case NotConnected = 0<br>case WiFi = 1<br>case Cellular = 2<br>[/swift][c][/c]</li>
+<li>只需要对第一个成员进行复制，然后让编译器自动根据起始值对成员进行增量赋值，现在就可以像使用任何 Int 变量一样访问成员的 rawValue 属性进行比较<br>[swift]<br>if currentConnection.rawValue &gt; NetworkConnection.NotConnected.rawValue {<br>// …<br>}<br>[/swift][c][/c]</li>
+<li>可以在一个 enum 中关联成员的值</li>
+<li>currentConnection 变量同一时刻只能是某一个枚举成员的值。当你从其中一个值改变至另一个时，先前关联的设置由于失去关联关系将丢失</li>
+<li>可以对 Swift 中的 enum 进行扩展，以包含类方法（使用 static 关键字）及实例方法</li>
+<li>如果有成员方法将修改实例变量的值，那么需要使用 mutating 关键字声明来通知编译器进行预编译，这样编译器就知道该方法不能变常量实例调用–用 let 关键字声明的变量</li>
+</ul>
+<h3 id="3-2-类"><a href="#3-2-类" class="headerlink" title="3.2 类"></a>3.2 类</h3><ul>
+<li>每个类都紧密地融合了一系列相关的变量和函数以降低整个应用程序代码的复杂度</li>
+<li>类可继承其他类的行为，符合某个协议，或是按要求进行扩展</li>
+<li>类可实例化为对象（实例）以包含应用程序特定的数据单元及描述某些事物</li>
+<li>类中的某些方法被类自身调用，称为类方法；其他的一些方法在类实例中被调用，称为实例方法</li>
+<li>类是引用类型，因此当你在代码中传递一个实例时，其实你是将一个引用传递给一个对象，而不是复制一个类</li>
+<li>类中的基本数据类型要赋初值，来开辟内存空间</li>
+<li>在使用这个类的实例前，你必须初始化所有属性，其中具有默认值得属性会被自动初始化，而没有默认值得属性，则必须在 init() 方法中设置初始值</li>
+<li>在Swift 的类中，每个属性仅有一个变量。而在 Objective-C 中，除了属性之外，还有一个与属性对应的实例变量(ivar)，使用 self.property 将实际调用属性的 setter 或 getter 方法，这一操作大多数的时候都是访问相关 ivar 的值。单独使用 property(也可能是 _property)而不加 self. 前缀的话，将直接访问 ivar，而不是调用 setter 或 getter 方法，这种方式会引发大量的错误，而这在 Swift 中是不会发生的，因为用 self.property 或简单地用property 访问属性，效果是完全一样的</li>
+<li>init() 方法分为两个部分:<ul>
+<li>属性初始化</li>
+<li>调用该类的其他方法进行其他配置</li>
+</ul>
+</li>
+<li>init() 方法拥有特殊的权限，能在实例中设置或改变常量属性，甚至能在同一个 init() 方法中进行多次设置或改变。在 init() 方法返回或完成之前，常量属性都还没有被锁定</li>
+<li>deinit，类的销毁。这不是一个方法，也没有括号。这与 Objective-C 的dealloc 是相同的，在销毁实例之前，提供最后一次清除任意内容的机会，下面是一些在 deinit 中处理的常见任务：<ul>
+<li>释放所有不会被 ARC 自动回收的资源</li>
+<li>从所有观察者、通知中心或 KVO 中移除该实例</li>
+<li>关闭所有打开的文件或流</li>
+<li>清除所有委托</li>
+</ul>
+</li>
+<li>关键字 class 优先于 func 关键字暗示该方法是一个类方法 – 在类中直接调用的方法，而不是类的实例</li>
+</ul>
+<h3 id="3-3-结构体"><a href="#3-3-结构体" class="headerlink" title="3.3 结构体"></a>3.3 结构体</h3><ul>
+<li>结构体几乎与所有在上一节涉及类的细节相同，当有如下关键的区别：<ul>
+<li>使用 struct 关键字声明一个结构体</li>
+<li>结构体不存在继承，可以遵循协议或被继承</li>
+<li>如果你不声明 init() 方法，Swift 会自动创建一个 init() 方法</li>
+<li>结构没有 deinit</li>
+<li>类型方法在结构体中是静态方法</li>
+<li>结构体可以有静态属性，但类没有</li>
+<li>结构体是值类型，因此当在代码中传递结构体是，实际是创建了新的副本</li>
+<li>当 struct 中的方法要改变 struct 中的值时，该方法必须标记为 mutating，就像在枚举中一样</li>
+<li>下面是一个简单的结构体：<br>[swift]<br>struct PointOfInterest {<br>var x: Float<br>var y: Float<br>var name: String<br>}<br>[/swift][c][/c]</li>
+</ul>
+</li>
+<li><p>Objective-C中由于 各条特色的工作模式，不能直接更新一个结构体的属性，必须更新整个结构体。而在 Swift 中不存在这个问题，可以直接访问属性</p>
+</li>
+<li><p>使用类和结构体判断方法</p>
+<ul>
+<li>最关键的：在代码中传递实例时是值传递方式还是引用方式。如果对象很简单（没有类作属性），那就适合通过复制对象进行传递，此时用 struct 就可以。而当一个对象具有类作为属性，那么该属性将会通过引用进行传递，因此应该使用 class 定义对象</li>
+<li>如果你希望对象会对通知进行响应，那也必须使用 class。而如果将 struct 添加到通知中心的话，实际会在通知中心增加一份该 struct 的副本，这样通知就不能发送至正确的结构体了</li>
+<li>结构不能继承，如果需要从父对象继承特性的话，你必须使用 class</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-继承"><a href="#3-4-继承" class="headerlink" title="3.4 继承"></a>3.4 继承</h3><ul>
+<li>Swift 中的 class 可以继承另一个 class</li>
+<li>新的 class 是原始父类的子类，不仅继承了父类的特性，还可以为子类增加新的特性</li>
+<li>要想从父类继承时，需要在子类名称后面添加一个冒号和父类的名称</li>
+</ul>
+<h3 id="3-5-重载"><a href="#3-5-重载" class="headerlink" title="3.5 重载"></a>3.5 重载</h3><ul>
+<li>重载时指一个单独的对象中有两个或更多的方法共享相同的方法名，但具有不同的参数</li>
+<li>Swift 的类、结构体、枚举内的方法均支持重载</li>
+<li>当使用对象中相应的名字调用方法时，编译器根据提供的参数自动匹配对应的重载方法</li>
+<li>在重载时，必须确保每个重载方法的参数个数或类型都不同。只要参数的个数 和/或 类型各不相同，编译器就能区分并调用正确的方法</li>
+<li>子类还可以增加额外的重载方法</li>
+</ul>
+<h3 id="3-6-重写"><a href="#3-6-重写" class="headerlink" title="3.6 重写"></a>3.6 重写</h3><ul>
+<li>当一个类继承自另一个类，很可能该子类将复制一个父类中已经提供的方法</li>
+<li>如果你想重写父类的方法，必须明确地以 override 关键字作为函数开头来告诉编译器</li>
+<li>当定义父类的时候，你可以使用 final 关键字作为函数开头来防止子类重写该方法</li>
+<li>一旦方法被重写，父类中的该方法就被隐藏并且在子类外不可用。而子类仍可以访问父类的原方法，可通过 super.method() 进行调用</li>
+</ul>
+<h3 id="3-7-初始化"><a href="#3-7-初始化" class="headerlink" title="3.7 初始化"></a>3.7 初始化</h3><ul>
+<li>在创建一个类时，你必须在实际使用该实例前初始化其所有属性</li>
+<li>可以通过为每个属性提供默认值或是使用 init() 方法中传递的参数来初始化属性值</li>
+<li>可通过重载方法进行初始化</li>
+<li>在 Swift 中，你要区别两种类型的 init() 方法：<ul>
+<li>能够完全初始化对象的 init() 方法叫做指定初始化函数</li>
+<li>依赖其他方法初始化对象的 init() 方法叫做便捷初始化函数，通过 convenience 关键字来声明一个便捷初始化函数</li>
+</ul>
+</li>
+<li>如果子类提供自己的指定初始化函数，它将不继承任何父类的 init() 方法。如果子类仅提供便捷初始化函数或者不提供 init() 方法，它将继承父类所有 init() 方法</li>
+<li>如果类需要在其子类中实现一个特定的 init() 方法，可以使用 required 关键字来指定 init() 方法，编译器在编译时会做检查</li>
+</ul>
+<h3 id="3-8-属性"><a href="#3-8-属性" class="headerlink" title="3.8 属性"></a>3.8 属性</h3><ul>
+<li>Swift 中属性有多种类型<ul>
+<li>存储型属性。这类属性通过附加在类实例中的变量来体现。简单地以 var 或是 let 声明，并且赋予默认值或是在对象实例化时初始化为某些值</li>
+<li>计算型属性。计算型属性没有相关联的变量，因此并不直接存储任何数据。它用来间接访问或计算（以及自定义设置）类中的其他数据。在 Objective-C 中，所有的属性本质上都是计算型属性，但是你可以使用关联的 ivar 使其像其他存储属性一样进行存储。当（或者由编译器自动）生成一个属性时，其实是提供了 getter 和 setter 方法来读取或是更新关联的 ivar 或是进行一些计算来生成属性值</li>
+</ul>
+</li>
+<li>每次访问 Objective-C 中的属性时，其实调用的都是 getter 方法，然后返回相应变量的值。当要设置一个相同的属性时，你实际是将值提供 setter 方法传递给该属性，然后更新变量的值</li>
+<li>在 Objective-C 中，当声明一个属性时，可以将其设置为 nonatomic 或 atomic（默认设置，不自定义）。而在 Swift 中，所有属性都是 nonatomic 的，没有 atomic</li>
+<li>Swift 是直接访问了该变量，后台并没有 getter 或 setter 方法在起作用，而是直接得到存储的属性</li>
+</ul>
+<h4 id="3-8-1-计算型属性"><a href="#3-8-1-计算型属性" class="headerlink" title="3.8.1 计算型属性"></a>3.8.1 计算型属性</h4><ul>
+<li>通过声明一个 getter 或 setter 方法来使用计算型属性</li>
+</ul>
+<h4 id="3-8-2-属性观察者"><a href="#3-8-2-属性观察者" class="headerlink" title="3.8.2 属性观察者"></a>3.8.2 属性观察者</h4><ul>
+<li>Swift 中添加属性观察者的方法非常便捷，使用与 getter 和 setter 相同的语法，就可以在属性更新前后使用 willSet 和 didSet 代码块</li>
+</ul>
+<h4 id="3-8-3-延迟属性"><a href="#3-8-3-延迟属性" class="headerlink" title="3.8.3 延迟属性"></a>3.8.3 延迟属性</h4><ul>
+<li>当一个对象实例化时，其所有属性都必须被初始化</li>
+<li>在某些情况下，这样做可能开销非常大或根本不可能实现。某些属性可能是在未来的某个时候才能初始化，该属性依赖于磁盘 I/O 操作或是数据库访问，或是需要通过网络访问来进行初始化。或者在初始化之后应用程序可能会处于其他原因释放改对象的资源，该属性也将不再使用</li>
+<li>Swift 引入了 lazy 关键字，编译器就不会强制初始化该属性，并将其初始化推迟至属性的第一次使用时</li>
+</ul>
+<h3 id="3-9-下标"><a href="#3-9-下标" class="headerlink" title="3.9 下标"></a>3.9 下标</h3><ul>
+<li>使用下标能快捷方便的访问数据结构中的数据</li>
+<li>Swift 允许在类、结构体、枚举中使用下标</li>
+<li>要在一个对象中添加下标，需要使用名为 subscript 的特殊方法，同时使用属性和方法的混合语法</li>
+<li>下标也是可以被重载的</li>
+</ul>
+<h3 id="3-10-协议"><a href="#3-10-协议" class="headerlink" title="3.10 协议"></a>3.10 协议</h3><ul>
+<li>在 Swift 中协议可以定义一系列的属性 和/或 方法</li>
+<li>类、结构体、枚举都可以遵循相关协议</li>
+<li>协议本身并没有真正的实现部分，它只是做了相关的约定</li>
+<li>通过使用 class 关键字表明其是一个类属性，而在结构体或枚举中，需要使用 static 关键字</li>
+<li>作为属性声明的一部分，包含 {get set} 表明该属性是可读写的，仅包含 {get} 表明该属性是只读的</li>
+<li>当声明一个类时，需要将遵循的协议列在所继承父类之后</li>
+<li>当声明对象遵循某个协议时，需要确保协议的所有属性和方法在对象中都是可用的。如果缺失，程序将报出编译错误</li>
+<li>在 Swift 中，协议是一种完备的类型，但是不能从协议中实例化一个对象（没有实现部分），可以指定协议为参数或返回值的类型，从而可以传递或返回遵循协议的任何类型的对象</li>
+<li>协议可以继承自另外的协议</li>
+<li>可以创建一个协议的集合，这样可指定遵循多个协议的参数</li>
+</ul>
+<h3 id="3-11-扩展"><a href="#3-11-扩展" class="headerlink" title="3.11 扩展"></a>3.11 扩展</h3><ul>
+<li>Swift 的扩展很像 Objective-C 中的类别(category)</li>
+<li>通过扩展，可以在已有的类、结构体和枚举中增加功能</li>
+<li>当无法访问源码时，扩展变得非常有用。不要访问 Swift 中基本类型（例如，String、Int 和 Double等）的源码就能为其增加有用的功能</li>
+<li>通过扩展，可以实现如下功能：<ul>
+<li>增加计算型属性</li>
+<li>增加新的类方法 和\或 实例方法</li>
+<li>增加额外的便捷初始化方法</li>
+<li>增加下标访问</li>
+<li>使一个已有类型遵循某个协议</li>
+<li>增加嵌套类型</li>
+<li>重写已有的方法或属性</li>
+</ul>
+</li>
+<li>不能应用扩展实现：<ul>
+<li>增加存储性属性</li>
+<li>增加指定初始化函数</li>
+<li>增加 deinit 方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-12-访问控制"><a href="#3-12-访问控制" class="headerlink" title="3.12 访问控制"></a>3.12 访问控制</h3><ul>
+<li>类、结构体、枚举、常量、变量、属性、方法和函数（都可被视为实体）都有指定的访问控制级别。如果开发者没有指定该级别，编译器将使用一个默认级别</li>
+<li>如果仅仅是开发应用程序，那么完全不需要担心访问控制，只需要让编译器去自动设置合理的默认值。但是，如果你开发的是一个模块或框架，或计划将一个应用程序拆分成多个模块，那就需要留意访问控制了</li>
+<li>Swift 使用了三级访问控制：<ul>
+<li>public：这是最高一级，具有最高的访问权限。标记为 public 的实体都可以被同模块中的任何文件使用，或被引用了该模块的其他模块中的任何文件使用</li>
+<li>internal：若无其他因素强制设置，该级别是默认级别。internal 实体可被同模块的任何文件使用</li>
+<li>private：这是最低一级，具有最低的访问权限。private 实体仅在其被定义的代码段中可用。我们可以使用该级别来隐藏代码中特定的实现细节</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="第4章-可空类型"><a href="#第4章-可空类型" class="headerlink" title="第4章 可空类型"></a>第4章 可空类型</h2><ul>
+<li>可空类型用于表示某种可能包含无效的值或者缺失值</li>
+<li>只有正确的使用可空类型，我们的代码才会更安全，因为编译器在编译阶段就能发现开发者错误地引用一个不包含有效值的对象</li>
+</ul>
+<p><strong>本章重点：</strong></p>
+<ul>
+<li>在 Swift 中，可空类型和 nil 不能等同于标准的值类型，它和 Objective-C 中“值缺失”的概念也大不相同（例如NSNull、CGRectNull、NSNotFound）</li>
+<li>对可空类型是否为空进行检查，即在访问可空类型所包含的值之前，必须检查它是否包含有效值<br>-可空链提供了一种对一组连续的可空值进行多次检查的简化访问方法，从而不需要我们对链上每个可空值都进行单独的拆箱或检查</li>
+<li>带隐式拆箱的可空类型是一种特殊的可空类型，用于表示那些一旦被初始化之后就一定不为空的数据</li>
+</ul>
+<h3 id="4-1-可空类型和-nil"><a href="#4-1-可空类型和-nil" class="headerlink" title="4.1 可空类型和 nil"></a>4.1 可空类型和 nil</h3><ul>
+<li>在 Objective-C 中，用于表示某个值缺失的情况一般使用 nil</li>
+<li>Swift 中，nil 可用于表示任意类型的数据缺失值的情况。而在 Objective-C 中，nil 表示某个指针所指向的对象不存在。两者的意义完全不同</li>
+<li>在 Objective-C 中，对于字符串，无效值并不仅仅是一个 nil。NSString 有一个 integerValue 属性，当字符串无法转换成一个有效的整数时，这个值为0。如果你一个 NSArray 调用 indexOfObject: 方法，同时这个对象在数组中不存在时，该方法返回一个 NSNotFound。这两种情况都应该被视作无效的值。在 Swift 中，类型系统消除了这种混乱的情况，强制使用 nil 代表无效值，同时明确规定，只有可空类型允许存储 nil 值。</li>
+</ul>
+<h3 id="4-2-有效性检查、可空绑定和强制拆箱"><a href="#4-2-有效性检查、可空绑定和强制拆箱" class="headerlink" title="4.2 有效性检查、可空绑定和强制拆箱"></a>4.2 有效性检查、可空绑定和强制拆箱</h3><ul>
+<li>使用可空的最常见的场景是在 if 语句中。通过 if 语句，我们容易判断一个可空类型是否包含了有效值，其中最简单的方法是使用 Swift 提供的可空绑定语法</li>
+<li>下面是对一个可空类型惊喜有效性检查的例子<br>[swift]<br>if optionalValue != nil {<br>  …<br>}<br>[/swift][c][/c]<br>在 if 语句中，我们不能直接使用可空类型作为判断条件，因为可空并没有实现 BooleanType 协议。可空类型要么是 Some<t>，要么是 None</t></li>
+<li>当我们遇到一个可空类型是，我们可以把它看成一个封装好的箱子。这个箱子中可能装有其它东西，也可能是一个空箱子。可空类型提供了一种在应用程序中安全地传输数据的方法</li>
+<li>利用可空绑定将可空类型的拆箱和比较合并成一个操作，这使得代码更加简洁。通过可空绑定将可空值拆箱到变量或者常量中<br>[swift]<br>var optionalSomeValue: String? = “Some”<br>if var foundString = optionalSomeValue {<br>foundString += “ found value”<br>print(foundString)<br>}<br>[/swift][c][/c]<br>在 Swift 的流程控制语句中，也可以使用强制拆箱 <code>!</code> 和可空绑定语法</li>
+</ul>
+<h3 id="4-3-可空链"><a href="#4-3-可空链" class="headerlink" title="4.3 可空链"></a>4.3 可空链</h3><ul>
+<li>对于复杂的数据结构，我们通常会发现在数据的多个层级上，都存在可空类型</li>
+<li>可空链允许你用单个步骤访问一连串的可空值，无论是属性、方法还是下标<br>[swift]<br>if let inMostStr = outerOptional?.inner?.innerInner?.innerMostStr {<br>  print(“This is much nicer (inMostStr)”)<br>}<br>[/swift][c][/c]</li>
+<li>可空链的语法类似于强制拆箱，只不过用 <code>?</code> 来代替 <code>!</code> 罢了。语法被简化的同时保证了可空类型的安全使用</li>
+<li>可空链提供了一个安全的对可空类型进行多步操作的方法。在可空链的每一个节点上，可空链都会被检查，只有在值存在的情况下，下一步操作才会继续执行。如果任意一个节点返回 nil，整个可空链返回 nil</li>
+<li>可空链也存在负面效应，如果最后一步操作返回的是非可空值，他会被隐式地包装为可空类型</li>
+</ul>
+<h3 id="4-4-带隐式拆箱的可空"><a href="#4-4-带隐式拆箱的可空" class="headerlink" title="4.4 带隐式拆箱的可空"></a>4.4 带隐式拆箱的可空</h3><ul>
+<li>有些数据具备特点，它们在初始化之前有可能为空，一旦初始化之后就不为空，这不便使用非可空类型存储它们，Swift 使用了一种 “带隐式拆箱的可空类型”</li>
+<li>可空类型和 “带隐式拆箱的可空类型” 不同之处在于二者定义方法和访问方法。但是，在可空绑定方面，二者是相同的。要创建一个带隐式拆箱的可空类型，只需要用感叹号代替问号即可：<br>[swift]<br>var regularOptional: String? = “Regular”<br>var implictlyUnwrapped: String! = “Implictly unwrapped”<br>[/swift][c][/c]</li>
+<li>尽管带隐式拆箱的可空在许多方面和标准的可空是一样的，但前者和后者是两种完全不同的 enum 类型，这两种 enum 类型不能直接对应</li>
+<li>带隐式拆箱的可空总是被假定是有值的，因此在访问它们时，不需要进行强制拆箱。也就是说，你不再需要使用 <code>!</code> 来访问它的值</li>
+<li>带隐式拆箱的可空要求开发者自己确保值总是有效的</li>
+<li>带隐式拆箱的可空类型主要用于需要处理依赖对象的初始化，以及需要与某些 Objective-C 类的属性进行交互的时候</li>
+</ul>
+<hr>
+<h2 id="第5章-泛型"><a href="#第5章-泛型" class="headerlink" title="第5章 泛型"></a>第5章 泛型</h2><ul>
+<li>泛型编程定义了这样的一种编程风格（或范式）：编写代码时，对象实例的类型是不可知的，在使用时才指定实际的类型</li>
+<li>使用泛型编程，通过将功能从具体的类型中抽象出来，可以为函数或数据类型创建通用的模板</li>
+<li>Swift 使用泛型函数和泛型类型来减少冗余代码，同时利用 Swift 是强类型语言的特性，总是确保变量总是你所预期的类型</li>
+<li><p>通过泛型使得你通过定义需要的数据种类以及编译器自动创建特定类型的代码，从而专注于如何与数据交互<br><strong>本章重点：</strong></p>
+</li>
+<li><p>使用泛型函数，可以创建原型函数以减少因多种类型引发的冗余代码</p>
+</li>
+<li>泛型中的类型参数，让编译器知道什么类型是最有效的</li>
+<li>可以创建依赖于其他简单类型的泛型类型来实现复杂的数据结构</li>
+<li>可以像普通扩展那样对泛型类型进行扩展</li>
+<li>通过使用关联类型，在确保类型安全的情况下定义适应大范围类型的协议</li>
+<li>可以为类型参数加入 where 子句，以实现更复杂的需求，包括去约束基于其关联类型的类型</li>
+</ul>
+<h3 id="5-1-为什么使用泛型"><a href="#5-1-为什么使用泛型" class="headerlink" title="5.1 为什么使用泛型"></a>5.1 为什么使用泛型</h3><ul>
+<li>Swift 是一门强语言，这意味着必须明确每一个变量和参数的类型</li>
+<li>两种解决方法：<ul>
+<li>提供连个同名函数的重载</li>
+<li>使用泛型函数</li>
+</ul>
+</li>
+<li>泛型函数提供了原型功能定义，（编译器可以）按需构造众多的重载函数。这种构造是自动的（由编译器完成）</li>
+</ul>
+<h3 id="5-2-泛型函数"><a href="#5-2-泛型函数" class="headerlink" title="5.2 泛型函数"></a>5.2 泛型函数</h3><ul>
+<li>泛型函数的声明语法与普通函数的声明语法相似，只需要额外加入一系列参数便可以正常工作</li>
+<li>下面例子中的泛型函数，可以使用任何类型作为它的唯一参数：</li>
+</ul>
+<p>[swift]<br>func isASubclassOfNSObject<t>(objectToTest: T) -&gt; Bool {<br>    return objectToTest is NSObject<br>}<br>[/swift][c][/c]</t></p>
+<ul>
+<li>在函数名后，有一对尖括号 <code>&lt;</code> <code>&gt;</code>，里面包含了一个参数列表。这个列表告诉编译器哪些类型在函数被调用的时候会被用作实际类型的占位符</li>
+</ul>
+<h4 id="5-2-1-类型参数"><a href="#5-2-1-类型参数" class="headerlink" title="5.2.1 类型参数"></a>5.2.1 类型参数</h4><ul>
+<li>通过类型参数对函数所允许的参数类型做出限制，用法与某个对象遵循协议一样，在类型占位符后面追加一个冒号 ：，紧接着写上需要遵循协议即可：</li>
+</ul>
+<p>[swift]<br>func sumValues<t: integertype="">(value1: T, value2: T) -&gt; T {<br>    return value1 + value2<br>}<br>[/swift][c][/c]<br>这里为占位符 T 添加了约束： T 必须遵循协议 IntegerType</t:></p>
+<h4 id="5-2-2-使用多个类型参数"><a href="#5-2-2-使用多个类型参数" class="headerlink" title="5.2.2 使用多个类型参数"></a>5.2.2 使用多个类型参数</h4><ul>
+<li>使用多个参数类型，只需要将多个类型参数用逗号 <code>，</code> 隔开即可</li>
+<li>为了增加代码的可读性，可以使用描述性更好的名字作为参数类型：</li>
+</ul>
+<p>[swift]<br>func existingOrDefaultValue<keytype: hashable,="" valuetype="">(dict: [KeyType: ValueType], key: keyType, defaultValue: ValueType) -&gt; ValueType {<br>    if let existingValue = dict[key] {<br>      return existingValue<br>    }<br>    return defaultValue<br>}<br>[/swift][c][/c]</keytype:></p>
+<h3 id="5-3泛型类型"><a href="#5-3泛型类型" class="headerlink" title="5.3泛型类型"></a>5.3泛型类型</h3><ul>
+<li>泛型类型是一种新的数据类型，它依赖于一种或多种其它类型，但完全不同于其它类型。你已经熟悉的两个重要的泛型类型就是 Array 和 Dictionary</li>
+<li>任何泛型类型的子类必须也是泛型类型</li>
+</ul>
+<h4 id="5-3-1-关联类型"><a href="#5-3-1-关联类型" class="headerlink" title="5.3.1 关联类型"></a>5.3.1 关联类型</h4><ul>
+<li>加入一个别名 typealias 为 Element 的类型，每一个遵循这个协议的类型都要定义，然后使用 Element 类型作为属性和方法的类型，而不是使用硬编码的 Int 类型</li>
+</ul>
+<h4 id="5-3-2-where-子句"><a href="#5-3-2-where-子句" class="headerlink" title="5.3.2 where 子句"></a>5.3.2 where 子句</h4><ul>
+<li>当创建了一个泛型函数或类型时，有时需要在使用到的类型上增加新的约束</li>
+<li>当使用类型的时候，协议位于类型参数中，并且类型只能遵循一个协议。因此如果想使得占位类型 T 为 Hashable，需要加入一个 where 子句：</li>
+</ul>
+<p>[swift]<br>class Carousel<t: printable="" where="" t:="" hashable=""> {<br>    …<br>}<br>[/swift][c][/c]</t:></p>
+<ul>
+<li>where 子句之后，可以加入多个条件，中间用逗号 <code>,</code> 隔开</li>
+</ul>
+<p>[swift]<br>class Carousel<t: where="" t:="" printable,="" hashable=""> {<br>    …<br>}<br>[/swift][c][/c]</t:></p>
+<ul>
+<li>可以使用一个 where子句去满足关联类型</li>
+</ul>
+<hr>
+<h2 id="第6章-函数和闭包"><a href="#第6章-函数和闭包" class="headerlink" title="第6章 函数和闭包"></a>第6章 函数和闭包</h2><ul>
+<li>函数可以将代码切分成更小的片段</li>
+<li>因为函数具有类型，所以也可以把函数当作其他类型一样看待，甚至将函数也当成参数和返回值</li>
+<li><p>函数在 Swift 编程中非常有地位，可以作为返回值和参数这一特性，使函数成为了 Swift 中一种强大的数据结构<br><strong>本章重点：</strong></p>
+</li>
+<li><p>函数具有参数并通过名字进行传递</p>
+</li>
+<li>可以为函数参数指定默认值</li>
+<li>通过 inout 关键字，可以修改函数参数的值</li>
+<li>可变参数允许函数拥有个数不定的参数</li>
+<li>闭包是一种简化的函数，使用更灵活和简化的语法</li>
+<li>尾随闭包，闭包的一种易于使用的简化语法</li>
+</ul>
+<h3 id="6-1-函数"><a href="#6-1-函数" class="headerlink" title="6.1 函数"></a>6.1 函数</h3><ul>
+<li>函数有三个部分：参数、返回值、函数名</li>
+<li>要定义一个函数，使用关键字 func，加上函数名，加上一个逗号分隔的参数列表（参数列表放在圆括号中），再加上一个可选的返回值（返回值前面加上一个箭头符号 <code>-&gt;</code>）。函数体写在一对大括号中间</li>
+</ul>
+<p>[swift]<br>func simpleFunction(number: Int) -&gt; String {<br>    return “This function was passed the parameter (number)”<br>}<br>[/swift][c][/c]</p>
+<h4 id="6-1-1-参数"><a href="#6-1-1-参数" class="headerlink" title="6.1.1 参数"></a>6.1.1 参数</h4><ul>
+<li>函数是一种基本的语句块，可以为其定义各种参数</li>
+<li>最常见的情况是为函数提供一个以逗号分隔的参数列表（每个参数的形式为 “参数名：类型”）</li>
+</ul>
+<p>[swift]<br>func multipleParams(number: Int, words: String) {<br>    print(“This function was passed (number) and (words)”)<br>}<br>[/swift][c][/c]<br>每个函数都必须定义参数列表，传参时的参数顺序必须和函数定义时的参数顺序一致。如果函数没有任何参数，可以用一个空列表的圆括号 () 来指定参数列表</p>
+<h4 id="6-1-2-外部参数名"><a href="#6-1-2-外部参数名" class="headerlink" title="6.1.2 外部参数名"></a>6.1.2 外部参数名</h4><ul>
+<li>本地参数名用于在函数体中使用传入的参数值，同时这个本地参数名对于调用者是无效的</li>
+<li>为了让函数的调用者明白参数的具体含义，并让调用者根据名称而不是顺序传递。这个额外的参数名即外部参数名。外部参数名放在本地参数名之前</li>
+</ul>
+<p>[swift]<br>func simpleFunction(externalName localName: Int) -&gt; String {<br>    return “This function was passed the parameter (localName)”)<br>}<br>[/swift][c][/c]</p>
+<ul>
+<li>一旦参数声明了外部参数名，调用时就必须使用外部参数名来传递参数</li>
+<li>在使用外部参数调用函数时，必须保证参数顺序和函数定义一致，同时必须写上外部参数名</li>
+<li>有时本地参数名和外部参数名很可能是相同的。这种情况下，我们可以在参数名前使用 <code>#</code> 来区分</li>
+<li>当在类中定义带多个参数的函数时，除第一个参数外，每个参数都会默认带有一个和本地名相同的外部参数名，就好像参数名前带有一个看不见的 <code>#</code></li>
+<li>如果你想忽略成员函数的外部参数名，则为下划线 <code>_</code> 作为参数的外部参数名即可</li>
+</ul>
+<h4 id="6-1-3-参数的默认值"><a href="#6-1-3-参数的默认值" class="headerlink" title="6.1.3 参数的默认值"></a>6.1.3 参数的默认值</h4><ul>
+<li>Swift 允许为函数参数指定默认值</li>
+<li>默认值允许调用某个函数时，使用不同的参数集来调用，如果调用时缺省某个参数，那么函数会使用该参数的默认值进行执行。要定义参数默认值，在参数的类型声明后使用 <code>=</code> 即可</li>
+<li>有默认值得参数自动具备外部参数名</li>
+</ul>
+<h4 id="6-1-4-可变参数和-inout-参数"><a href="#6-1-4-可变参数和-inout-参数" class="headerlink" title="6.1.4 可变参数和 inout 参数"></a>6.1.4 可变参数和 inout 参数</h4><ul>
+<li>可变参数允许函数接收 0 或多个值作为参数</li>
+<li>inout 参数允许函数直接改变外部传入的参数值</li>
+<li>可变参数在参数类型后加上 <code>...</code>。在函数体内部，可变参数被视为同一类型的数组</li>
+<li>一个函数只能定义一个可变参数，同时可变参数只能是函数的最后一个参数</li>
+<li>一般情况下，我们应该避免直接修改参数的值，除非你非常清楚这样做所带来的后果</li>
+<li>当我们需要修改参数值的时候，使用 inout 关键字修饰这个参数，然后在函数体中修改参数的值</li>
+<li>inout 关键字写在参数名的前面。调用的时候，inout 参数用 <code>&amp;</code> 修饰</li>
+<li>如果需要函数返回多个值，应该使用元组作为返回值</li>
+</ul>
+<h4 id="6-1-5-返回类型"><a href="#6-1-5-返回类型" class="headerlink" title="6.1.5 返回类型"></a>6.1.5 返回类型</h4><ul>
+<li>Swift 允许函数使用各种各样的返回值</li>
+<li>尽管在定义函数时，你没有指定返回值，这个函数仍然会有一个返回类型 ()</li>
+<li>为函数指定一个返回值，使用箭头符号 <code>-&gt;</code> 加上返回值的类型。Swift 允许函数返回任意类型，包括函数、元组（返回多个值）</li>
+</ul>
+<h3 id="6-2-闭包"><a href="#6-2-闭包" class="headerlink" title="6.2 闭包"></a>6.2 闭包</h3><ul>
+<li>闭包提供了一种简单的分离代码的手段</li>
+<li>清晰灵活</li>
+<li>好处：不用命名和声明函数就能在代码段中使用参数并返回值，同时可以像函数一样，用函数作为参数或返回值</li>
+<li>闭包表达式语法：</li>
+</ul>
+<p>[swift]<br>{ (参数列表) -&gt; 返回值类型 in 语句<br>}<br>[/swift][c][/c]</p>
+<h4 id="6-2-1-参数及返回值的类型推断"><a href="#6-2-1-参数及返回值的类型推断" class="headerlink" title="6.2.1 参数及返回值的类型推断"></a>6.2.1 参数及返回值的类型推断</h4><ul>
+<li>由于函数在声明时，参数和返回值的类型都是事先声明的，因此必报的类型信息可以从中推断，可以忽略闭包中的类型信息</li>
+<li>通常闭包都会返回一个值，当闭包仅由一条 return 语句构成的话，return 关键字可以忽略</li>
+</ul>
+<h4 id="6-2-2-尾随闭包"><a href="#6-2-2-尾随闭包" class="headerlink" title="6.2.2 尾随闭包"></a>6.2.2 尾随闭包</h4><ul>
+<li>有些函数的最后一个参数使用函数类型，Swift 编译器专门为它提供了一种简化的写法：尾随闭包</li>
+<li>尾随闭包将参数中的最后一个闭包写在参数列表之后</li>
+<li>尾随闭包更像是一个标准函数的写法：<br>[swift]<br>functionBeingCalled(parameter1, parameter2) {<br>  // 闭包表达式<br>}<br>[/swift][c][/c]</li>
+<li>闭包参数被我们从参数列表中单独拿出来放到最后，这样闭包语句变得更加醒目</li>
+<li>如果函数的参数中只有一个闭包表达式的话，圆括号是可选的</li>
+</ul>
+<h3 id="6-3-函数式编程"><a href="#6-3-函数式编程" class="headerlink" title="6.3 函数式编程"></a>6.3 函数式编程</h3><ul>
+<li>通过函数式编程，我们可以将分散的几个单独的代码块写在同一个地方</li>
+<li>将问题分解为更小的函数片段，有助于降低编写复杂代码的难度，减少潜在的错误</li>
+</ul>
+<hr>
+<h2 id="第7章-使用-Objective-C"><a href="#第7章-使用-Objective-C" class="headerlink" title="第7章 使用 Objective-C"></a>第7章 使用 Objective-C</h2><p><strong>本章重点：</strong></p>
+<ul>
+<li>Swift 支持 Cocoa 框架和 Objective-C 类的导入</li>
+<li>导入之后，常见的 Objective-C 类将自动转换成同等的 Swift 类</li>
+<li>Swift 与 Objective-C 类的桥接类型</li>
+<li>与 C APIs 相关的 Swift 类型</li>
+<li>绝大部分 Swift 代码能被导入至 Objective-C 代码</li>
+<li>同一个项目可以同时使用 Swift 和 Objective-C 代码</li>
+</ul>
+<h3 id="7-1-与-C-和-Objective-C-APIs-打交道"><a href="#7-1-与-C-和-Objective-C-APIs-打交道" class="headerlink" title="7.1 与 C 和 Objective-C APIs 打交道"></a>7.1 与 C 和 Objective-C APIs 打交道</h3><h4 id="7-1-1-可空属性和返回值"><a href="#7-1-1-可空属性和返回值" class="headerlink" title="7.1.1 可空属性和返回值"></a>7.1.1 可空属性和返回值</h4><h4 id="7-1-2-AnyObject-类型"><a href="#7-1-2-AnyObject-类型" class="headerlink" title="7.1.2 AnyObject 类型"></a>7.1.2 AnyObject 类型</h4><h4 id="7-1-3-继承、扩展和协议"><a href="#7-1-3-继承、扩展和协议" class="headerlink" title="7.1.3 继承、扩展和协议"></a>7.1.3 继承、扩展和协议</h4><h4 id="7-1-4-自动转换类型"><a href="#7-1-4-自动转换类型" class="headerlink" title="7.1.4 自动转换类型"></a>7.1.4 自动转换类型</h4><h4 id="7-1-5-选择器和枚举"><a href="#7-1-5-选择器和枚举" class="headerlink" title="7.1.5 选择器和枚举"></a>7.1.5 选择器和枚举</h4><h4 id="7-1-6-与-C-代码交互"><a href="#7-1-6-与-C-代码交互" class="headerlink" title="7.1.6 与 C 代码交互"></a>7.1.6 与 C 代码交互</h4><h3 id="7-2-在项目中同时使用-Swift-和-Objective-C-代码"><a href="#7-2-在项目中同时使用-Swift-和-Objective-C-代码" class="headerlink" title="7.2 在项目中同时使用 Swift 和 Objective-C 代码"></a>7.2 在项目中同时使用 Swift 和 Objective-C 代码</h3><hr>
+<h2 id="第8章-常见模式"><a href="#第8章-常见模式" class="headerlink" title="第8章 常见模式"></a>第8章 常见模式</h2><p><strong>本章重点：</strong></p>
+<ul>
+<li>可以在类型定义中使用嵌套类型，以使代码更加简单</li>
+<li>单例可用于重建 App 中的全局共享对象</li>
+<li>在 Swift 中使用 GCD 来处理线程和并行编程，不仅简单，而且高效</li>
+<li>SequenceType 和 GeneratorType 用于遍历自定义的数据结构，它们可以产生与特定数据结构无关的序列</li>
+<li>在自定义数据类型中使用运算符</li>
+<li>可以在内置类型和自定义类型中自定义运算符，用于执行某种运算</li>
+</ul>
+<h3 id="8-1-嵌套类型"><a href="#8-1-嵌套类型" class="headerlink" title="8.1 嵌套类型"></a>8.1 嵌套类型</h3><ul>
+<li>Swift 允许在类型中定义类、结构体和枚举</li>
+<li>将一个类型定义在另一个数据结构中，即所谓的嵌套类型</li>
+<li>嵌套类型使代码的可维护性更强</li>
+<li>当需要引入一个嵌套类时，需要使用容器类型作为前缀</li>
+<li>由于类型推断的原因，对于枚举类型的属性，可以省略枚举值前面的类型名</li>
+<li>第三章的访问修饰符，如 private、internal 和 public 将决定嵌套类型是否可用</li>
+</ul>
+<h3 id="8-2-单例"><a href="#8-2-单例" class="headerlink" title="8.2 单例"></a>8.2 单例</h3><ul>
+<li>单例是类能够访问和允许的唯一实例</li>
+<li>有两种实现单例的方法：<ul>
+<li>真单例模式，严格意义上的单例，绝对禁止第二个实例的创建</li>
+<li>伪单例模式，理论上仍然可能创建第二个实例，但提供了创建共享实例的便利方法，可以用静态变量创建单一共享实例</li>
+</ul>
+</li>
+<li>伪单例是最常见的模式，这里我们介绍这种实现方式</li>
+<li>在 Swift 中，类不允许有静态变量，但结构可以有静态变量。因此，我们可以通过嵌套类型在类中嵌套一个结构来实现单例:<br>[swift]<br>class MySoftSingleton {<br>  class var shareInstance: MySoftSingleton {<pre><code>struct Statics {
+    static var instance = MySoftSingleton()
+}
+return Statics.instance
+</code></pre>  }<br>}<br>[/swift][c][/c]<br>我们定义了一个计算属性 shareInstance，属性类型和类相同。我们定义了一个结构，在这个结构中存放了一个静态的 MySoftSingleton 实例。当我们初始化静态（或者全局）变量时，Swift 会用 dispatch_one 方法来初始化变量，这样就保证该变量只会被初始化一次，我们可以用下列代码获得 MySoftSingleton 类的一个单例：<br>[swift]<br>MySoftSingleton.shareInstance<br>[/swift][c][/c]</li>
+</ul>
+<h3 id="8-3-使用-GCD"><a href="#8-3-使用-GCD" class="headerlink" title="8.3 使用 GCD"></a>8.3 使用 GCD</h3><ul>
+<li>GCD(Grand Central Dispatch) 提供了一种并行编程的简单方式</li>
+<li>GCD 是 App 开发中的有力工具，它使我们能够充分利用硬件平台的多内核特性</li>
+<li>在编写准备执行的 GCD 线程时，可以充分利用尾末闭包的写法</li>
+</ul>
+<h4 id="8-3-1-dispatch-one"><a href="#8-3-1-dispatch-one" class="headerlink" title="8.3.1 dispatch_one"></a>8.3.1 dispatch_one</h4><ul>
+<li>需要某段代码只被执行一次，我们可以使用 dispatch_once：</li>
+</ul>
+<p>[swift]<br>struct Statics {<br>    static var onceToken: dispatch_once_t = 0<br>}<br>dispatch_once(&amp;Statics.onceToken) {<br>    print(“Give me a ping, Vasili. One Ping only, please.”)<br>}<br>[/swift][c][/c]<br>需要把结构中的 onceToken 放到第一个参数中。最终，dispatch_once 方法只会被执行一次</p>
+<h4 id="8-3-2-dispatch-async"><a href="#8-3-2-dispatch-async" class="headerlink" title="8.3.2 dispatch_async"></a>8.3.2 dispatch_async</h4><ul>
+<li>需要在后台线程执行某些效率比较低的任务，一旦任务完成又会返回主线程继续执行其他任务，比如刷新 UI</li>
+<li>总是应该在主线程中刷新 UI，因为图形 API 并不总是线程安全的</li>
+<li><p>下列例子中，闭包内的代码将在后台线程中执行：<br>[swift]<br>dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {<br>  print(“In the background queue”)</p>
+<p>  dispatch_async(dispatch_get_main_queue()) {</p>
+<pre><code>print(&quot;Back in the main queue&quot;)
+</code></pre><p>  }<br>}<br>[/swift][c][/c]</p>
+</li>
+</ul>
+<h4 id="8-3-3-dispatch-after"><a href="#8-3-3-dispatch-after" class="headerlink" title="8.3.3 dispatch_after"></a>8.3.3 dispatch_after</h4><ul>
+<li>延迟一段时间再执行某些代码，比较简单的方法是调用 dispatch_after 方法，例如以下代码在 5 秒后执行尾末闭包中的代码：<br>[swift]<br>let secondsFromNow = 5.0<br>dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(secondsFromNow * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {<br>  print(“That was so 5 seconds ago…”)<br>}<br>[/swift][c][/c]</li>
+</ul>
+<h4 id="8-3-4-dispatch-apply"><a href="#8-3-4-dispatch-apply" class="headerlink" title="8.3.4 dispatch_apply"></a>8.3.4 dispatch_apply</h4><ul>
+<li>某些情况下，我们需要并行的执行一些重复的任务。例如某些 App 经常需要下载多个图片。我们需要在后台进行下载，因为不想阻塞主线程。我们也不在乎图片下载的顺序，只要每张图片都能下载就行</li>
+<li>代码是下面的样子：<br>[swift]<br>let arrayOfURLs = getArrayOfURLsForDownload()<br>let myConcurrentQueue = dispatch_queue_create(“com.example.dlqueue”, DISPATCH_QUEUE_CONCURRENT)<br>dispatch_apply(arrayOfURLs.count, myConcurrentQueue) { (index: Int) in<br>  downloadImage(arrayOfURLs[index])<br>}<br>[/swift][c][/c]</li>
+<li>在使用并行编程时，确保闭包中的每一句代码都是线程安全的。闭包中每一次迭代都会被执行，但执行的顺序无法保证，有时甚至会出现多个迭代同时被执行的情况</li>
+</ul>
+<h3 id="8-4-Sequences-和-Generators"><a href="#8-4-Sequences-和-Generators" class="headerlink" title="8.4 Sequences 和 Generators"></a>8.4 Sequences 和 Generators</h3><ul>
+<li>可以在自定义数据结构上使用 for-in 循环，这需要指定的数据结构上实现 SequenceType 协议。这个协议提供了一个名为 generate() 的方法，它返回一个 GeneratorType 对象</li>
+<li>GeneratorType 对象，其实是实现了 next() 方法的对象而已。而 next() 方法要求返回类型必须是一个类型化的可空，这个可空的类型等于自定义集合（结构）中所包含的对象类型</li>
+<li>Swift 中，sequence 和 generator 并不仅仅可用于枚举。遍历的对象不再仅限制于内置的几种集合对象了，我们可以自定义的序列</li>
+</ul>
+<h3 id="8-5-运算符"><a href="#8-5-运算符" class="headerlink" title="8.5 运算符"></a>8.5 运算符</h3><ul>
+<li>Swift 中包含许多内置的运算符<ul>
+<li>前置运算符：位于单个操作数之前</li>
+<li>中置运算符：位于两个操作数之间</li>
+<li>后置运算符：位于单个操作数之后</li>
+<li>三种运算符执行的顺序是：先前置，后中置，然后是后置</li>
+<li>对于中置运算符，还会有一个优先级的问题，优先级越高的运算符执行顺序就越靠前</li>
+<li>中置运算符还存在三种不同的结合性，即左结合、右结合和无结合，用于表示哪个操作数会被优先处理</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-5-1-运算符重载"><a href="#8-5-1-运算符重载" class="headerlink" title="8.5.1 运算符重载"></a>8.5.1 运算符重载</h4><ul>
+<li>创建了一个类型以及它的操作符，那么可以创建自己的操作符函数（采用相同的参数），这样就可以为操作符定义自己的行为，这就是运算符重载</li>
+<li>重载运算符时需要小心，应当创建可读性和可维护性好的代码。使用运算符的首要原则，就是代码清晰易于阅读</li>
+</ul>
+<h4 id="8-5-2-自定义运算符"><a href="#8-5-2-自定义运算符" class="headerlink" title="8.5.2 自定义运算符"></a>8.5.2 自定义运算符</h4><ul>
+<li>可以定义一个全新的运算符，即自定义运算符</li>
+<li>创建自定义运算符，必须定义运算符有什么字符组成，以及它的 prefix（前缀）、infix（中缀）、postfix（后缀）修饰符</li>
+<li>如果是一个中缀云算法，还需要定义他的结合性和优先级，以及它是否是一个赋值运算符</li>
+<li>接下来要定义运算符函数，以便当运算符被调用时执行某些操作</li>
+<li>对于前缀、后缀运算符，其运行函数只需要一个参数。同时，在定义函数时必须加上 prefix 或 postfix 关键字，否则编译器无法正确获知函数的用法</li>
+<li>使用自定义运算符需要谨慎 </li>
+</ul>
+<p>(end)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/25/the-Way-to-Swift/" rel="next" title="the Way to Swift">
+                <i class="fa fa-chevron-left"></i> the Way to Swift
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Michael Qiu" />
+          <p class="site-author-name" itemprop="name">Michael Qiu</p>
+          <p class="site-description motion-element" itemprop="description">USTC 研三学生，iOSer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/MichaelQiu1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/MichaelQiu1992" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第1章-Swift-介绍"><span class="nav-number">1.</span> <span class="nav-text">第1章 Swift 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-基本语法"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-变量和常量"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 变量和常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-字符串插值"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 字符串插值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-流程控制"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 流程控制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-基本数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-整型"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 整型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-Double-和-Float"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 Double 和 Float</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-布尔型"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3 布尔型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-4-字符串"><span class="nav-number">1.2.4.</span> <span class="nav-text">1.2.4 字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-5-数组"><span class="nav-number">1.2.5.</span> <span class="nav-text">1.2.5 数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-6-字典"><span class="nav-number">1.2.6.</span> <span class="nav-text">1.2.6 字典</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第2章-深入学习-Swift"><span class="nav-number">2.</span> <span class="nav-text">第2章 深入学习 Swift</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-可空类型"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 可空类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-泛型"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 泛型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-类型声明和类型推断"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 类型声明和类型推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-函数和闭包"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 函数和闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-全局函数"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 全局函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-嵌套函数"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 嵌套函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-3-闭包表达式"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.4.3 闭包表达式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-元组"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-switch-语句和模式匹配"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 switch 语句和模式匹配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第3章-对象和类"><span class="nav-number">3.</span> <span class="nav-text">第3章 对象和类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-枚举"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-类"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-结构体"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-继承"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-重载"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-重写"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 重写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-初始化"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-属性"><span class="nav-number">3.8.</span> <span class="nav-text">3.8 属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-1-计算型属性"><span class="nav-number">3.8.1.</span> <span class="nav-text">3.8.1 计算型属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-2-属性观察者"><span class="nav-number">3.8.2.</span> <span class="nav-text">3.8.2 属性观察者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-3-延迟属性"><span class="nav-number">3.8.3.</span> <span class="nav-text">3.8.3 延迟属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-下标"><span class="nav-number">3.9.</span> <span class="nav-text">3.9 下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-10-协议"><span class="nav-number">3.10.</span> <span class="nav-text">3.10 协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-11-扩展"><span class="nav-number">3.11.</span> <span class="nav-text">3.11 扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-12-访问控制"><span class="nav-number">3.12.</span> <span class="nav-text">3.12 访问控制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第4章-可空类型"><span class="nav-number">4.</span> <span class="nav-text">第4章 可空类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-可空类型和-nil"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 可空类型和 nil</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-有效性检查、可空绑定和强制拆箱"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 有效性检查、可空绑定和强制拆箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-可空链"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 可空链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-带隐式拆箱的可空"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 带隐式拆箱的可空</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第5章-泛型"><span class="nav-number">5.</span> <span class="nav-text">第5章 泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-为什么使用泛型"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 为什么使用泛型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-泛型函数"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 泛型函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-类型参数"><span class="nav-number">5.2.1.</span> <span class="nav-text">5.2.1 类型参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-使用多个类型参数"><span class="nav-number">5.2.2.</span> <span class="nav-text">5.2.2 使用多个类型参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3泛型类型"><span class="nav-number">5.3.</span> <span class="nav-text">5.3泛型类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-关联类型"><span class="nav-number">5.3.1.</span> <span class="nav-text">5.3.1 关联类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-2-where-子句"><span class="nav-number">5.3.2.</span> <span class="nav-text">5.3.2 where 子句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第6章-函数和闭包"><span class="nav-number">6.</span> <span class="nav-text">第6章 函数和闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-函数"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-1-参数"><span class="nav-number">6.1.1.</span> <span class="nav-text">6.1.1 参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-2-外部参数名"><span class="nav-number">6.1.2.</span> <span class="nav-text">6.1.2 外部参数名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-3-参数的默认值"><span class="nav-number">6.1.3.</span> <span class="nav-text">6.1.3 参数的默认值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-4-可变参数和-inout-参数"><span class="nav-number">6.1.4.</span> <span class="nav-text">6.1.4 可变参数和 inout 参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-5-返回类型"><span class="nav-number">6.1.5.</span> <span class="nav-text">6.1.5 返回类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-闭包"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-1-参数及返回值的类型推断"><span class="nav-number">6.2.1.</span> <span class="nav-text">6.2.1 参数及返回值的类型推断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-2-尾随闭包"><span class="nav-number">6.2.2.</span> <span class="nav-text">6.2.2 尾随闭包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-函数式编程"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 函数式编程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第7章-使用-Objective-C"><span class="nav-number">7.</span> <span class="nav-text">第7章 使用 Objective-C</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-与-C-和-Objective-C-APIs-打交道"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 与 C 和 Objective-C APIs 打交道</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-1-可空属性和返回值"><span class="nav-number">7.1.1.</span> <span class="nav-text">7.1.1 可空属性和返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-2-AnyObject-类型"><span class="nav-number">7.1.2.</span> <span class="nav-text">7.1.2 AnyObject 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-3-继承、扩展和协议"><span class="nav-number">7.1.3.</span> <span class="nav-text">7.1.3 继承、扩展和协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-4-自动转换类型"><span class="nav-number">7.1.4.</span> <span class="nav-text">7.1.4 自动转换类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-5-选择器和枚举"><span class="nav-number">7.1.5.</span> <span class="nav-text">7.1.5 选择器和枚举</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-6-与-C-代码交互"><span class="nav-number">7.1.6.</span> <span class="nav-text">7.1.6 与 C 代码交互</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-在项目中同时使用-Swift-和-Objective-C-代码"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 在项目中同时使用 Swift 和 Objective-C 代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第8章-常见模式"><span class="nav-number">8.</span> <span class="nav-text">第8章 常见模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-嵌套类型"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 嵌套类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-单例"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 单例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-使用-GCD"><span class="nav-number">8.3.</span> <span class="nav-text">8.3 使用 GCD</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3-1-dispatch-one"><span class="nav-number">8.3.1.</span> <span class="nav-text">8.3.1 dispatch_one</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3-2-dispatch-async"><span class="nav-number">8.3.2.</span> <span class="nav-text">8.3.2 dispatch_async</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3-3-dispatch-after"><span class="nav-number">8.3.3.</span> <span class="nav-text">8.3.3 dispatch_after</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3-4-dispatch-apply"><span class="nav-number">8.3.4.</span> <span class="nav-text">8.3.4 dispatch_apply</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-Sequences-和-Generators"><span class="nav-number">8.4.</span> <span class="nav-text">8.4 Sequences 和 Generators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5-运算符"><span class="nav-number">8.5.</span> <span class="nav-text">8.5 运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-1-运算符重载"><span class="nav-number">8.5.1.</span> <span class="nav-text">8.5.1 运算符重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-2-自定义运算符"><span class="nav-number">8.5.2.</span> <span class="nav-text">8.5.2 自定义运算符</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Michael Qiu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

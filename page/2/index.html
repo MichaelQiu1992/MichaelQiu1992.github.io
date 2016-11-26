@@ -259,7 +259,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/23/字符串类问题/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/26/学习Objective-C-第一天/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Michael Qiu">
@@ -284,8 +284,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/23/字符串类问题/" itemprop="url">
-                  字符串类问题
+                <a class="post-title-link" href="/2015/06/26/学习Objective-C-第一天/" itemprop="url">
+                  学习 Objective-C - 第一天
                 </a>
               
             
@@ -299,8 +299,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-23T00:17:16+08:00">
-                2015-06-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-26T00:17:16+08:00">
+                2015-06-26
               </time>
             
 
@@ -318,8 +318,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
                   </a>
                 </span>
 
@@ -354,15 +354,10 @@
 
       
         
-          <h2 id="压缩空格"><a href="#压缩空格" class="headerlink" title="压缩空格"></a>压缩空格</h2><h3 id="双指针-–-时间O-N-，空间O-1"><a href="#双指针-–-时间O-N-，空间O-1" class="headerlink" title="双指针 – 时间O(N)，空间O(1)"></a>双指针 – 时间O(N)，空间O(1)</h3><h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a><strong>问题：</strong></h4><ul>
-<li>给定某字符串 S，该字符串中有若干空格，删除这些空格，并返回修改后的字符串；要求时间复杂度O(N)，空间复杂度O(1)。</li>
-<li>如：“I  have  a   dream.”,返回“Ihaveadream.”   注：有可能两个单词间存在若干空格。</li>
-</ul>
-<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a><strong>思路：</strong></h4><ul>
-<li>因为空间复杂度要求O(1)，所以在原址上进行操作，采用双指针，指针 i 指向原来的字符在字符串的位置，指针 j 就指向应该出现在新字符串的位置，每次指针 i 加一，如果当前字符不是空格，把这个字符拷贝的 j 指向的位置，j 再往后移动一位，将最后一个字符赋值为’\0’
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在这里，翻译 Dan Walker 的 <a href="http://tutsplus.com/authors/dan-walker">Learn Objective-C</a> 这个系列作为我学习 Objective-C 的一部分，这是一个老版本的 Objective-C，那时还没有 ARC(Automatic Reference Counting) 机制，采用的是 MRC，但是作为 Objective-C 的入门依然具有一定的价值。由于第一次翻译技术文章，欢迎指正.<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/23/字符串类问题/#more" rel="contents">
+            <a class="btn" href="/2015/06/26/学习Objective-C-第一天/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
