@@ -1,0 +1,795 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言在这里，翻译 Dan Walker 的 Learn Objective-C 这个系列作为我学习 Objective-C 的一部分，这是一个老版本的 Objective-C，那时还没有 ARC(Automatic Reference Counting) 机制，采用的是 MRC，但是作为 Objective-C 的入门依然具有一定的价值。由于第一次翻译技术文章，欢迎指正.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习 Objective-C - 第一天">
+<meta property="og:url" content="http://yoursite.com/2015/06/26/学习Objective-C-第一天/index.html">
+<meta property="og:site_name" content="雨亭之秋">
+<meta property="og:description" content="前言在这里，翻译 Dan Walker 的 Learn Objective-C 这个系列作为我学习 Objective-C 的一部分，这是一个老版本的 Objective-C，那时还没有 ARC(Automatic Reference Counting) 机制，采用的是 MRC，但是作为 Objective-C 的入门依然具有一定的价值。由于第一次翻译技术文章，欢迎指正.">
+<meta property="og:updated_time" content="2016-11-26T01:00:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习 Objective-C - 第一天">
+<meta name="twitter:description" content="前言在这里，翻译 Dan Walker 的 Learn Objective-C 这个系列作为我学习 Objective-C 的一部分，这是一个老版本的 Objective-C，那时还没有 ARC(Automatic Reference Counting) 机制，采用的是 MRC，但是作为 Objective-C 的入门依然具有一定的价值。由于第一次翻译技术文章，欢迎指正.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6356749571380479000',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/06/26/学习Objective-C-第一天/"/>
+
+
+
+
+
+  <title> 学习 Objective-C - 第一天 | 雨亭之秋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">雨亭之秋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/26/学习Objective-C-第一天/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Qiu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="雨亭之秋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="雨亭之秋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                学习 Objective-C - 第一天
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-26T00:17:16+08:00">
+                2015-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在这里，翻译 Dan Walker 的 <a href="http://tutsplus.com/authors/dan-walker" target="_blank" rel="external">Learn Objective-C</a> 这个系列作为我学习 Objective-C 的一部分，这是一个老版本的 Objective-C，那时还没有 ARC(Automatic Reference Counting) 机制，采用的是 MRC，但是作为 Objective-C 的入门依然具有一定的价值。由于第一次翻译技术文章，欢迎指正.<br><a id="more"></a> </p>
+<h2 id="教程详细"><a href="#教程详细" class="headerlink" title="教程详细"></a>教程详细</h2><p>技术：Objective-C; 难度：初学者; 完成时间：30－60分钟</p>
+<p>欢迎步入我的有趣的 Objective-C 语言的学习系列，虽然本系列的文章不多，但是我的目标是使你从零 Objective-C 基础到最终自信地使用它进行应用程序的开发。这可不是一件急于求成的事情哟，所以呢，大家别漫不经心地快速浏览这些基础知识就走开，我们即将给出并不是空洞的理论，而是提供确保能运行的代码以及更好的实践。好吧，让我们开始吧。</p>
+<h2 id="什么是Objective-C？"><a href="#什么是Objective-C？" class="headerlink" title="什么是Objective-C？"></a>什么是Objective-C？</h2><p>如果你正在阅读这个系列，我估计你已经知道什么是 Objective-C。但对于那些还不知道的同学，不必担心，在这部分结束的时候，你会对它有一个由里到外的了解。</p>
+<p>Objective-C 是一门基于 C 语言的面向对象语言，它在现代计算机的主要使用在 Mac OS X 以及 iPhone OS （亦称: iOS）的软件开发过程中。它原来是开发 NeXTSTEP 操作系统的主要语言， NeXTSTEP OS 后来被苹果公司收购，并派生出 Mac OS X，所以这可以很好地说明今天的苹果操作系统和 Objective-C 的关系。</p>
+<p>由于 Objective-C 是 C 语言的一个严格超集，所以我们可以在 Objective-C 文件里自由地使用C语言并顺利编译通过。因为任何 Objective-C 的编译器会将 C 代码编译过去，也就是说，我们拥有通过 Objective-C 实现 C 的面向对象能力。</p>
+<p>如果你对这点的理解有困惑的话，那就这理解吧：C 能做的，Objective-C 都能做，但反过来不成立。</p>
+<h2 id="我需要什么？"><a href="#我需要什么？" class="headerlink" title="我需要什么？"></a>我需要什么？</h2><p>在这系列文章里，我们不会把重点放在如何编写 iPhone 应用程序上，相反，我们将更专注于语言本身。我们需要的是一个带有编译器的 Mac，例如 GCC。如果你已经安装了苹果公司的开发工具（ Xcode，Interface Builder 等），这意味着已经安装 GCC 了。如果没有安装开发工具，可以苹果开发者网站上免费下载。</p>
+<p>我并不希望你有一个完备的计算机专业背景，当然，一些基本的编程知识以及 C 语言基础会让你学起来更容易。如果你没有太多的编程经验，也不必担心，你完全可以及时的补回来。</p>
+<p>如果你正用 Windows 操作系统（这看起来不大可能，因为这系列是针对 iPhone 开发者的），当然你仍然可以用一些编译器编译 Objective-C，例如 CygWin 或是 MinGW。虽这系列是迎合 Mac 用户，但当你在用 Windows 编译 Objective-C 时，遇到任何困难可以留言，看看我能不能帮到你。</p>
+<h2 id="编译你的代码"><a href="#编译你的代码" class="headerlink" title="编译你的代码"></a>编译你的代码</h2><p>  在你看到你代码可以运行之前，你需要把它编译成能够执行的东西哟。希望你现在已经准备好了 GCC，这样编译是很简单的，仅仅是一句命令而已。</p>
+<blockquote>
+<p>附言:<br>编译是一个将高级语言（例如 Objective-C 或 PHP）翻译成低级机器编码的一个过程，以便让计算机执行。</p>
+</blockquote>
+<p>所有我们看到运行在 Mac 操作系统的程序，是由一系列展示给我们的 GUI 或是用户界面的指令组成。这与用鼠标互动，也就是我们都很熟悉的 GUI 程序相反，这可能是直接通过基于文本的终端或命令行发出指令到操作系统。</p>
+<p>这命令行程序在 Mac 操作系统里被称作终端，可以在 Applications-&gt;Utilities 里找到。好吧，现在打开终端（你也可以在 Spotlight 里搜索到）。为了更好的使用终端，你需要了解几个基本命令。其中一个最重要的命令是 cd，它代表”改变目录“的意思。也就是说这条命令允许我们改变终端读取系统文件的目录。在我们告诉终端要编译的文件的地址之前，我们是无法让终端去编译我们的文件的。为了切换到所需要的目录，你可以使用完整的路径，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /Users/MyName/Desktop/Test</div></pre></td></tr></table></figure>
+<p>同样，你也可以用相对路径，在某些情况下先输入一个单个文件夹的名称。例如，当你选择了桌面的文件夹，你便可以输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> Test</div></pre></td></tr></table></figure>
+<p>来取得这个Test文件夹。</p>
+<p>当前的目录（即显示在光标之前的文件夹名称，你要输入的光标处）是你最近使用的文件夹名称。例如，你的提示是： Dan-Walkers-MacBook:Desktop iDemonix.这样我就可以预想到我在桌面这里。如果你不确定，你也可以键入 pwd，这样就可以显示出你当前位置的绝对路径了。</p>
+<p>如果你想列出当前文件夹下所有的文件和文件夹，要用列表命令 ls。最后，如果你想回到到父目录的话，可以键入”cd..”。所以，当我们在 Test 文件夹（这文件夹在桌面），并且我们想转到桌面文件夹，这时可以键入 cd.. 来转到父目录上。如果我们想转到根目录上，我们可以键入 cd../.. ，这样就可以到达两者的平衡。还有另一种选择，我们可以在任何的目录下使用 cd~ 转到根目录。</p>
+<p>当使用终端程序，编译如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gcc inputfile.m -o outputfile</div></pre></td></tr></table></figure>
+<p>你很可能已经猜到它是怎样工作的： inputfile.m 包含着我们的代码（ .m 是 Objective-C 文件的扩展名），-O  告诉 gcc 我们想执行那些被我们指定下一步，就像上面例子中的 outputfile。为了在编译后跑起来，我们可以简单的键入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./outputfile</div></pre></td></tr></table></figure>
+<p>在你编译时，编译器可能会报各种各样的错误，通知或涉及到你代码的语法的一些警告。编译时产生的错误可以被理解为“编译时”错误，而这往往是发生在你编写应用程序时（特别是当你的代码编译不过， 是因为你不小心把单个字符放在错误的地方或是忘了在语句结束的地方加上分号）。编译同样也比较耗时，特别是你长长的代码是由多个文件组成的，呵呵，也许会让人觉得这是一个乏味的体验。事实上，经常看到一个普通的程序员和一个蓬头垢面的T恤男调侃：“我没有懈怠，只是我的代码正在编译。”</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>Objective-C 这语言本身并不难学。一旦你掌握了这些基本规则，你就可以很轻松地学下去。你需要你对 C 语言基础知识有一个比较好的理解，接下来的教程会比较多的涉及到这方面的知识。</p>
+<p>好吧，让我们看看一个很基本的 C 语言程序吧：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span>   </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;   </div><div class="line">   <span class="built_in">printf</span>(<span class="string">"Hello World\n"</span>);   </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当你运行上面程序的时候，你会看到” Hello World ”,并退出。</p>
+<blockquote>
+<p>附言:<br>是不是对” return 0 ”的声明感到好奇？这是因为我们要告诉编译器 Main() 函数将会返回一个 integer 类型，也就是这里最后返回的整数常量 ‘0’。按照习惯，返回 ’0’ 信号是为了告诉程序在没有任何错误的情况下停止执行。</p>
+</blockquote>
+<p>为了亲身体验一下，先启动 Xcode 并新建一个新的 Objective-C 类。删除所有 Xcode 默认生成的代码，然后把上面的代码粘贴到 Xcode 里。这样你就可以用终端去编程你的代码了。打开终端，更改本地文件的保存位置，如果你想保存在桌面，你只需要键入 cd desktop，这样终端就可以从你桌面上读取文件了。接着，键入下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gcc program1.m -o program1</div></pre></td></tr></table></figure>
+<p>你的程序应该顺利编译，好吧，运行它吧，只需要键入下面命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./program1</div></pre></td></tr></table></figure>
+<p>然后按回车。</p>
+<p>太棒了，但竟然发生了什么呢？嗯~，我们首先引入了一个管理标准 i/o （输入输出）函数（如 printf() )的 stdio 库。接着，我们创建一个可以返回 int 或 integer （不带小数点的整数）的 Main 函数。然后我们使用 printf() 函数向终端输出 “Hello World”。而这个 \n 是换行的意思。最后，我们返回0（严格的说是返回一个整型），它告诉系统一切正常。我们使用Main是为了告诉程序一个执行入口。</p>
+<p>到目前为止，看起来还是蛮简单吧：我们想写一些东西到终端，所以，我们就引入一个带文本输入的函数库，然后，我们从这个库里面使用一个写文本函数。试想一下，库就像是一个图书馆，而 printf() 就是里面的一本书籍。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>我们继续，现在我们要讲变量了。我们的应用程序需要的基础的东西之一是临时存储数据，我们是用变量实现的，它是一个可容纳多种可以用多种方式操作的数据的容器。我们用变量来存储各种数据，但我们要先告诉编程器存在里面的是什么类型的数据。以下是一些最常重要的变量，你应该要掌握的哟：</p>
+<ul>
+<li>int — 用来存储整数的（就是没有小数点的数</li>
+<li>char — 用来存储字符</li>
+<li>float — 用于存储带小数的数字</li>
+<li>double — 和float相似，但是双精度的</li>
+</ul>
+<p>当我们不使用变量的时候，我们经常使用常量。常量是不会改变的：我们总能预知它的值是什么。如果我们把两常数关联在一起，这样就得到一个常量表达式，这说明，这表达式的结果是我们知道的。例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">123</span> + <span class="number">2</span> = <span class="number">125</span></div></pre></td></tr></table></figure>
+<p>大家都知道这个常量表达式：123+2 是等于 125 的，不管什么情况下都是。如果我们把一个常量换成一个变量，这新的表达式是这样的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">123</span> + i = ?</div></pre></td></tr></table></figure>
+<p>因为 i 是一个动态的变量，所以我们并不能预知这个表达式的值。当我们改变 i 的值就可以得到不同的结果。呵呵，这应该让你知道变量是如何工作的了吧。</p>
+<p>还有一点，我们需要知道如何把变量（如 “Hello World” ）显示出来，我们仍然要用 printf() 函数，除此之外，这次还会有一点点小改动：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span>   </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;   </div><div class="line">   <span class="keyword">int</span> someNumber = <span class="number">123</span>;   </div><div class="line">   <span class="built_in">printf</span>(<span class="string">"My number is %i \n"</span>, someNumber);   </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面，我们已经告诉了 printf() 函数我们要显示的整数的位置，然而它又是怎样找到这位置的呢？这和很多语言不同，例如 PHP,你可以把变量放在文本里。</p>
+<p>然而我们并不仅仅限制只有一个变量出现在 printf() 函数里，它可以接受多个用逗号分隔的变量。我们可以使用更多在的规格化文本标记。如上，我们使用了 %i 作为一个转化标记，因为我们使用了一个整型。其他的变量也有它各自的格式说明符哟：</p>
+<ul>
+<li>%i — integer&lt;</li>
+<li>%f — float</li>
+<li>%e — double</li>
+<li>%c — char</li>
+</ul>
+<p>还有一点我想再谈谈的是 char 类型，一个 char 类型只能允许处理一个字符，这样的规定是有意思的，然而我们需要一个文件字符串时，是不能直接实现的。为了满足这样的需求，我们用字符数组来解决。</p>
+<p>假设现在有一条 11 个字符的句子（像 “Hello World” —别忘了空格字符哟），一个字符串就像 11 个字符粘合在一起的串。这意思着，这字符串的整体代表 “Hello World”，然而 char[0] 代表 ‘H’ 。在方括号里的值代表下一个字符，因为我们是从 0 开始的。请记住了哟，在阵列之中，通常是以 0 开头的，而不是 1。</p>
+<h2 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h2><p>当一个程序需要作出判断时，我们是以条件为前提的。在没有条件的情况下，每次你运行你的程序时，它就像播放电影一样，每次都一样。通过基于变量的判断，输入或别的什么，这样我们就可以让程序有所变化－－这比用户输入一系列号码或是点击一按钮简单10倍。</p>
+<p>条件分为好几种，但现在我们要学习的是最普通最基础的：if 语句。顾名思义，if 语句是检查某样东西是否为真，然后执行不同的相对情况。例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span>   </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;   </div><div class="line">   <span class="keyword">if</span>(<span class="number">1</span> == <span class="number">1</span>) &#123; <span class="comment">// This is always true   </span></div><div class="line">      <span class="comment">// Do some stuff here   </span></div><div class="line">   &#125;    </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果 1 是等于 1，这样就执行括号之间的。也许，你会为用两个等号（＝＝）而感到不解。使用＝＝是一种平等的操作符，以检查这两个东西是否一样。然而，我们使用一个等号（＝），这样就意思着我们试图着给另一个赋值了。</p>
+<p>以上，既然 1 是等于 1 的，这无论如何都会执行括号里面的代码。但如果我们想在 if 为假的时候做点什么，这就需要 else 语句了，通过使用 else ，我们可以执行当 if 判断为假时的情况。如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;   </div><div class="line">   <span class="keyword">if</span>(<span class="number">1</span>==<span class="number">1</span>)&#123;   </div><div class="line">      <span class="comment">// Do some stuff here.   </span></div><div class="line">   &#125;   </div><div class="line">   <span class="keyword">else</span>&#123;   </div><div class="line">      <span class="comment">// The universe is broken!   </span></div><div class="line">   &#125;   </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然了，在现实生活中，我们并不会去判断 1 是否等于 1。但值得要说的是，假设一个程序当你点击三次关闭按钮时关闭，这你就应该要在括号里检查有多少次被点击了。如果是低于 3，这样，你可以在 else 号内的代码里告诉用户点击多少次按钮就会让程序退出。</p>
+<p>当我们使用条件语句的时候，我们会经常看到，这远比我们这系列里见到多得多。</p>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>现在，让我们研究一下循环吧。循环，顾名思义，就是让一段代码执行多次。这给我们提供很多便利，例如在需要填充一个列表或是重复一段代码。</p>
+<p>有三种常见的循环方式，以最常见的为例： for， while 还有 do。他们的功能是不相同的，有以下几个例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// if loop   </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;   </div><div class="line">   <span class="keyword">int</span> i = <span class="number">9</span>;   </div><div class="line">   <span class="keyword">int</span> x = <span class="number">0</span>;   </div><div class="line">   <span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; i; x++)&#123;   </div><div class="line">      <span class="built_in">printf</span>(<span class="string">"Count is: %i\n"</span>, x);   </div><div class="line">   &#125;   </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第一次看可能有点复杂，但事实上并不是。在 for （后面的分别是初始值，条件，和操作。当循环开始时，先执行初始值，在以上例子中是设置 x 为 0 。每次循环（包括第一次）它都会去检查” x 是否小于 i ”这个条件。最后，在每次执行循环代码，这循环就让 x 加 1 。简单的来说，既然x 每次增加一，x 很快不会比 i 小，这样循环就结束了，程序继续跑下去。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// while loop   </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;   </div><div class="line">   <span class="keyword">int</span> x = <span class="number">0</span>;   </div><div class="line">   <span class="keyword">while</span> (x &lt; <span class="number">10</span>)&#123;   </div><div class="line">      <span class="built_in">printf</span>(<span class="string">"Count is: %i\n"</span>, x); <span class="comment">//Watch OUT! Something is missing.   </span></div><div class="line">   &#125;    </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>类似于 for 循环，while 循环执行括号里的代码块直到条件为假时结束。既然 x 为 0，然后我们也不去改变它的值，所以呢，上面的代码会一直执行，出现了一个死循环。如果你想让 x 增加，那么，你可以在括号之间这样做：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// while loop   </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;   </div><div class="line">   <span class="keyword">int</span> x = <span class="number">0</span>;   </div><div class="line">   <span class="keyword">while</span> (x &lt; <span class="number">10</span>)&#123;   </div><div class="line">      x++;   </div><div class="line">      <span class="built_in">printf</span>(<span class="string">"Count is: %i\n"</span>, x);   </div><div class="line">   &#125;   </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>do 循环是本质上也是 while 循环，只是条件判断执行在代码块之后。当个体 do 循环的时候，这意味着循环只少执行一次。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// do loop   </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;   </div><div class="line">   <span class="keyword">int</span> x = <span class="number">0</span>;   </div><div class="line">   <span class="keyword">do</span> &#123;   </div><div class="line">      x++;   </div><div class="line">      <span class="built_in">printf</span>(<span class="string">"Count is: %i\n"</span>, x);   </div><div class="line">   &#125; <span class="keyword">while</span>(x &lt; <span class="number">10</span>);   </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>指针往往会给编程新手或是 C 语言初学者带来困惑，不会被让人很快的掌握它的用法，但你可以慢慢学多几次。然而，什么是指针呢？</p>
+<p>正如其所暗含的意思，指针指向一个地址。具体的来说，是指向计算机的内存地址。这样说吧，我们声明一个变量（一个叫 foo 的整型），然后给这变量赋值，就赋 123 吧。那么，现在我们设定这个指针为 foo，这样我们就有了一个间接访问这个值的方式。也就是说，我们有一个整型类型的指针指向 foo 的值 123，实现代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> foo = <span class="number">123</span>; <span class="comment">// This is an integer variable   </span></div><div class="line"><span class="keyword">int</span> *ptr = &amp;foo; <span class="comment">// This is a pointer to an integer variable</span></div></pre></td></tr></table></figure>
+<p>还是难理解？不用担心。指针是比较难掌握的，往往被认为是学习 C 语言的难点。指针最终会成为第二大特性，这也将会有更多的在以后的 Objective-C 系列中提到。</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>本文给出了快速回顾 C 语言基础的一节课，这环节的目的是为了让你对 C 语言有一个快速的准备，并且也为接下来的系列学习作一个准备。同时也为那些已经熟悉另外一种编程语言的人作一个简单的介绍，如果你是编程新手或是对 C 语言基础有困惑，请重要阅读，同时也可以留言提问。</p>
+<p>在下一次开始之前，请确保编译以上的所有代码。给自己一个小小的挑战吧，例如，写 10 次的循环，计算每次的循环，并且用printf输出。尝试和实践是没有害处的，如果过程中出错，这可能对你更有益处，然后根据自己的修改让它成功跑起来。</p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>这个星期里，我们会结束一个小小的挑战。你将要编写三个程序，分别用三种不同的循环方式实现 10 的计数。既然，我们经常在 Objective-C 里使用循环，那么，请认真实现它。这是很简单的，所以，尽量倒计从 10 到 1 （如果 ++ 代表加一，那么怎样让它自减 1 呢？）。</p>
+<h2 id="下一节"><a href="#下一节" class="headerlink" title="下一节"></a>下一节</h2><p>在下一节里面，我将会介绍 Objective-C 是如何工作的。同时，我们也会看到面向对象编程，并且使用它。包括深入到类，实例，方法，继承等等。</p>
+<p>明天，大家将会了解到是什么让 Objective-C 变得如此棒，还有，为什么它扩展了许多 C 语言的有用方法。</p>
+<h2 id="还有问题吗？"><a href="#还有问题吗？" class="headerlink" title="还有问题吗？"></a>还有问题吗？</h2><p>如果你任何的问题，你可以留言，或是你可以在 Twitter 发消息给我 <a href="http://www.twitter.com/iDemonix" target="_blank" rel="external">http://www.twitter.com/iDemonix</a> ，我会尽快回复你。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/28/学习Objective-C-第二天/" rel="prev" title="学习Objective-C - 第二天">
+                学习Objective-C - 第二天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Michael Qiu" />
+          <p class="site-author-name" itemprop="name">Michael Qiu</p>
+          <p class="site-description motion-element" itemprop="description">USTC 研三学生，iOSer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/MichaelQiu1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/MichaelQiu1992" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程详细"><span class="nav-number">2.</span> <span class="nav-text">教程详细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Objective-C？"><span class="nav-number">3.</span> <span class="nav-text">什么是Objective-C？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我需要什么？"><span class="nav-number">4.</span> <span class="nav-text">我需要什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译你的代码"><span class="nav-number">5.</span> <span class="nav-text">编译你的代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">6.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">7.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件"><span class="nav-number">8.</span> <span class="nav-text">条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">9.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针"><span class="nav-number">10.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束语"><span class="nav-number">11.</span> <span class="nav-text">结束语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挑战"><span class="nav-number">12.</span> <span class="nav-text">挑战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下一节"><span class="nav-number">13.</span> <span class="nav-text">下一节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有问题吗？"><span class="nav-number">14.</span> <span class="nav-text">还有问题吗？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Michael Qiu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

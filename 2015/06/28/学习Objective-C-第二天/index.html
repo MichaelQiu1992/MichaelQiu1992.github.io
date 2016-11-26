@@ -1,0 +1,740 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="教程详细技术：Objective-C; 难度：初学者; 完成时间：20－35分钟
+欢迎来到学习 Objective-C 系列教程的第二部分，我们回顾了 Objective-C 中的 C 语言基础。接下来，我们将会重点介绍到底是什么让 Objective-C 成为软件开发的优秀语言。特别的，我们还会讨论面向对象编程（OOP）基础，还有怎样用 Objective-C 去创建一个类和给对象发送消息。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Objective-C - 第二天">
+<meta property="og:url" content="http://yoursite.com/2015/06/28/学习Objective-C-第二天/index.html">
+<meta property="og:site_name" content="雨亭之秋">
+<meta property="og:description" content="教程详细技术：Objective-C; 难度：初学者; 完成时间：20－35分钟
+欢迎来到学习 Objective-C 系列教程的第二部分，我们回顾了 Objective-C 中的 C 语言基础。接下来，我们将会重点介绍到底是什么让 Objective-C 成为软件开发的优秀语言。特别的，我们还会讨论面向对象编程（OOP）基础，还有怎样用 Objective-C 去创建一个类和给对象发送消息。">
+<meta property="og:updated_time" content="2016-11-26T01:29:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习Objective-C - 第二天">
+<meta name="twitter:description" content="教程详细技术：Objective-C; 难度：初学者; 完成时间：20－35分钟
+欢迎来到学习 Objective-C 系列教程的第二部分，我们回顾了 Objective-C 中的 C 语言基础。接下来，我们将会重点介绍到底是什么让 Objective-C 成为软件开发的优秀语言。特别的，我们还会讨论面向对象编程（OOP）基础，还有怎样用 Objective-C 去创建一个类和给对象发送消息。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6356749571380479000',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/06/28/学习Objective-C-第二天/"/>
+
+
+
+
+
+  <title> 学习Objective-C - 第二天 | 雨亭之秋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">雨亭之秋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/28/学习Objective-C-第二天/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Qiu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="雨亭之秋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="雨亭之秋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                学习Objective-C - 第二天
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-28T00:17:16+08:00">
+                2015-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="教程详细"><a href="#教程详细" class="headerlink" title="教程详细"></a>教程详细</h2><p>技术：Objective-C; 难度：初学者; 完成时间：20－35分钟</p>
+<p>欢迎来到学习 Objective-C 系列教程的第二部分，我们回顾了 Objective-C 中的 C 语言基础。接下来，我们将会重点介绍到底是什么让 Objective-C 成为软件开发的优秀语言。特别的，我们还会讨论面向对象编程（OOP）基础，还有怎样用 Objective-C 去创建一个类和给对象发送消息。<br><a id="more"></a> </p>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>为什么会有 Objective-C 呢？为什么我们不只用底层的 C 语言呢？理由是在我们编写程序时利用了 Objective-C 提供面向对象的能力。OOP 是一种编程规范，它让开发者专注于软件设计中的对象和属性，而不是变量和函数。具体的说，OOP 试图获取数据抽象，封装，模块化，多态和继承。 OOP 的主题可以很容易的出一本关于它自己书（或是一个系列教程），所以，我会通过一些例子去介绍这些基本的原则。</p>
+<p>设想一下，你拥有一辆汽车，那你就可以认为这辆汽车是一个对象了。但世界上有许许多多的汽车，并且你也许不止拥有一辆汽车。然而，你的汽车有着种种的属性：牌子呀，类型呀，颜色呀，发动机类型等等。在面向对象编程概念里，我们可以把这些概念抽象为汽车类，把这个单独的汽车称为这个汽车类的一个对象或者实例（实例化对象）。当一辆汽车被制造时，一个新的汽车类的实例将被实例化（或创建）并且给它设置初始属性。</p>
+<p>说到这里还感觉到模糊吗？还有一个更通俗的例子就是饼模和大饼，类相当于饼模，对象相当于大饼。</p>
+<p>那么，为什么我们要考虑对象呢?原因之一是：现实生活中，大脑很自然地把生活概念化，这样给抽象软件开发带来大大的好处，因为这些是相类似的。</p>
+<p>类（和它的对象）是由方法和属性组成的。如果你是由其他语言过渡过来的，你也许更熟悉等同于方法的函数，等同于属性的变量。好了，这些我们会接着讨论的。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>嗯~，现在我们拥有一个汽车的实例，但我能用它来干什么呢？呵呵，我们可以驾驶它，还可以为它加汽油。驾驶和为它加汽油仅仅提供给我们使用的汽车，这就意味着，我们给特定一辆汽车加油和驾驶它，我们仅仅影响一个实例而已，并没有影响到世界所有的汽车哟。因此，为汽车实例加汽油被认为是实例方法，那是我们操作我们自己的实例。</p>
+<p>另一方面，如果我们想问原汽车类汽车可以有多少种颜色供选择，这个时候就是一个类方法了，因为我们不再仅仅涉及我们自己开的那辆汽车了，而是所有的汽车了。</p>
+<p>许多原则开始变得清晰起来了，好拉，让我们看看一些语法吧。</p>
+<p>在 Objective-C 中，我们通过发送消息来调用实例方法。当我们想知道我们的汽车实例还有多少汽油时，这时，我们就向实例发送一条消息，这消息就是我们提供的方法。大概看起来是这样的：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[recipient message];</div></pre></td></tr></table></figure>
+<p>方括号表明了我们发送的消息。里面的第一个参数是消息的接收者，第二个参数就是消息了。最后，我们会大部分编程语言一样以分号结束。</p>
+<p>这样下来，对上面的例子已经熟悉了吧。下面是实现如何为我们的汽车实例加汽油的：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dansCar addGas];</div></pre></td></tr></table></figure>
+<p>在上面的例子假设我们实例化了一个名叫 <code>dansCar</code> 的汽车实例。然后，我们向 <code>dansCar</code> 对象发送 <code>addGas</code> 消息，这就等同于函数调用。在另一种语言里，这行代码可能会像这样：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dansCar.addGas();</div></pre></td></tr></table></figure>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>比方说，我们的汽车类有一个用百分比表示汽油存储量的油箱。例如，如果油箱指向 50%，那表示它半满的；如果指向 100%，那意味着有油箱里装得满满的。现在，如果我们想知道油箱里有多少汽油，我们并不会直接从这个属性里得到信息，相反地，我们通过一个访问方法去访问该属性。同样地，当我们想为汽车加油时，我们并不会给油箱的油量赋上一个新的百分比值，而是使用一个 setter 来更新属性。这个过程呢，就被称作为数据封装了。</p>
+<p>我们所说的数据封装，其实就是数据的访问要通过访问方法。可能我们当中一些使用其他语言的同学就会为这感到奇怪了，为什么要这样做呢。答案就是，数据封装给类的创建者和类的使用者之间创建了一个很好的缓冲。因为类里的属性是通过类方法去管理和维护的，这样就可以更容易的保证数据的完整性了。还有另外一个主要的好处，当开发者专注于他的类，使用者就不必关心类的内部结构如何。这样，开发者也许升级一个方法，让它变得更快更有效率，然而，这些改动对类的使用者是透明的，他们可以仍然以同样的方法去使用它，不用作代码的改动。</p>
+<p>很好~，我们将接着看看 Objective-C 是如何把接口和实现分离的。</p>
+<h2 id="接口和实现"><a href="#接口和实现" class="headerlink" title="接口和实现"></a>接口和实现</h2><p>当你用 Objective-C 创建或操作一个简单的类，默认下，你会看到两个文件：一个是实现文件（以 .m 为后缀名），另一个是接口文件(以 .h 为后缀名）。</p>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;COCOA/Cocoa.h&gt;</span> </span></div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Car</span> : <span class="title">NSObject</span> </span>&#123;   </div><div class="line">   <span class="comment">//This is where attributes go   </span></div><div class="line">   <span class="keyword">float</span> fillLevel;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="comment">//This is where methods go   </span></div><div class="line">- (<span class="keyword">void</span>)addGas;    </div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>首先呢，我们引入提供大量可重用代码的 Cocoa 库，里面的代码都可以供我们在编写应用程序时使用。</p>
+<p>下一步，我们声明汽车接口，同时也把 NSObject 加入声明行里。对 <code>NSObject</code> 的添加意味着汽车类继承于 NSObject 类。关于继承，我们后续教程会更多的讨论。</p>
+<p>接着，声明实例变量 <code>fillLevel</code>，为了更容易表现百分比，我们特意指定它为 <code>float</code> 类型。</p>
+<p>下一行，声明 <code>addGas</code> 方法，<code>－</code> 表示这是一个实例方法，而不是类方法。<code>(void)</code> 部分意味着方法执行结束时不返回任何东西。如果方法要返回一个整型，把这部分替换为 <code>(int)</code>，其他类型依此类推。最后，我们以分号结束方法的声明。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"Car.h"</span>    </span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Car</span>   </span></div><div class="line"></div><div class="line">-(<span class="keyword">void</span>) addGas &#123;   </div><div class="line">   <span class="comment">// code goes here to add gas   </span></div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>好了，我们将要模拟为油箱加汽油的场景。同样，我们引入接口文件 Car.h。在 addGas 方法的地方，我们还可以增加更多的方法，今天仅仅局限于让大家更好地理解类的工作，而不是如何去完善一个类。</p>
+<h2 id="下一节"><a href="#下一节" class="headerlink" title="下一节"></a>下一节</h2><p>下一次呢，我们将会深入介绍方法和通过方法使用变量（还有 Objective-C 的变量管理基础)。这教程不会很长，因为往往开发新手会有一点点理解困难，例如，为什么我们把众多的类划分到多个文件里。如果你也感到有点模糊，那么请重看上面内容或是留言提问。系列教程在不断的由浅入深，理解透这些工作原理是很重要滴。</p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>呵呵，本系列的这部分是有点小理论了，没有太多东西可以实践。无论怎样，我建议你今周在 <a href="https://developer.apple.com/" target="_blank" rel="external">苹果开发者网站</a> 注册个帐号，因为这网站会给你更多的参考。当你注册了，你下载一些供下载的简单的类，还有一些小软件。你不必了解所有的代码，你只需要看看如何组织类，如何把类划分到多文件里就可以了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/26/学习Objective-C-第一天/" rel="next" title="学习 Objective-C - 第一天">
+                <i class="fa fa-chevron-left"></i> 学习 Objective-C - 第一天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/29/学习Objective-C-第三天/" rel="prev" title="学习Objective-C - 第三天">
+                学习Objective-C - 第三天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Michael Qiu" />
+          <p class="site-author-name" itemprop="name">Michael Qiu</p>
+          <p class="site-description motion-element" itemprop="description">USTC 研三学生，iOSer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/MichaelQiu1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/MichaelQiu1992" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程详细"><span class="nav-number">1.</span> <span class="nav-text">教程详细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象编程"><span class="nav-number">2.</span> <span class="nav-text">面向对象编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">3.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">4.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口和实现"><span class="nav-number">5.</span> <span class="nav-text">接口和实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">5.1.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">5.2.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下一节"><span class="nav-number">6.</span> <span class="nav-text">下一节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挑战"><span class="nav-number">7.</span> <span class="nav-text">挑战</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Michael Qiu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
