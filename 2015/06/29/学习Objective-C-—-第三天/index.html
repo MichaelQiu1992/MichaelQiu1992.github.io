@@ -1,0 +1,766 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="教程详细技术：Objective-C    难度：初学者     完成时间：20－35分钟
+欢迎来到学习 Objective-C 系列教程的第三部分，我希望大家能够喜欢这个系列教程！上周，我们接触了如何把类划分到文件里（接口和实现），今天呢，我们将继续研究类，但会有一点点深哟。同样，在变量的范畴里，我们也会提及继承及其工作原理。
+到目前为止，我得到了许多通过 email、twitter 和留言的反">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Objective-C-—-第三天">
+<meta property="og:url" content="http://yoursite.com/2015/06/29/学习Objective-C-—-第三天/index.html">
+<meta property="og:site_name" content="雨亭之秋">
+<meta property="og:description" content="教程详细技术：Objective-C    难度：初学者     完成时间：20－35分钟
+欢迎来到学习 Objective-C 系列教程的第三部分，我希望大家能够喜欢这个系列教程！上周，我们接触了如何把类划分到文件里（接口和实现），今天呢，我们将继续研究类，但会有一点点深哟。同样，在变量的范畴里，我们也会提及继承及其工作原理。
+到目前为止，我得到了许多通过 email、twitter 和留言的反">
+<meta property="og:image" content="http://michaelqiu.cn/wordpress/wp-content/uploads/2015/10/201106121311353409.png">
+<meta property="og:image" content="http://michaelqiu.cn/wordpress/wp-content/uploads/2015/10/201106121311387818.png">
+<meta property="og:updated_time" content="2016-11-26T03:50:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习Objective-C-—-第三天">
+<meta name="twitter:description" content="教程详细技术：Objective-C    难度：初学者     完成时间：20－35分钟
+欢迎来到学习 Objective-C 系列教程的第三部分，我希望大家能够喜欢这个系列教程！上周，我们接触了如何把类划分到文件里（接口和实现），今天呢，我们将继续研究类，但会有一点点深哟。同样，在变量的范畴里，我们也会提及继承及其工作原理。
+到目前为止，我得到了许多通过 email、twitter 和留言的反">
+<meta name="twitter:image" content="http://michaelqiu.cn/wordpress/wp-content/uploads/2015/10/201106121311353409.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6356749571380479000',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/06/29/学习Objective-C-—-第三天/"/>
+
+
+
+
+
+  <title> 学习Objective-C-—-第三天 | 雨亭之秋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">雨亭之秋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/29/学习Objective-C-—-第三天/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Qiu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="雨亭之秋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="雨亭之秋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                学习Objective-C-—-第三天
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-29T00:17:16+08:00">
+                2015-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="教程详细"><a href="#教程详细" class="headerlink" title="教程详细"></a>教程详细</h2><p>技术：Objective-C    难度：初学者     完成时间：20－35分钟</p>
+<p>欢迎来到学习 Objective-C 系列教程的第三部分，我希望大家能够喜欢这个系列教程！上周，我们接触了如何把类划分到文件里（接口和实现），今天呢，我们将继续研究类，但会有一点点深哟。同样，在变量的范畴里，我们也会提及继承及其工作原理。</p>
+<p>到目前为止，我得到了许多通过 email、twitter 和留言的反馈。看到这么多的童鞋对这课题感兴趣，我很高兴。更值得我们看到的是，大家认真学习并且提出了一些宝贵的问题。好吧，继续加油哟！<br><a id="more"></a> </p>
+<h2 id="回顾：类-amp-对象"><a href="#回顾：类-amp-对象" class="headerlink" title="回顾：类 &amp; 对象"></a>回顾：类 &amp; 对象</h2><p>让我们回顾目前已经学习了关于类的知识吧，如果你不了解，那么请你看看上一篇系列教程。好吧，那么类是什么呢？</p>
+<p>类，就是封装过的数据和自定义方法的集合。一个类可能容纳许多不同各类的数据，类方法通常和这些数据有关联。在 Objective-C 之中，一个类通常由两个文件组成，一个接口文件和一个实现文件。这接口文件使用 .h 作后缀名，当我们使用这类时可以很快的找到方法和数据成员。这实现文件用 .m 作后缀名，它包含了大部分的代码，因为它包含了所有在接口文件中声明的方法的实现。</p>
+<p>那么，怎么区分类与对象呢？什么是对象？ 对象就是一个类的实例。回顾我们上一部分的汽车例子。这里的 car 是类，然而 myCar、dansCar 和 youCar 就是对象了，因为它们都这个car类的实例。</p>
+<h2 id="来自苹果的类（还有一些故事）"><a href="#来自苹果的类（还有一些故事）" class="headerlink" title="来自苹果的类（还有一些故事）"></a>来自苹果的类（还有一些故事）</h2><p>在我们继续之前呢，我想分享一些苹果公司提供的通用类，但在开始之前，先来一小节历史课吧。</p>
+<p>许多苹果公司提供的类是以 <code>NS</code> 打头的，这是 NextStep 的风格了。当年乔帮主离开了苹果，他就建立了 NeXT，随后建立运行之上的电脑工作站。运行在这些机器上的面向对象语言就被称为 <code>NeXTSTEP</code>，<code>NS</code> 就出自于此啦。当苹果收购了 NeXTSTEP（另一堂历史课了），他们就决定把 Mac OS X 建立在 NeXTSTEP 之上。</p>
+<p>这里有几个例子，我们将会常见的通用类：</p>
+<ul>
+<li>NSString — 是一不可变的文本字符串</li>
+<li>NSMutableString — 是一可变文本字符串</li>
+<li>NSArray — 是一不可变的对象数组</li>
+<li>NSMutableArray — 是一可变的对象数组</li>
+<li>NSNumber — 可容纳一数值</li>
+</ul>
+<p>随后，我们将学习更多，但以上的将会派上用场了。你也许会想知道什么是“可变”，什么是“不可变”，这确实是容易理解的问题。如果一个对象是不可变的，这意味着当我们创建一个对象并给它赋值时，它是静态的，这些值就不能改变了。如果对象是可变的，那它就是动态的，被创建后它的值仍可以改变。</p>
+<h2 id="指针和初始化"><a href="#指针和初始化" class="headerlink" title="指针和初始化"></a>指针和初始化</h2><p>例如，我们想创建一静态字符串并且记录它，这我该如何做呢？这代码看起来会像这样的：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span>  </span></div><div class="line"> </div><div class="line"><span class="keyword">int</span> main (<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;   </div><div class="line">   <span class="built_in">NSString</span> *testString;   </div><div class="line">   testString = [[<span class="built_in">NSString</span> alloc] init];   </div><div class="line">   testString = <span class="string">@"Here's a test string in testString!"</span>;   </div><div class="line">   <span class="built_in">NSLog</span>(<span class="string">@"testString: %@"</span>, testString);   </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打开 Xcode 建立一文件，File -&gt; New Project -&gt; Mac OS X -&gt; Application -&gt; Command Line Tool -&gt; Type:Foundation (呵呵，跑了一大圈了），接着在项目里编辑接口文件（ .m 为后缀的)。</p>
+<p>这里有比较多的新东西，所以，就让我们逐一学习吧。</p>
+<p>首先，我们导入了基础类库（因为我们在新项目中对 Foundation 设置了类型）。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> main (<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</div></pre></td></tr></table></figure>
+<p>当我们的程序开始执行时，这个声明初始化函数将被调用。这两个以逗号隔开的参数是用来传递给我们应用程序的。现在，不要关心这些，因为我们还没用到。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *testString; testString = [[<span class="built_in">NSString</span> alloc] init];</div></pre></td></tr></table></figure>
+<p>现在我们创建一个叫 testString 并指向 NSString 对象的指针。一旦第一行结束，字符串不存在的，这仅仅有一个指向字符串的指针。然后在下一行，我们将会创建指针指向的字符串。</p>
+<p>我们可以把最后一行改变为：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">testString = [<span class="built_in">NSString</span> alloc];</div><div class="line">[testString init];</div></pre></td></tr></table></figure>
+<p>看起来有点令人发晕，第一个版本，我们在同一行把语句嵌套在方括号内，第二个版本，我们把这两条语句分到两行。这方法初始化了所有类里的所有实例变量。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">testString = <span class="string">@"Here's a test string in testString!"</span>;</div></pre></td></tr></table></figure>
+<p>看到这行，应该很明白了，为什么我们要引号前加一个 @ 呢，这是为了告诉编译器，  这是一个 NSString。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSLog</span>(@”testString: %@”, testString);</div></pre></td></tr></table></figure>
+<p>在这里，我们将会向控制台输出一些信息。Xcode 里有一调试器，你可以在执行菜单下找到。这非常有用，当开发一应用程序的事件触发还有某些变量的值改变时，它可以给予排除故障和调试问题的帮助。这些方法的工作像 printf (还记得上面提到过吗），就是提供一个替换字符的文本字符串（ %@ 表示一个 Objective-C 对象）。</p>
+<p><img src="http://michaelqiu.cn/wordpress/wp-content/uploads/2015/10/201106121311353409.png" alt=""></p>
+<p>最后我们返回 0, 这是我们告诉操作系统这程序没有出错。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>还记得创建我们的 NSString 之前是做了什么，使用初始化方法？嗯~，事实上 NSMutableString、NSArray，每一个 NS 类，也会使用初始化。似乎是浪费了许多代码放在每个类的初始化方法里，对不对？也许是吧，这是为什么初始化通常只在根类 NSObject 里实现一次。由于许多类互相继承，一个为被创建并成为另一个的孩子，你类将自动获得访问你类的方法。</p>
+<p>以 NSMutableString 为例， NSMutableString  认  NSString 作父，这表示它继承于 NSString。然而，NSString 认 NSObject 作父，这说明它继承于 NSObject。</p>
+<p><img src="http://michaelqiu.cn/wordpress/wp-content/uploads/2015/10/201106121311387818.png" alt=""></p>
+<p>例如，NSObject 有一叫 init 的方法，所以它的每个子类都拥有这方法的实现——这就是被叫做类方法。事实上，NSObject 中的 init 不会做太多事情，只是返回自己。原因就是这方法是可以被重写的。所以，NSArray 类可以重写继承的 init 方法，如确保内存是可用的或是准备一些需要的实例变量。</p>
+<p>实事证明这是有用的，因为我们除了从父类继承，还可以作扩展。当我们扩展一个类，我们需要一个现成类并向其添加额外的功能。这就意味着，你可以通过添加额外方法去创建你自己的 NSString 版本，例如，增加一个随机填充一字符串或执行一些字符的排序的方法。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>讲到这里，类工作的基本原理算是讲清楚了。好了，来测试一下自己的理解程序吧，看看是否能回答以下问题？</p>
+<ul>
+<li>类和对象的区别是什么？</li>
+<li>为什么要使用类？</li>
+<li>继承有什么用处？</li>
+</ul>
+<p>既然类是 Objective-C 的一个重要组成部分，使用类是比较方便的。上周我们已经接触过类，这周也深入的探究了。下周呢，可能你听到都会兴奋，我们要纯粹的理论，开始使用一些简单类，或是做一些小任务。</p>
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>目前为止，主要还是讲理论，这周的任务主要是浏览苹果开发者网站，同时学习一些现成的类。如果你不知道从何开始，那就从 NSString 开始吧。你将会为你类的细节（如方法等等）感到便捷的。这些将对你接下来学习有帮助，特别是当你使用类并且想知道什么方法是继承的。</p>
+<h2 id="下一节"><a href="#下一节" class="headerlink" title="下一节"></a>下一节</h2><p>好了，明天会给出更多实际类编码。类确确实实是 Objective-C 的核心，你学习它还有这系列的目标就是为了确保你彻底的掌握它。</p>
+<p>像往常一样，如果你有疑问或建议，你可以通过留言或 email 联系我。如果你想更快的接触我并得到回复，那就 tweet 我吧！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/28/学习Objective-C-—-第二天/" rel="next" title="学习Objective-C - 第二天">
+                <i class="fa fa-chevron-left"></i> 学习Objective-C - 第二天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/01/学习Objective-C-—-第四天/" rel="prev" title="学习Objective-C-—-第四天">
+                学习Objective-C-—-第四天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Michael Qiu" />
+          <p class="site-author-name" itemprop="name">Michael Qiu</p>
+          <p class="site-description motion-element" itemprop="description">USTC 研三学生，iOSer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/MichaelQiu1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/MichaelQiu1992" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程详细"><span class="nav-number">1.</span> <span class="nav-text">教程详细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回顾：类-amp-对象"><span class="nav-number">2.</span> <span class="nav-text">回顾：类 & 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#来自苹果的类（还有一些故事）"><span class="nav-number">3.</span> <span class="nav-text">来自苹果的类（还有一些故事）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针和初始化"><span class="nav-number">4.</span> <span class="nav-text">指针和初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">5.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作业"><span class="nav-number">7.</span> <span class="nav-text">作业</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下一节"><span class="nav-number">8.</span> <span class="nav-text">下一节</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Michael Qiu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,779 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="教程详细技术：Objective-C    难度：初学者     完成时间：20－35分钟
+欢迎来到学习 Objective-C 系列教程的第四部分，到目前为止，我们在理论，原则以及语言功能。今天，我们会创建一个像前面举的汽车例子那样的简单类。我们的类会详细描述汽车，并允许我们读写其属性。在今天的例子之后，你将能够用 Xcode 创建自己的类并熟练运用它。
+到目前为止，我们已经收到了一些很好的反馈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Objective-C-—-第四天">
+<meta property="og:url" content="http://yoursite.com/2015/07/01/学习Objective-C-—-第四天/index.html">
+<meta property="og:site_name" content="雨亭之秋">
+<meta property="og:description" content="教程详细技术：Objective-C    难度：初学者     完成时间：20－35分钟
+欢迎来到学习 Objective-C 系列教程的第四部分，到目前为止，我们在理论，原则以及语言功能。今天，我们会创建一个像前面举的汽车例子那样的简单类。我们的类会详细描述汽车，并允许我们读写其属性。在今天的例子之后，你将能够用 Xcode 创建自己的类并熟练运用它。
+到目前为止，我们已经收到了一些很好的反馈">
+<meta property="og:image" content="http://michaelqiu.cn/wordpress/wp-content/uploads/2015/10/201106131259395289.jpg">
+<meta property="og:image" content="http://michaelqiu.cn/wordpress/wp-content/uploads/2015/10/201106131259392291.jpg">
+<meta property="og:updated_time" content="2016-11-26T03:49:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习Objective-C-—-第四天">
+<meta name="twitter:description" content="教程详细技术：Objective-C    难度：初学者     完成时间：20－35分钟
+欢迎来到学习 Objective-C 系列教程的第四部分，到目前为止，我们在理论，原则以及语言功能。今天，我们会创建一个像前面举的汽车例子那样的简单类。我们的类会详细描述汽车，并允许我们读写其属性。在今天的例子之后，你将能够用 Xcode 创建自己的类并熟练运用它。
+到目前为止，我们已经收到了一些很好的反馈">
+<meta name="twitter:image" content="http://michaelqiu.cn/wordpress/wp-content/uploads/2015/10/201106131259395289.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6356749571380479000',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/07/01/学习Objective-C-—-第四天/"/>
+
+
+
+
+
+  <title> 学习Objective-C-—-第四天 | 雨亭之秋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">雨亭之秋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/01/学习Objective-C-—-第四天/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Qiu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="雨亭之秋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="雨亭之秋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                学习Objective-C-—-第四天
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-01T00:17:16+08:00">
+                2015-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="教程详细"><a href="#教程详细" class="headerlink" title="教程详细"></a>教程详细</h2><p>技术：Objective-C    难度：初学者     完成时间：20－35分钟</p>
+<p>欢迎来到学习 Objective-C 系列教程的第四部分，到目前为止，我们在理论，原则以及语言功能。今天，我们会创建一个像前面举的汽车例子那样的简单类。我们的类会详细描述汽车，并允许我们读写其属性。在今天的例子之后，你将能够用 Xcode 创建自己的类并熟练运用它。</p>
+<p>到目前为止，我们已经收到了一些很好的反馈，包括通过邮件、留言、twitter 等。我很高兴看到这么多童鞋对这系列教程感兴趣，更高兴的是，看到大家都动起手来实践并提出问题。呵呵，继续努力吧！<br><a id="more"></a> </p>
+<h2 id="准备开始"><a href="#准备开始" class="headerlink" title="准备开始"></a>准备开始</h2><p>首先用 Xcode 创建一个新项目，在 Mac OS X 的分隔符下，点击 Application，然后点击 Command Line Tool，最后，更改下列表框设置 Foundation 的类型。</p>
+<p><img src="http://michaelqiu.cn/wordpress/wp-content/uploads/2015/10/201106131259395289.jpg" alt=""></p>
+<p>保存该项目，我就命名为 CarApp 吧，当这项目窗口出现时，我们需要创建一个新类。点击 Command-N (或 File -&gt; New File)，在 Mac OS X 下导航到 Cocoa 并选择 Objective-C 类。确保子类是继承于 NSObject 并点击下一步。命名你的类为 SimpleCar 并确保 .h 文件被创建了，然后就保存。</p>
+<p>我们的类现在已经创建好了，但它是空的。让我们为它填充些代码吧。还记得在 Objective-C 中，我们把代码分成两部分吗：接口与实现。它让在接口的工作变得有逻辑意义，所以这是我们的初衷。</p>
+<h2 id="编写接口"><a href="#编写接口" class="headerlink" title="编写接口"></a>编写接口</h2><p>打开 SimpleCar.h 文件，当前的状态看起来是这样的：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;Cocoa/Cocoa.h&gt;</span>   </span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SimpleCar</span> : <span class="title">NSObject</span> </span>&#123;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>首先，我们引入 Cocoa.h，这使我们可以获得像 NSString、NSMutableString 等这样的东东。然后，我们创建类 (SimpleCar) 作为 NSObject 的子类。</p>
+<p>现在， 我们需要确定我们的类需要保存什么样的信息了。既然我们像平常一样用汽车，我们需要存储有关汽车的相关信息，例如：</p>
+<ul>
+<li>make — 牌子</li>
+<li>model — 型号</li>
+<li>VIN — 汽车识别码</li>
+</ul>
+<p>还有更多信息我们可以写进，但现在不会这样。对于其中的每个属性，我们需要用一个合适的数据类型去存储。牌子和型号是字符范畴（像文件，号码和标点符号），所以用 string 是比较合适的哟。VIN （汽车识别码）仅仅是由数字组成。我们的代码看起来会像这样（省略前面）：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SimpleCar</span> : <span class="title">NSObject</span> </span>&#123;   </div><div class="line">   <span class="built_in">NSString</span> *make;   </div><div class="line">   <span class="built_in">NSString</span> *model;   </div><div class="line">   <span class="built_in">NSNumber</span> *vin;   </div><div class="line">&#125;   </div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>我们之前也提过了，为了读写类的数据，会用到一个方法。因此，要设置变量，我们需要增加方法。要做这样，我们提出四点：一个设置牌子，一个设置型号，一个设置 VIN，以及最后一个方法用来设置牌子和型号（只是为了告诉大家怎样使用多个参数罢了）。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SimpleCar</span> : <span class="title">NSObject</span> </span>&#123;   </div><div class="line">   <span class="built_in">NSString</span> *make;   </div><div class="line">   <span class="built_in">NSString</span> *model;   </div><div class="line">   <span class="built_in">NSNumber</span> *vin;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="comment">// set methods   </span></div><div class="line">- (<span class="keyword">void</span>) setVin:   (<span class="built_in">NSNumber</span> *)newVin;   </div><div class="line">- (<span class="keyword">void</span>) setMake:  (<span class="built_in">NSString</span> *)newMake;   </div><div class="line">- (<span class="keyword">void</span>) setModel: (<span class="built_in">NSString</span> *)setModel;   </div><div class="line"></div><div class="line"><span class="comment">// convenience method   </span></div><div class="line">- (<span class="keyword">void</span>) setMake:(<span class="built_in">NSString</span> *)newMake andModel:(<span class="built_in">NSString</span> *)newModel;   </div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>我们在大括号 @end 之间声明方法，在方法之前放置 <code>-</code> 是要告诉编译器这个方法是实例方法。一个实例方法是依靠实例执行的方法。相反，一个 <code>+</code> 表示这个方法是类方法，这方法的执行并不需要一个单独的对象，这接下来会讲到。 </p>
+<p>我们的第一个方法 <code>setVin</code> 返回 void，并以一个 NSNumber 作为参数。我们的第二个方法 <code>setMake</code> 也相类似，也返回 void，并以一个 NSString 作为参数。第三个方法除了方法名都相似。</p>
+<p>我们最后一个方法也是返回 void，但需要两个 NSString 类型的参数：newMake 和 newModel。这些方法的命名是与大多数 Objective-C 方法相似的，都是以简单英语命名。所以，当你读到这方法时，能够明显知道其含义。记住方法的名记是重要的，在这种情况为： <code>setMake,andModel</code> －－所有参数名都包括在方法名里了。</p>
+<p>有一点值得注意的是，我们使用 <code>void</code> 是因为我们不需要返回任何东西。既然所有要做的只是设置值，并不需要返回任何东西（例如一表示成功的信息）：</p>
+<p>下一步，我们会添加用来访问值的方法。虽然我们称这些方法为 get 方法和 set 方法，我们只用 <code>set</code> 和 <code>get</code>。怎样命名你的方法由你决定，但是用到了 <code>get</code> 会常于的，有助于避免混淆。</p>
+<p>我们的 set 方法看起来会像这样：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// set methods   </span></div><div class="line">- (<span class="keyword">void</span>) setVin:   (<span class="built_in">NSNumber</span> *)newVin;   </div><div class="line">- (<span class="keyword">void</span>) setMake:  (<span class="built_in">NSString</span> *)newMake;   </div><div class="line">- (<span class="keyword">void</span>) setModel: (<span class="built_in">NSString</span> *)newModel;   </div><div class="line"></div><div class="line"><span class="comment">// convenience method   </span></div><div class="line">- (<span class="keyword">void</span>) setMake:(<span class="built_in">NSString</span> *)newMake andModel:(<span class="built_in">NSString</span> *)newModel;   </div><div class="line"></div><div class="line"><span class="comment">// get methods   </span></div><div class="line">- (<span class="built_in">NSString</span> *)make;   </div><div class="line">- (<span class="built_in">NSString</span> *)model;   </div><div class="line">- (<span class="built_in">NSNumber</span> *)vin;</div></pre></td></tr></table></figure>
+<p>要注意的是，get 方法名和类里的变量名相同。这样当我们读书变量时更简单。当你直接访问这变量，基本上对 get 方法是透明的。</p>
+<h2 id="编写实现"><a href="#编写实现" class="headerlink" title="编写实现"></a>编写实现</h2><p>现在，我们的接口已经存在了，并且知道类要干什么了，所以要实现我们的方法了。往回看，我们有四个方法需要实现的：<code>setVin</code>, <code>setMake</code> ,<code>setModel</code> 和 <code>setMake:andModel</code>。在移动文件之前，复制这些方法的声明到粘贴板 <code>Cmd+C</code>。现在关闭 SimpleCar.h 并在编辑器里打开 SampleCar.m ,在 @implementation 和 @end 之间粘贴下这些方法声明。如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SimpleCar</span>   </span></div><div class="line"></div><div class="line"><span class="comment">// set methods   </span></div><div class="line">- (<span class="keyword">void</span>) setVin:   (<span class="built_in">NSNumber</span> *)newVin;   </div><div class="line">- (<span class="keyword">void</span>) setMake:  (<span class="built_in">NSString</span> *)newMake;   </div><div class="line">- (<span class="keyword">void</span>) setModel: (<span class="built_in">NSString</span> *)newModel;   </div><div class="line"></div><div class="line"><span class="comment">// convenience method   </span></div><div class="line">- (<span class="keyword">void</span>) setMake:(<span class="built_in">NSString</span> *)newMake andModel:(<span class="built_in">NSString</span> *)newModel;   </div><div class="line"></div><div class="line"><span class="comment">// get methods   </span></div><div class="line">- (<span class="built_in">NSString</span> *)make;   </div><div class="line">- (<span class="built_in">NSString</span> *)model;   </div><div class="line">- (<span class="built_in">NSNumber</span> *)vin; </div><div class="line">  </div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>显然，这是不对的，我们需要做的是，把花括号的地方和方法的内部工作交换，像这样：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SimpleCar</span>   </span></div><div class="line"></div><div class="line"><span class="comment">// set methods   </span></div><div class="line">- (<span class="keyword">void</span>) setVin:(<span class="built_in">NSNumber</span> *)newVin &#123;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line">- (<span class="keyword">void</span>) setMake:(<span class="built_in">NSString</span> *)newMake &#123;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line">- (<span class="keyword">void</span>) setModel:(<span class="built_in">NSString</span> *)newModel &#123;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line">- (<span class="keyword">void</span>) setMake:(<span class="built_in">NSString</span> *)newMake andModel:(<span class="built_in">NSString</span> *)newModel &#123;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="comment">// get methods   </span></div><div class="line">- (<span class="built_in">NSString</span> *)make &#123;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line">- (<span class="built_in">NSString</span> *)model &#123;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line">- (<span class="built_in">NSNumber</span> *)vin &#123;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>现在，我们需要为方法添加一些代码了。让我们以 getter 方法作为开始吧，对于每一个 getter 方法，我们需要做的就是确保方法返回打算返回的数据。由于这个原因，我们的 getter 方法像这样：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSString</span> *) make &#123;   </div><div class="line">   <span class="keyword">return</span> make;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line">- (<span class="built_in">NSString</span> *) model &#123;   </div><div class="line">   <span class="keyword">return</span> model;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line">- (<span class="built_in">NSNumber</span> *) vin &#123;   </div><div class="line">   <span class="keyword">return</span> vin;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>记住：方法返回的变量是决定于接口文件的，不要把方法名和变量名混淆了哟！</p>
+<p>这很简单吧，我们调用 make 方法，这 make 方法返回一个 NSString 指针－－这情况下是 make 变量。同样对于 model 和 vin （除了 vin 返回一个数字）。</p>
+<p>现在说说 setter 方法，首先，我们看看这些代码，然后将越过去，我们的 setter 方法看上去像这样的：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// set methods   </span></div><div class="line">- (<span class="keyword">void</span>) setVin: (<span class="built_in">NSNumber</span> *)newVin &#123;   </div><div class="line">   [vin release];   </div><div class="line">   vin = [[<span class="built_in">NSNumber</span> alloc] init];   </div><div class="line">   vin = newVin;   </div><div class="line">&#125;   </div><div class="line"></div><div class="line">- (<span class="keyword">void</span>) setMake: (<span class="built_in">NSString</span> *)newMake &#123;   </div><div class="line">   [make release];   </div><div class="line">   make = [[<span class="built_in">NSString</span> alloc] initWithString:newMake];   </div><div class="line">&#125;   </div><div class="line"></div><div class="line">- (<span class="keyword">void</span>) setModel: (<span class="built_in">NSString</span> *)newModel &#123;   </div><div class="line">   [model release];   </div><div class="line">   model = [[<span class="built_in">NSString</span> alloc] initWithString:newModel];   </div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="comment">// convenience method   </span></div><div class="line">- (<span class="keyword">void</span>) setMake: (<span class="built_in">NSString</span> *)newMake andModel: (<span class="built_in">NSString</span> *)newModel &#123;   </div><div class="line">   <span class="comment">// Reuse our methods from earlier   </span></div><div class="line">   [<span class="keyword">self</span> setMake:newMake];   </div><div class="line">   [<span class="keyword">self</span> setModel:newModel];   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>set 方法比 get 方法有那么一点点棘手。我们想把值传递到每个方法里，为了它们属于这个类。首先，公开这些变量，他们被分配了内存，如果不被分配，则为零，而忽略了对象传递给他们的消息。当我们讨论内存管理的时候，我们将介绍这些问题。</p>
+<p>因为我们在 setter 方法为我们的对象分配内存，当这对象被从内存里释放时，我们要确保释放它们。做到这一点，我们需要自定义一个释放方法，像这样的：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>) dealloc   </div><div class="line">&#123;   </div><div class="line">   [vin release];   </div><div class="line">   [make release];   </div><div class="line">   [model release];   </div><div class="line">   [<span class="keyword">super</span> dealloc];   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a>测试类</h2><p>恭喜你，如果你按照上面所说的做，你现在应该有一个可工作的类了。所以，让我们测试它吧。</p>
+<p>打开项目主文件（我的是叫 CarApp.m ），默认情况下看起来像这样的：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span>   </span></div><div class="line"></div><div class="line"><span class="keyword">int</span> main (<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> *argv[]) &#123;   </div><div class="line">   <span class="built_in">NSAutoreleasePool</span> *pool = [[<span class="built_in">NSAutoreleasePool</span> alloc] init];   </div><div class="line">   <span class="comment">// Insert custom code here...   </span></div><div class="line">   <span class="built_in">NSLog</span>(<span class="string">@"Hello, World!"</span>);   </div><div class="line">   [pool drain];   </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>删除评论和 NSLog 行，因为我们不再需要它们了。</p>
+<p>为了开始使用我们的类，我们需要把它放时程序里。在下面原始的 #import 行加上下面这行：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"SimpleCar.h"</span></span></div></pre></td></tr></table></figure>
+<p>我们的类现在是可用的了，为了测试它，但我们需要创建一个实例。这里有完整的代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span>   </span></div><div class="line"><span class="meta">#import <span class="meta-string">"SimpleCar.h"</span>   </span></div><div class="line"></div><div class="line"><span class="keyword">int</span> main (<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;   </div><div class="line">   <span class="built_in">NSAutoreleasePool</span> *pool = [[<span class="built_in">NSAutoreleasePool</span> alloc] init];   </div><div class="line">   SimpleCar *myCar = [[SimpleCar alloc] init];   </div><div class="line">   <span class="built_in">NSNumber</span> *newVin = [<span class="built_in">NSNumber</span> numberWithInt:<span class="number">123</span>];   </div><div class="line">   [myCar setVin:newVin];   </div><div class="line">   [myCar setMake:<span class="string">@"Honda"</span> andModel:<span class="string">@"Civic"</span>];   </div><div class="line">   <span class="built_in">NSLog</span>(<span class="string">@"The car is: %@ %@"</span>, [myCar make], [myCar model]);   </div><div class="line">   <span class="built_in">NSLog</span>(<span class="string">@"The vin is: %@"</span>, [myCar vin]);   </div><div class="line">   [myCar release];   </div><div class="line">   [pool drain];   </div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先，我们创建一个 SimpleCar 名叫 myCar 的实例的指针。接着，我们使用内存分布和初始化－－这些会在下面说到的：</p>
+<p>其次，既然我们需要传递一个 NSNumber 给 setVin 方法，在这就创建一个呗。再次，我们创建一个命叫 newVin 的 NSNumber 实例的指针，并且初始化值为 123。 <code>123</code> 是一个整型，这就是我们使用数字的原因了。</p>
+<p>接下来，我们调用我们的方法，首先我推送 myCar 接收的消息，并使用 setVin 方法。冒号后的值(之前创建的 NSNumber ）是我们提供给这方法的。接着，我们调用两个参数的 setMake 方法。这些参数由一个 @ 打头，是为了告诉编译器紧接的是一个 string。</p>
+<p>最后，我们释放 myCar，因为之前用了它。接下来的会更多的讨论内存管理。</p>
+<p> 我们的类在工作了，为了证明这动作，我们加一些NSLog语句来打印一些值到控制台吧。如果你打开控制台（ Run -&gt; Console )，建立并运行你的程序，你会看到像这样的：</p>
+<p><img src="http://michaelqiu.cn/wordpress/wp-content/uploads/2015/10/201106131259392291.jpg" alt=""></p>
+<h2 id="属性和合成（Synthesize）"><a href="#属性和合成（Synthesize）" class="headerlink" title="属性和合成（Synthesize）"></a>属性和合成（Synthesize）</h2><p>看看上面的代码，很多看起来像是乏味的。例如，在我们的 getter 方法里，只做了返回一个实例变量，但这就要用了三行代码去做如此简单的事。同样，在我们的 setter 方法里，我们仅设置了实例变量。除了我们方法有两个参数，看起来是重复和臃肿呀。然而，Objective-C 为了解决这问题，用了 @property 和 @synthesize，放在我们的访问方法那里，并给出了许多简洁的编码。</p>
+<p>这样，我们新接口文件看起来像使用属性那样了：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"SimpleCar.h"</span>   </span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SimpleCar</span></span></div><div class="line"><span class="keyword">@synthesize</span> make, model, vin;   </div><div class="line"></div><div class="line">- (<span class="keyword">void</span>) setMake: (<span class="built_in">NSString</span> *)newMake andModel: (<span class="built_in">NSString</span> *)newModel &#123;   </div><div class="line">   [<span class="keyword">self</span> setMake:newMake];   </div><div class="line">   [<span class="keyword">self</span> setModel:newModel];   </div><div class="line">&#125; </div><div class="line">  </div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>这看起来是不是更优雅呢？这样想吧，@property 替换了所有 getter 和 setter 方法的接口声明，而 @synthesize 则替换它们实际的方法。这样，getter 和 setter 可以被动态创建了，我们不需要浪费时间去创建它们，除非我们需要一些特别的事情。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>到现在，你应该很好的掌握了类，对象和实例了。当然，如果你还没有创建类，那就另当别论了，这东西是需要时间的。通过例子学习是更好的方法，如果你不想动手，那至少也要下载代码去阅读一下，以确保百分百知道这是神马回事。</p>
+<h2 id="下一节"><a href="#下一节" class="headerlink" title="下一节"></a>下一节</h2><p>在我们的教程里也提及到了一些内存管理的知识了，这是需要我们掌握的很重要的主题哟，所以我们下次还要研究。诚然，它并不是最有趣的主题，或容易掌握的知识。但它是相当重要的，特别是你想成为熟练的 Objective-C 开发者。</p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>今天的挑战可能会有一点点难度，但我们会看你怎么进行的。首先，如果你重复上面的代码，下载源代码。这挑战就是为项目添加另一个类，但这次，它是 SimpleCar 的子类（记得，我们是在接口文件定义你类的）。如果你懂得这样做，使用继承方法并尝试添加你自己的代码，例如： engine size，doors 或 height。</p>
+<p>记住：如果你有任何疑问，留下您的贵言，或在 twitter 联系我。呵呵，有一个愚蠢的问题就是你什么都没问，这系列教程是允许自由提问的哟。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/29/学习Objective-C-—-第三天/" rel="next" title="学习Objective-C-—-第三天">
+                <i class="fa fa-chevron-left"></i> 学习Objective-C-—-第三天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/03/学习Objective-C-—-第五天/" rel="prev" title="学习Objective-C-—-第五天">
+                学习Objective-C-—-第五天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Michael Qiu" />
+          <p class="site-author-name" itemprop="name">Michael Qiu</p>
+          <p class="site-description motion-element" itemprop="description">USTC 研三学生，iOSer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/MichaelQiu1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/MichaelQiu1992" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程详细"><span class="nav-number">1.</span> <span class="nav-text">教程详细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备开始"><span class="nav-number">2.</span> <span class="nav-text">准备开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写接口"><span class="nav-number">3.</span> <span class="nav-text">编写接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写实现"><span class="nav-number">4.</span> <span class="nav-text">编写实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试类"><span class="nav-number">5.</span> <span class="nav-text">测试类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性和合成（Synthesize）"><span class="nav-number">6.</span> <span class="nav-text">属性和合成（Synthesize）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">7.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下一节"><span class="nav-number">8.</span> <span class="nav-text">下一节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挑战"><span class="nav-number">9.</span> <span class="nav-text">挑战</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Michael Qiu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
