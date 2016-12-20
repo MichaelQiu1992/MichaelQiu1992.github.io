@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Swift," />
+  <meta name="keywords" content="读书笔记,Swift," />
 
 
 
@@ -105,7 +105,7 @@ Swift 中的数组和字典要比 O">
 由于基本数据类型都是结构体，它们可能会有一些可用的附加属性和方法
 Swift 中的数组和字典要比 O">
 <meta property="og:image" content="http://michaelqiu.cn/wordpress/wp-content/uploads/2016/07/30AC14F6-1CC8-4961-A948-AA542FDA0A9C.jpg">
-<meta property="og:updated_time" content="2016-11-26T06:47:59.000Z">
+<meta property="og:updated_time" content="2016-12-20T01:53:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《写给大忙人看的Swift》总结">
 <meta name="twitter:description" content="第1章 Swift 介绍
@@ -391,9 +391,13 @@ Swift 中的数组和字典要比 O">
 </li>
 </ul>
 <h3 id="1-1-基本语法"><a href="#1-1-基本语法" class="headerlink" title="1.1 基本语法"></a>1.1 基本语法</h3><ul>
-<li>要点：<ul>
-<li>Swift 的 Hello World 程序<br>[swift]<br>print(“Hello World!”)<br>[/swift][c][/c]</li>
-<li>不需要包含或者导入某个标准库，不需要配置一个初始化 main() 函数已供系统调用，不要在每行代码尾部包含一个分号</li>
+<li><p>要点：</p>
+<ul>
+<li><p>Swift 的 Hello World 程序</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(<span class="string">"Hello World!"</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>不需要包含或者导入某个标准库，不需要配置一个初始化 main() 函数已供系统调用，不要在每行代码尾部包含一个分号</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -413,9 +417,12 @@ Swift 中的数组和字典要比 O">
 </li>
 </ul>
 <h4 id="1-1-2-字符串插值"><a href="#1-1-2-字符串插值" class="headerlink" title="1.1.2 字符串插值"></a>1.1.2 字符串插值</h4><ul>
-<li>要点：<ul>
+<li><p>要点：</p>
+<ul>
 <li>利用字符串的插值操作，将变量、常量和其他表达式的值添加到输出中</li>
-<li>在括号中，包含一个变量或表达式，再用一个反斜杠进行转义，最后将其直接添加至字符串中<br>[swift]<br>var firstName = “Geoff”<br>var lastName = “Cawthorne”<br>var userName = “(firstName) (lastName)”<br>[/swift][c][/c]</li>
+<li><p>在括号中，包含一个变量或表达式，再用一个反斜杠进行转义，最后将其直接添加至字符串中</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> firstName = <span class="string">"Geoff"</span></div><div class="line"><span class="keyword">var</span> lastName = <span class="string">"Cawthorne"</span></div><div class="line"><span class="keyword">var</span> userName = <span class="string">"<span class="subst">\(firstName)</span> <span class="subst">\(lastName)</span>"</span></div></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ul>
@@ -440,21 +447,23 @@ Swift 中的数组和字典要比 O">
 </li>
 <li><p><strong>循环语句</strong></p>
 <ul>
-<li><p>用于循环执行代码块的关键词有: for、for-in、while 和 do-while<br>[swift]<br>// for 语句<br>for var i = 0; i &lt; 10; ++i {<br>print(“i = (i)”)<br>}<br>[/swift][c][/c]</p>
+<li><p>用于循环执行代码块的关键词有: for、for-in、while 和 do-while</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// for 语句</span></div><div class="line"><span class="keyword">for</span> <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"i = <span class="subst">\(i)</span>"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>Swift有两种新的区间运算符。<code>..&lt;</code> 是半开区间运算符，包含最左端的值，但是不包含最右端的值；<code>...</code> 是闭区间运算符，它包括区间两端的值</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// for-in 语句</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span> ..&lt; <span class="number">10</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"i = <span class="subst">\(i)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span> ... <span class="number">10</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"i = <span class="subst">\(i)</span>"</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> itemIds: [<span class="type">Int</span>] = generateItemIds()</div><div class="line"><span class="keyword">for</span> itemId <span class="keyword">in</span> itemIds &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"itemId: <span class="subst">\(itemId)</span>"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
+<li><p>while 循环语句则只要检测条件为 true，就会一直进行迭代。如果一开始检测条件就为 false，循环语句不会迭代任何内容</p>
+</li>
+<li>do-while 循环语句会在循环的尾部计算检测条件，这样可以保证循环语句至少被迭代一次</li>
+<li>break 和 continue 完成迭代次数的调整。使用 break 可以立即跳出当前循环，并取消之后的迭代。使用 continue 可以终止当前迭代，并立即开启下一个迭代。在嵌套循环中，break 和 continue 只会影响内部循环</li>
+<li>Swift 比 Objective-C 中增加：给循环语句添加一个标签(label)，然后在内部循环中指定希望 break 或 continue 到哪个循环中</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<p>[swift]<br>// for-in 语句<br>for i in 0 ..&lt; 10 {<br>    print(“i = (i)”)<br>}<br>for i in 1 … 10 {<br>    print(“i = (i)”)<br>}<br>var itemIds: [Int] = generateItemIds()<br>for itemId in itemIds {<br>    print(“itemId: (itemId)”)<br>}<br>[/swift][c][/c]</p>
-<pre><code>- while 循环语句则只要检测条件为 true，就会一直进行迭代。如果一开始检测条件就为 false，循环语句不会迭代任何内容
-- do-while 循环语句会在循环的尾部计算检测条件，这样可以保证循环语句至少被迭代一次
-- break 和 continue 完成迭代次数的调整。使用 break 可以立即跳出当前循环，并取消之后的迭代。使用 continue 可以终止当前迭代，并立即开启下一个迭代。在嵌套循环中，break 和 continue 只会影响内部循环
-- Swift 比 Objective-C 中增加：给循环语句添加一个标签(label)，然后在内部循环中指定希望 break 或 continue 到哪个循环中
-</code></pre><h3 id="1-2-基本数据类型"><a href="#1-2-基本数据类型" class="headerlink" title="1.2 基本数据类型"></a>1.2 基本数据类型</h3><ul>
+<h3 id="1-2-基本数据类型"><a href="#1-2-基本数据类型" class="headerlink" title="1.2 基本数据类型"></a>1.2 基本数据类型</h3><ul>
 <li>要点：<ul>
 <li>Swift 中的类型使用驼峰命名法进行命名，在标准类型名称之前并没有任何前缀</li>
 </ul>
@@ -485,26 +494,45 @@ Swift 中的数组和字典要比 O">
 <li>字符串只需简单地至于双引号内即可</li>
 <li>String 是 Character 类型值得集合，每一个 Character 代表一个 Unicode 字符，Character 被实现为不同字符串编码方法中的一种，例如 UTF-8 或 UTF-16，在代码中无法通过计算字符在内存中所占字节数的方法判断一个字符串的长度，而在 Objective-C 中是可以的</li>
 <li>Swift 的 String 兼容 Objective-C 中的 NSString</li>
-<li>使用 <code>+</code> 运算符可以将字符串拼接起来：<br>[swift]<br>var firstName = “Geoff”<br>var lastName = “Cawthorne”<br>var userName = firstName + “ “ + lastName<br>[/swift][c][/c]</li>
-<li>使用 <code>+=</code> 运算符将一个字符串追加至另一个字符串中：<br>[swift]<br>var name = “Geoff”<br>name += “ Cawthorne”<br>[/swift][c][/c]</li>
-<li>由于 String 是 Character 的集合，可以使用 for-in 循环语句对其进行迭代，注意，不能直接将 Character 与 String 进行拼接<br>[swift]<br>var originalMessage = “Secret Message”<br>var unbreakableCode = “”<br>for character in originalMessage.characters {<br>  unbreakableCode = String(character) + unbreakableCode<br>}<br>[/swift][c][/c]</li>
-<li>字符串进行比较<br>[swift]<br>var string1 = “String”<br>var string2 = “String”<br>var isEqual = (string1 == string2)<br>[/swift][c][/c]</li>
+<li><p>使用 <code>+</code> 运算符可以将字符串拼接起来：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> firstName = <span class="string">"Geoff"</span></div><div class="line"><span class="keyword">var</span> lastName = <span class="string">"Cawthorne"</span></div><div class="line"><span class="keyword">var</span> userName = firstName + <span class="string">" "</span> + lastName</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>+=</code> 运算符将一个字符串追加至另一个字符串中：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">"Geoff"</span></div><div class="line">name += <span class="string">" Cawthorne"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>由于 String 是 Character 的集合，可以使用 for-in 循环语句对其进行迭代，注意，不能直接将 Character 与 String 进行拼接</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> originalMessage = <span class="string">"Secret Message"</span></div><div class="line"><span class="keyword">var</span> unbreakableCode = <span class="string">""</span></div><div class="line"><span class="keyword">for</span> character <span class="keyword">in</span> originalMessage.characters &#123;</div><div class="line">    unbreakableCode = <span class="type">String</span>(character) + unbreakableCode</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>字符串进行比较</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> string1 = <span class="string">"String"</span></div><div class="line"><span class="keyword">var</span> string2 = <span class="string">"String"</span></div><div class="line"><span class="keyword">var</span> isEqual = (string1 == string2)</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <h4 id="1-2-5-数组"><a href="#1-2-5-数组" class="headerlink" title="1.2.5 数组"></a>1.2.5 数组</h4><ul>
 <li>声明数组时，必须指定数组所包含的类型，一旦确定类型，数组中就只能包含确定的这一类型</li>
-<li>通过在方括号中列出数组元素的方式，确定一个数组字面量<br>[swift]<br>var dogs = [“Harlow”, “Cliff”, “Rusty”]<br>[/swift][c][/c]</li>
-<li>数组中的每一项必须是相同类型</li>
+<li><p>通过在方括号中列出数组元素的方式，确定一个数组字面量</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dogs = [<span class="string">"Harlow"</span>, <span class="string">"Cliff"</span>, <span class="string">"Rusty"</span>]</div></pre></td></tr></table></figure>
+</li>
+<li><p>数组中的每一项必须是相同类型</p>
+</li>
 <li>两种方法声明数组<ul>
 <li>长形式：<code>Array&lt;ValueType&gt;</code></li>
 <li>短形式：<code>[ValueType]</code></li>
 </ul>
 </li>
-<li>下面是利用短形式声明和初始化一个数组：<br>[swift]<br>var people: [String] = [] // 显式类型<br>var people: <a href="">String</a> // 隐式类型<br>[/swift][c][/c]</li>
-<li>声明中提供足够多的信息，就可以使用类型推断，让编译器推断出数组中所包含对象的类型</li>
+<li><p>下面是利用短形式声明和初始化一个数组：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> people: [<span class="type">String</span>] = [] <span class="comment">// 显式类型</span></div><div class="line"><span class="keyword">var</span> people: [<span class="type">String</span>]() <span class="comment">// 隐式类型</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>声明中提供足够多的信息，就可以使用类型推断，让编译器推断出数组中所包含对象的类型</p>
+</li>
 <li>在 Swift 中创建一个不可变的数组时，无法对数组做添加、修改和删除操作，不过可以修改数组中元素的属性</li>
-<li>对数组内容进行访问和修改的方法：<br>[swift]<br>var primaryIds: [Int] = [1, 2, 3]<br>print(primaryIds.count)<br>primaryIds.append(4)<br>primaryIds.insert(5, atIndex: 0)<br>primaryIds.removeAtIndex(1)<br>primaryIds.removeLast()<br>primaryIds.removeAll()<br>print(primaryIds.isEmpty)<br>[/swift][c][/c]</li>
-<li>使用下标访问数组中特定元素，或某一范围内的元素：<br>[swift]<br>var primaryIds: [Int] = [1, 2, 3]<br>print(primaryIds[2])<br>primaryIds[2] = 12<br>primaryIds[0…1]  = [10]<br>print(primaryIds)<br>[/swift][c][/c]</li>
-<li>在 Objective-C 中，NSArray 中只能存储 NSObject (或其子类)类型的对象。这也是为什么在 Objective-C 中会存在 NSNumber 的原因：NSNumber 对基本类型做了封装，使得在集合中可以使用基本的类型。而在 Swift 中，可以把结构体、枚举、类天骄到数组中，由于所有的基本类型都是利用结构体实现的，所以它们都能直接添加到数组中，包括字面量</li>
+<li><p>对数组内容进行访问和修改的方法：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> primaryIds: [<span class="type">Int</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="built_in">print</span>(primaryIds.<span class="built_in">count</span>) </div><div class="line">primaryIds.append(<span class="number">4</span>)</div><div class="line">primaryIds.insert(<span class="number">5</span>, atIndex: <span class="number">0</span>)</div><div class="line">primaryIds.removeAtIndex(<span class="number">1</span>)</div><div class="line">primaryIds.removeLast()</div><div class="line">primaryIds.removeAll()</div><div class="line"><span class="built_in">print</span>(primaryIds.isEmpty)</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用下标访问数组中特定元素，或某一范围内的元素：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> primaryIds: [<span class="type">Int</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="built_in">print</span>(primaryIds[<span class="number">2</span>])</div><div class="line">primaryIds[<span class="number">2</span>] = <span class="number">12</span></div><div class="line">primaryIds[<span class="number">0</span>...<span class="number">1</span>]  = [<span class="number">10</span>]</div><div class="line"><span class="built_in">print</span>(primaryIds)</div></pre></td></tr></table></figure>
+</li>
+<li><p>在 Objective-C 中，NSArray 中只能存储 NSObject (或其子类)类型的对象。这也是为什么在 Objective-C 中会存在 NSNumber 的原因：NSNumber 对基本类型做了封装，使得在集合中可以使用基本的类型。而在 Swift 中，可以把结构体、枚举、类天骄到数组中，由于所有的基本类型都是利用结构体实现的，所以它们都能直接添加到数组中，包括字面量</p>
+</li>
 <li>将枚举或结构体添加至数组中，此时添加的是对象的副本；由于数组属于结构体，所以数组传递是一个副本，而数组中的副本还是引用，则要取决于该元素是枚举、结构体还是类</li>
 <li>由于数组是集合的一种，可以利用 for-in 循环语句对数组中的内容进行迭代</li>
 </ul>
@@ -515,8 +543,11 @@ Swift 中的数组和字典要比 O">
 <li>短形式：<code>[KeyType: ValueType]</code></li>
 </ul>
 </li>
-<li>下面是利用短形式声明和初始化一个字典：<br>[swift]<br>var people: [String: SomePersonClass] = [:] // 显式类型<br>var people = <a href="">String: SomePersonClass</a> // 隐式类型<br>[/swift][c][/c]</li>
-<li>声明中提供足够多的信息，就可以使用类型推断，让编译器推断出字典中所包含对象的类型</li>
+<li><p>下面是利用短形式声明和初始化一个字典：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> people: [<span class="type">String</span>: <span class="type">SomePersonClass</span>] = [:] <span class="comment">// 显式类型</span></div><div class="line"><span class="keyword">var</span> people = [<span class="type">String</span>: <span class="type">SomePersonClass</span>]() <span class="comment">// 隐式类型</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>声明中提供足够多的信息，就可以使用类型推断，让编译器推断出字典中所包含对象的类型</p>
+</li>
 <li>字典中 KeyType 值得类型必须要遵循 Hashable 协议，Swift 中所有的基本类型都遵循 Hashable 协议</li>
 <li>可以通过下标方法访问 和\或 操作字典中的某个值</li>
 <li>由于字典是集合的一种，可以利用 for-in 循环语句对字典中的内容进行迭代</li>
@@ -542,15 +573,32 @@ Swift 中的数组和字典要比 O">
 <li>运行时，对一个不存在的值进行拆箱，应用程序将崩溃</li>
 <li>在 Objective-C 中，可以用 nil 或者 NSNotFound 来表示数据为空。Objective-C 并不是类型安全的，一个方法任何时候都有可能返回 nil，那么很可能导致我们在不允许为空的地方错误地使用 nil。而在 Swift 中，非可空类型不允许为空，因此完全不会出现此类问题</li>
 <li>在拆箱操作之前，必须检查可空类型是否包含有效值（不为空）</li>
-<li>Swift 使用一种将检查和拆箱操作合并到一个步骤的语法，即所谓的可空绑定，它为数据提供了一种简短安全的方法<br>[swift]<br>if someOptional != nil {<br>let someValue = someOptional!<br>// 正常使用  someValue<br>}<br>[/swift][c][/c]<br>可以被可空绑定替换为<br>[swift]<br>if let someValue = someOptional {<br>// 正常使用  someValue<br>}<br>[/swift][c][/c]</li>
+<li><p>Swift 使用一种将检查和拆箱操作合并到一个步骤的语法，即所谓的可空绑定，它为数据提供了一种简短安全的方法</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> someOptional != <span class="literal">nil</span> &#123;</div><div class="line">  <span class="keyword">let</span> someValue = someOptional!</div><div class="line">  <span class="comment">// 正常使用  someValue</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以被可空绑定替换为</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> someValue = someOptional &#123;</div><div class="line">  <span class="comment">// 正常使用  someValue</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="2-2-泛型"><a href="#2-2-泛型" class="headerlink" title="2.2 泛型"></a>2.2 泛型</h3><ul>
 <li>Swift 有，而 Objective-C 没有</li>
 <li>用泛型创建善于表达的、可重用的、类型安全的代码</li>
-<li>泛型能够减少重复的代码，能充分利用 Swift 强大的类型系统编写善于表达和抽象的函数及对象<br>接收两个 Int 参数并将其中较大的一个作为返回值：<br>[swift]<br>func maxInt(lhs: Int, rhs: Int) -&gt; Int {<br>  if lhs &gt; rhs {<pre><code>return lhs
-</code></pre>  }<br>  return rhs<br>}<br>[/swift][c][/c]<br>接收两个 Double 参数并将其中较大的一个作为返回值：<br>[swift]<br>func maxDouble(lhs: Double, rhs: Double) -&gt; Double {<br>  if lhs &gt; rhs {<pre><code>return lhs
-</code></pre>  }<br>  return rhs<br>}<br>[/swift][c][/c]<br>泛型提供了一种简单的方案<br>[swift]<br>func maxValue<t: comparable=""> (lhs: T, rhs: T) -&gt; T {<br>  if lhs &gt; rhs {<pre><code>return lhs
-</code></pre>  }<br>  return rhs<br>}<br>[/swift][c][/c]<br>在参数列表前面，我们使用了一个 <t: comparable="">，这表明我们正在定义一个泛型函数。<t: comparable=""> 告诉编译器，这个函数要使用一个泛型 T，同时 T 必须实现 Comparable 协议（该协议定义了运算符函数）。在函数定义中，T 起到一个类型占位符的作用，当函数被调用时 T 将被具体的类型所替换。不同类型的调用都会产生一个不同的函数，只不过这是由编译器来进行的。</t:></t:></t:></li>
+<li><p>泛型能够减少重复的代码，能充分利用 Swift 强大的类型系统编写善于表达和抽象的函数及对象</p>
+<ul>
+<li><p>接收两个 Int 参数并将其中较大的一个作为返回值：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxInt</span><span class="params">(lhs: Int, rhs: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">if</span> lhs &gt; rhs &#123;</div><div class="line">        <span class="keyword">return</span> lhs</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> rhs</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>接收两个 Double 参数并将其中较大的一个作为返回值：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDouble</span><span class="params">(lhs: Double, rhs: Double)</span></span> -&gt; <span class="type">Double</span> &#123;</div><div class="line">    <span class="keyword">if</span> lhs &gt; rhs &#123;</div><div class="line">        <span class="keyword">return</span> lhs</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> rhs</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>泛型提供了一种简单的方案</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxValue</span>&lt;T: Comparable&gt; <span class="params">(lhs: T, rhs: T)</span></span> -&gt; <span class="type">T</span> &#123;</div><div class="line">    <span class="keyword">if</span> lhs &gt; rhs &#123;</div><div class="line">        <span class="keyword">return</span> lhs</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> rhs</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>在参数列表前面，我们使用了一个 <t: comparable="">，这表明我们正在定义一个泛型函数。<t: comparable=""> 告诉编译器，这个函数要使用一个泛型 T，同时 T 必须实现 Comparable 协议（该协议定义了运算符函数）。在函数定义中，T 起到一个类型占位符的作用，当函数被调用时 T 将被具体的类型所替换。不同类型的调用都会产生一个不同的函数，只不过这是由编译器来进行的。</t:></t:></li>
+</ul>
+</li>
 <li>Array 个 Dictionary 就是两个泛型集合</li>
 <li>类型化得集合内置了类型安全，它不允许不符合条件的类型作为其元素</li>
 </ul>
@@ -572,8 +620,11 @@ Swift 中的数组和字典要比 O">
 <li>是用的最多的一种闭包</li>
 <li>一个全局函数带有函数名，但不捕获任何值</li>
 <li>全局函数通过关键字 func 加上一个函数名、一个圆括号括起来的以逗号分隔的参数列表，以及一个可选的 <code>-&gt;</code> 加返回类型构成</li>
-<li>一个无参也没有返回值的全局函数定义如下：<br>[swift]<br>func globalFunction() {<br>  print(“hello”)<br>}<br>[/swift][c][/c]<br>无返回值的函数其返回类型为 Void，用一个空的元组表示：()</li>
+<li><p>一个无参也没有返回值的全局函数定义如下：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">globalFunction</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"hello"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>无返回值的函数其返回类型为 Void，用一个空的元组表示：()</p>
 <h4 id="2-4-2-嵌套函数"><a href="#2-4-2-嵌套函数" class="headerlink" title="2.4.2 嵌套函数"></a>2.4.2 嵌套函数</h4><ul>
 <li>函数还可以嵌套至别的函数内部</li>
 <li>嵌套函数无法从声明此函数上下文的外部调用，但嵌套函数可以被它们的容器函数以返回值的形式暴露给外部</li>
@@ -581,9 +632,14 @@ Swift 中的数组和字典要比 O">
 </ul>
 <h4 id="2-4-3-闭包表达式"><a href="#2-4-3-闭包表达式" class="headerlink" title="2.4.3 闭包表达式"></a>2.4.3 闭包表达式</h4><ul>
 <li>闭包表达式提供了一种轻量级的代码隔离的方法，同时从上下文捕获值</li>
-<li>下面是一个闭包表达式的例子<br>[swift]<br>var aFnewNumbers = [1, 2, 3]<br>var squares = aFnewNumbers.map { (num: Int) -&gt; Int in<br>  return num * num<br>}<br>[/swift][c][/c]</li>
-<li>在一对大括号间，定义了一个参数列表，一个返回类型，一个 in 关键字，以及闭包中所包含的 Swift 语句：<br>[swift]<br>{ (parameters) -&gt; return type in<br>   statements<br>}<br>[/swift][c][/c]</li>
-<li>Swift 闭包语法中有很多使代码更清晰和简洁的用法</li>
+<li><p>下面是一个闭包表达式的例子</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> aFnewNumbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="keyword">var</span> squares = aFnewNumbers.<span class="built_in">map</span> &#123; (num: <span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> num * num</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在一对大括号间，定义了一个参数列表，一个返回类型，一个 in 关键字，以及闭包中所包含的 Swift 语句：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123; (parameters) -&gt; <span class="keyword">return</span> type <span class="keyword">in</span></div><div class="line">     statements</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Swift 闭包语法中有很多使代码更清晰和简洁的用法</p>
+</li>
 </ul>
 <h3 id="2-5-元组"><a href="#2-5-元组" class="headerlink" title="2.5 元组"></a>2.5 元组</h3><ul>
 <li>元祖是一种轻巧实用的数据结构，允许你将多个值结合成一个单个的对象</li>
@@ -621,12 +677,20 @@ Swift 中的数组和字典要比 O">
 <li>可以使用访问控制隐藏类中的实现细节或将某些功能标记为公共的，供其他模块使用</li>
 </ul>
 <h3 id="3-1-枚举"><a href="#3-1-枚举" class="headerlink" title="3.1 枚举"></a>3.1 枚举</h3><ul>
-<li>通过枚举，可以利用一组预定义的值创建一个自定义数据类型<br>[swift]<br>enum NetworkConnection {<br>case NotConnected<br>case WiFi<br>case Cellular<br>[/swift][c][/c]</li>
-<li>由于编译器可以推断出对象的类型，因此可以使用省略类型的点表一法来更新该变量的值</li>
+<li><p>通过枚举，可以利用一组预定义的值创建</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">NetworkConnection</span> </span>&#123;</div><div class="line">  <span class="keyword">case</span> <span class="type">NotConnected</span></div><div class="line">  <span class="keyword">case</span> <span class="type">WiFi</span></div><div class="line">  <span class="keyword">case</span> <span class="type">Cellular</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>由于编译器可以推断出对象的类型，因此可以使用省略类型的点表一法来更新该变量的值</p>
+</li>
 <li>默认情况下，Swift 中的 enum 并不像其它类 C 语言一样将成员映射成基本的 Int 类型，如果没有明确指定的话，并不是按顺序排列的，所以无法比较大小</li>
-<li>若想定义有序的枚举类型，可以使用枚举的原始类型，并给每个枚举成员设置一个原始值<br>[swift]<br>enum NetworkConnection: Int {<br>case NotConnected = 0<br>case WiFi = 1<br>case Cellular = 2<br>[/swift][c][/c]</li>
-<li>只需要对第一个成员进行复制，然后让编译器自动根据起始值对成员进行增量赋值，现在就可以像使用任何 Int 变量一样访问成员的 rawValue 属性进行比较<br>[swift]<br>if currentConnection.rawValue &gt; NetworkConnection.NotConnected.rawValue {<br>// …<br>}<br>[/swift][c][/c]</li>
-<li>可以在一个 enum 中关联成员的值</li>
+<li><p>若想定义有序的枚举类型，可以使用枚举的原始类型，并给每个枚举成员设置一个原始值</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">NetworkConnection</span>: <span class="title">Int</span> </span>&#123;</div><div class="line">  <span class="keyword">case</span> <span class="type">NotConnected</span> = <span class="number">0</span></div><div class="line">  <span class="keyword">case</span> <span class="type">WiFi</span> = <span class="number">1</span></div><div class="line">  <span class="keyword">case</span> <span class="type">Cellular</span> = <span class="number">2</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>只需要对第一个成员进行复制，然后让编译器自动根据起始值对成员进行增量赋值，现在就可以像使用任何 Int 变量一样访问成员的 rawValue 属性进行比较</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">if</span> currentConnection.rawValue &gt; <span class="type">NetworkConnection</span>.<span class="type">NotConnected</span>.rawValue &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以在一个 enum 中关联成员的值</p>
+</li>
 <li>currentConnection 变量同一时刻只能是某一个枚举成员的值。当你从其中一个值改变至另一个时，先前关联的设置由于失去关联关系将丢失</li>
 <li>可以对 Swift 中的 enum 进行扩展，以包含类方法（使用 static 关键字）及实例方法</li>
 <li>如果有成员方法将修改实例变量的值，那么需要使用 mutating 关键字声明来通知编译器进行预编译，这样编译器就知道该方法不能变常量实例调用–用 let 关键字声明的变量</li>
@@ -656,7 +720,8 @@ Swift 中的数组和字典要比 O">
 <li>关键字 class 优先于 func 关键字暗示该方法是一个类方法 – 在类中直接调用的方法，而不是类的实例</li>
 </ul>
 <h3 id="3-3-结构体"><a href="#3-3-结构体" class="headerlink" title="3.3 结构体"></a>3.3 结构体</h3><ul>
-<li>结构体几乎与所有在上一节涉及类的细节相同，当有如下关键的区别：<ul>
+<li><p>结构体几乎与所有在上一节涉及类的细节相同，当有如下关键的区别：</p>
+<ul>
 <li>使用 struct 关键字声明一个结构体</li>
 <li>结构体不存在继承，可以遵循协议或被继承</li>
 <li>如果你不声明 init() 方法，Swift 会自动创建一个 init() 方法</li>
@@ -665,7 +730,9 @@ Swift 中的数组和字典要比 O">
 <li>结构体可以有静态属性，但类没有</li>
 <li>结构体是值类型，因此当在代码中传递结构体是，实际是创建了新的副本</li>
 <li>当 struct 中的方法要改变 struct 中的值时，该方法必须标记为 mutating，就像在枚举中一样</li>
-<li>下面是一个简单的结构体：<br>[swift]<br>struct PointOfInterest {<br>var x: Float<br>var y: Float<br>var name: String<br>}<br>[/swift][c][/c]</li>
+<li><p>下面是一个简单的结构体：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PointOfInterest</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> x: <span class="type">Float</span></div><div class="line">  <span class="keyword">var</span> y: <span class="type">Float</span></div><div class="line">  <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>Objective-C中由于 各条特色的工作模式，不能直接更新一个结构体的属性，必须更新整个结构体。而在 Swift 中不存在这个问题，可以直接访问属性</p>
@@ -796,21 +863,35 @@ Swift 中的数组和字典要比 O">
 </ul>
 <h3 id="4-2-有效性检查、可空绑定和强制拆箱"><a href="#4-2-有效性检查、可空绑定和强制拆箱" class="headerlink" title="4.2 有效性检查、可空绑定和强制拆箱"></a>4.2 有效性检查、可空绑定和强制拆箱</h3><ul>
 <li>使用可空的最常见的场景是在 if 语句中。通过 if 语句，我们容易判断一个可空类型是否包含了有效值，其中最简单的方法是使用 Swift 提供的可空绑定语法</li>
-<li>下面是对一个可空类型惊喜有效性检查的例子<br>[swift]<br>if optionalValue != nil {<br>  …<br>}<br>[/swift][c][/c]<br>在 if 语句中，我们不能直接使用可空类型作为判断条件，因为可空并没有实现 BooleanType 协议。可空类型要么是 Some<t>，要么是 None</t></li>
+<li><p>下面是对一个可空类型惊喜有效性检查的例子</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> optionalValue != <span class="literal">nil</span> &#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在 if 语句中，我们不能直接使用可空类型作为判断条件，因为可空并没有实现 BooleanType 协议。可空类型要么是 Some<t>，要么是 None</t></p>
+</li>
 <li>当我们遇到一个可空类型是，我们可以把它看成一个封装好的箱子。这个箱子中可能装有其它东西，也可能是一个空箱子。可空类型提供了一种在应用程序中安全地传输数据的方法</li>
-<li>利用可空绑定将可空类型的拆箱和比较合并成一个操作，这使得代码更加简洁。通过可空绑定将可空值拆箱到变量或者常量中<br>[swift]<br>var optionalSomeValue: String? = “Some”<br>if var foundString = optionalSomeValue {<br>foundString += “ found value”<br>print(foundString)<br>}<br>[/swift][c][/c]<br>在 Swift 的流程控制语句中，也可以使用强制拆箱 <code>!</code> 和可空绑定语法</li>
+<li><p>利用可空绑定将可空类型的拆箱和比较合并成一个操作，这使得代码更加简洁。通过可空绑定将可空值拆箱到变量或者常量中</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> optionalSomeValue: <span class="type">String</span>? = <span class="string">"Some"</span> </div><div class="line"><span class="keyword">if</span> <span class="keyword">var</span> foundString = optionalSomeValue &#123;</div><div class="line">  foundString += <span class="string">" found value"</span></div><div class="line">  <span class="built_in">print</span>(foundString)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在 Swift 的流程控制语句中，也可以使用强制拆箱 <code>!</code> 和可空绑定语法</p>
+</li>
 </ul>
 <h3 id="4-3-可空链"><a href="#4-3-可空链" class="headerlink" title="4.3 可空链"></a>4.3 可空链</h3><ul>
 <li>对于复杂的数据结构，我们通常会发现在数据的多个层级上，都存在可空类型</li>
-<li>可空链允许你用单个步骤访问一连串的可空值，无论是属性、方法还是下标<br>[swift]<br>if let inMostStr = outerOptional?.inner?.innerInner?.innerMostStr {<br>  print(“This is much nicer (inMostStr)”)<br>}<br>[/swift][c][/c]</li>
-<li>可空链的语法类似于强制拆箱，只不过用 <code>?</code> 来代替 <code>!</code> 罢了。语法被简化的同时保证了可空类型的安全使用</li>
+<li><p>可空链允许你用单个步骤访问一连串的可空值，无论是属性、方法还是下标</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> inMostStr = outerOptional?.inner?.innerInner?.innerMostStr &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"This is much nicer <span class="subst">\(inMostStr)</span>"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>可空链的语法类似于强制拆箱，只不过用 <code>?</code> 来代替 <code>!</code> 罢了。语法被简化的同时保证了可空类型的安全使用</p>
+</li>
 <li>可空链提供了一个安全的对可空类型进行多步操作的方法。在可空链的每一个节点上，可空链都会被检查，只有在值存在的情况下，下一步操作才会继续执行。如果任意一个节点返回 nil，整个可空链返回 nil</li>
 <li>可空链也存在负面效应，如果最后一步操作返回的是非可空值，他会被隐式地包装为可空类型</li>
 </ul>
 <h3 id="4-4-带隐式拆箱的可空"><a href="#4-4-带隐式拆箱的可空" class="headerlink" title="4.4 带隐式拆箱的可空"></a>4.4 带隐式拆箱的可空</h3><ul>
 <li>有些数据具备特点，它们在初始化之前有可能为空，一旦初始化之后就不为空，这不便使用非可空类型存储它们，Swift 使用了一种 “带隐式拆箱的可空类型”</li>
-<li>可空类型和 “带隐式拆箱的可空类型” 不同之处在于二者定义方法和访问方法。但是，在可空绑定方面，二者是相同的。要创建一个带隐式拆箱的可空类型，只需要用感叹号代替问号即可：<br>[swift]<br>var regularOptional: String? = “Regular”<br>var implictlyUnwrapped: String! = “Implictly unwrapped”<br>[/swift][c][/c]</li>
-<li>尽管带隐式拆箱的可空在许多方面和标准的可空是一样的，但前者和后者是两种完全不同的 enum 类型，这两种 enum 类型不能直接对应</li>
+<li><p>可空类型和 “带隐式拆箱的可空类型” 不同之处在于二者定义方法和访问方法。但是，在可空绑定方面，二者是相同的。要创建一个带隐式拆箱的可空类型，只需要用感叹号代替问号即可：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> regularOptional: <span class="type">String</span>? = <span class="string">"Regular"</span></div><div class="line"><span class="keyword">var</span> implictlyUnwrapped: <span class="type">String</span>! = <span class="string">"Implictly unwrapped"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>尽管带隐式拆箱的可空在许多方面和标准的可空是一样的，但前者和后者是两种完全不同的 enum 类型，这两种 enum 类型不能直接对应</p>
+</li>
 <li>带隐式拆箱的可空总是被假定是有值的，因此在访问它们时，不需要进行强制拆箱。也就是说，你不再需要使用 <code>!</code> 来访问它的值</li>
 <li>带隐式拆箱的可空要求开发者自己确保值总是有效的</li>
 <li>带隐式拆箱的可空类型主要用于需要处理依赖对象的初始化，以及需要与某些 Objective-C 类的属性进行交互的时候</li>
@@ -841,21 +922,24 @@ Swift 中的数组和字典要比 O">
 </ul>
 <h3 id="5-2-泛型函数"><a href="#5-2-泛型函数" class="headerlink" title="5.2 泛型函数"></a>5.2 泛型函数</h3><ul>
 <li>泛型函数的声明语法与普通函数的声明语法相似，只需要额外加入一系列参数便可以正常工作</li>
-<li>下面例子中的泛型函数，可以使用任何类型作为它的唯一参数：</li>
-</ul>
-<p>[swift]<br>func isASubclassOfNSObject<t>(objectToTest: T) -&gt; Bool {<br>    return objectToTest is NSObject<br>}<br>[/swift][c][/c]</t></p>
-<ul>
-<li>在函数名后，有一对尖括号 <code>&lt;</code> <code>&gt;</code>，里面包含了一个参数列表。这个列表告诉编译器哪些类型在函数被调用的时候会被用作实际类型的占位符</li>
+<li><p>下面例子中的泛型函数，可以使用任何类型作为它的唯一参数：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">isASubclassOfNSObject</span>&lt;T&gt;<span class="params">(objectToTest: T)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">return</span> objectToTest <span class="keyword">is</span> <span class="type">NSObject</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在函数名后，有一对尖括号 <code>&lt;</code> <code>&gt;</code>，里面包含了一个参数列表。这个列表告诉编译器哪些类型在函数被调用的时候会被用作实际类型的占位符</p>
+</li>
 </ul>
 <h4 id="5-2-1-类型参数"><a href="#5-2-1-类型参数" class="headerlink" title="5.2.1 类型参数"></a>5.2.1 类型参数</h4><ul>
-<li>通过类型参数对函数所允许的参数类型做出限制，用法与某个对象遵循协议一样，在类型占位符后面追加一个冒号 ：，紧接着写上需要遵循协议即可：</li>
+<li><p>通过类型参数对函数所允许的参数类型做出限制，用法与某个对象遵循协议一样，在类型占位符后面追加一个冒号 ：，紧接着写上需要遵循协议即可：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sumValues</span>&lt;T: IntegerType&gt;<span class="params">(value1: T, value2: T)</span></span> -&gt; <span class="type">T</span> &#123;</div><div class="line">    <span class="keyword">return</span> value1 + value2</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>[swift]<br>func sumValues<t: integertype="">(value1: T, value2: T) -&gt; T {<br>    return value1 + value2<br>}<br>[/swift][c][/c]<br>这里为占位符 T 添加了约束： T 必须遵循协议 IntegerType</t:></p>
+<p>这里为占位符 T 添加了约束： T 必须遵循协议 IntegerType</p>
 <h4 id="5-2-2-使用多个类型参数"><a href="#5-2-2-使用多个类型参数" class="headerlink" title="5.2.2 使用多个类型参数"></a>5.2.2 使用多个类型参数</h4><ul>
 <li>使用多个参数类型，只需要将多个类型参数用逗号 <code>，</code> 隔开即可</li>
-<li>为了增加代码的可读性，可以使用描述性更好的名字作为参数类型：</li>
+<li><p>为了增加代码的可读性，可以使用描述性更好的名字作为参数类型：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">existingOrDefaultValue</span>&lt;KeyType: Hashable, ValueType&gt;<span class="params">(dict: [KeyType: ValueType], key: keyType, defaultValue: ValueType)</span></span> -&gt; <span class="type">ValueType</span> &#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> existingValue = dict[key] &#123;</div><div class="line">      <span class="keyword">return</span> existingValue</div><div class="line">    &#125; </div><div class="line">    <span class="keyword">return</span> defaultValue</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>[swift]<br>func existingOrDefaultValue<keytype: hashable,="" valuetype="">(dict: [KeyType: ValueType], key: keyType, defaultValue: ValueType) -&gt; ValueType {<br>    if let existingValue = dict[key] {<br>      return existingValue<br>    }<br>    return defaultValue<br>}<br>[/swift][c][/c]</keytype:></p>
 <h3 id="5-3泛型类型"><a href="#5-3泛型类型" class="headerlink" title="5.3泛型类型"></a>5.3泛型类型</h3><ul>
 <li>泛型类型是一种新的数据类型，它依赖于一种或多种其它类型，但完全不同于其它类型。你已经熟悉的两个重要的泛型类型就是 Array 和 Dictionary</li>
 <li>任何泛型类型的子类必须也是泛型类型</li>
@@ -865,15 +949,14 @@ Swift 中的数组和字典要比 O">
 </ul>
 <h4 id="5-3-2-where-子句"><a href="#5-3-2-where-子句" class="headerlink" title="5.3.2 where 子句"></a>5.3.2 where 子句</h4><ul>
 <li>当创建了一个泛型函数或类型时，有时需要在使用到的类型上增加新的约束</li>
-<li>当使用类型的时候，协议位于类型参数中，并且类型只能遵循一个协议。因此如果想使得占位类型 T 为 Hashable，需要加入一个 where 子句：</li>
-</ul>
-<p>[swift]<br>class Carousel<t: printable="" where="" t:="" hashable=""> {<br>    …<br>}<br>[/swift][c][/c]</t:></p>
-<ul>
-<li>where 子句之后，可以加入多个条件，中间用逗号 <code>,</code> 隔开</li>
-</ul>
-<p>[swift]<br>class Carousel<t: where="" t:="" printable,="" hashable=""> {<br>    …<br>}<br>[/swift][c][/c]</t:></p>
-<ul>
-<li>可以使用一个 where子句去满足关联类型</li>
+<li><p>当使用类型的时候，协议位于类型参数中，并且类型只能遵循一个协议。因此如果想使得占位类型 T 为 Hashable，需要加入一个 where 子句：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Carousel</span>&lt;<span class="title">T</span>: <span class="title">Printable</span> <span class="title">where</span> <span class="title">T</span>: <span class="title">Hashable</span>&gt; </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>where 子句之后，可以加入多个条件，中间用逗号 <code>,</code> 隔开</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Carousel</span>&lt;<span class="title">T</span>: <span class="title">where</span> <span class="title">T</span>: <span class="title">Printable</span>, <span class="title">T</span>: <span class="title">Hashable</span>&gt; </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以使用一个 where子句去满足关联类型</p>
+</li>
 </ul>
 <hr>
 <h2 id="第6章-函数和闭包"><a href="#第6章-函数和闭包" class="headerlink" title="第6章 函数和闭包"></a>第6章 函数和闭包</h2><ul>
@@ -891,21 +974,24 @@ Swift 中的数组和字典要比 O">
 </ul>
 <h3 id="6-1-函数"><a href="#6-1-函数" class="headerlink" title="6.1 函数"></a>6.1 函数</h3><ul>
 <li>函数有三个部分：参数、返回值、函数名</li>
-<li>要定义一个函数，使用关键字 func，加上函数名，加上一个逗号分隔的参数列表（参数列表放在圆括号中），再加上一个可选的返回值（返回值前面加上一个箭头符号 <code>-&gt;</code>）。函数体写在一对大括号中间</li>
+<li><p>要定义一个函数，使用关键字 func，加上函数名，加上一个逗号分隔的参数列表（参数列表放在圆括号中），再加上一个可选的返回值（返回值前面加上一个箭头符号 <code>-&gt;</code>）。函数体写在一对大括号中间</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">simpleFunction</span><span class="params">(number: Int)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"This function was passed the parameter <span class="subst">\(number)</span>"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>[swift]<br>func simpleFunction(number: Int) -&gt; String {<br>    return “This function was passed the parameter (number)”<br>}<br>[/swift][c][/c]</p>
 <h4 id="6-1-1-参数"><a href="#6-1-1-参数" class="headerlink" title="6.1.1 参数"></a>6.1.1 参数</h4><ul>
 <li>函数是一种基本的语句块，可以为其定义各种参数</li>
-<li>最常见的情况是为函数提供一个以逗号分隔的参数列表（每个参数的形式为 “参数名：类型”）</li>
+<li><p>最常见的情况是为函数提供一个以逗号分隔的参数列表（每个参数的形式为 “参数名：类型”）</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">multipleParams</span><span class="params">(number: Int, words: String)</span></span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"This function was passed <span class="subst">\(number)</span> and <span class="subst">\(words)</span>"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>[swift]<br>func multipleParams(number: Int, words: String) {<br>    print(“This function was passed (number) and (words)”)<br>}<br>[/swift][c][/c]<br>每个函数都必须定义参数列表，传参时的参数顺序必须和函数定义时的参数顺序一致。如果函数没有任何参数，可以用一个空列表的圆括号 () 来指定参数列表</p>
+<p>每个函数都必须定义参数列表，传参时的参数顺序必须和函数定义时的参数顺序一致。如果函数没有任何参数，可以用一个空列表的圆括号 () 来指定参数列表</p>
 <h4 id="6-1-2-外部参数名"><a href="#6-1-2-外部参数名" class="headerlink" title="6.1.2 外部参数名"></a>6.1.2 外部参数名</h4><ul>
 <li>本地参数名用于在函数体中使用传入的参数值，同时这个本地参数名对于调用者是无效的</li>
-<li>为了让函数的调用者明白参数的具体含义，并让调用者根据名称而不是顺序传递。这个额外的参数名即外部参数名。外部参数名放在本地参数名之前</li>
-</ul>
-<p>[swift]<br>func simpleFunction(externalName localName: Int) -&gt; String {<br>    return “This function was passed the parameter (localName)”)<br>}<br>[/swift][c][/c]</p>
-<ul>
-<li>一旦参数声明了外部参数名，调用时就必须使用外部参数名来传递参数</li>
+<li><p>为了让函数的调用者明白参数的具体含义，并让调用者根据名称而不是顺序传递。这个额外的参数名即外部参数名。外部参数名放在本地参数名之前</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">simpleFunction</span><span class="params">(externalName localName: Int)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"This function was passed the parameter <span class="subst">\(localName)</span>"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>一旦参数声明了外部参数名，调用时就必须使用外部参数名来传递参数</p>
+</li>
 <li>在使用外部参数调用函数时，必须保证参数顺序和函数定义一致，同时必须写上外部参数名</li>
 <li>有时本地参数名和外部参数名很可能是相同的。这种情况下，我们可以在参数名前使用 <code>#</code> 来区分</li>
 <li>当在类中定义带多个参数的函数时，除第一个参数外，每个参数都会默认带有一个和本地名相同的外部参数名，就好像参数名前带有一个看不见的 <code>#</code></li>
@@ -935,9 +1021,10 @@ Swift 中的数组和字典要比 O">
 <li>闭包提供了一种简单的分离代码的手段</li>
 <li>清晰灵活</li>
 <li>好处：不用命名和声明函数就能在代码段中使用参数并返回值，同时可以像函数一样，用函数作为参数或返回值</li>
-<li>闭包表达式语法：</li>
+<li><p>闭包表达式语法：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123; (参数列表) -&gt; 返回值类型 <span class="keyword">in</span> 语句</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>[swift]<br>{ (参数列表) -&gt; 返回值类型 in 语句<br>}<br>[/swift][c][/c]</p>
 <h4 id="6-2-1-参数及返回值的类型推断"><a href="#6-2-1-参数及返回值的类型推断" class="headerlink" title="6.2.1 参数及返回值的类型推断"></a>6.2.1 参数及返回值的类型推断</h4><ul>
 <li>由于函数在声明时，参数和返回值的类型都是事先声明的，因此必报的类型信息可以从中推断，可以忽略闭包中的类型信息</li>
 <li>通常闭包都会返回一个值，当闭包仅由一条 return 语句构成的话，return 关键字可以忽略</li>
@@ -945,8 +1032,11 @@ Swift 中的数组和字典要比 O">
 <h4 id="6-2-2-尾随闭包"><a href="#6-2-2-尾随闭包" class="headerlink" title="6.2.2 尾随闭包"></a>6.2.2 尾随闭包</h4><ul>
 <li>有些函数的最后一个参数使用函数类型，Swift 编译器专门为它提供了一种简化的写法：尾随闭包</li>
 <li>尾随闭包将参数中的最后一个闭包写在参数列表之后</li>
-<li>尾随闭包更像是一个标准函数的写法：<br>[swift]<br>functionBeingCalled(parameter1, parameter2) {<br>  // 闭包表达式<br>}<br>[/swift][c][/c]</li>
-<li>闭包参数被我们从参数列表中单独拿出来放到最后，这样闭包语句变得更加醒目</li>
+<li><p>尾随闭包更像是一个标准函数的写法：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">functionBeingCalled(parameter1, parameter2) &#123;</div><div class="line">    <span class="comment">// 闭包表达式</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>闭包参数被我们从参数列表中单独拿出来放到最后，这样闭包语句变得更加醒目</p>
+</li>
 <li>如果函数的参数中只有一个闭包表达式的话，圆括号是可选的</li>
 </ul>
 <h3 id="6-3-函数式编程"><a href="#6-3-函数式编程" class="headerlink" title="6.3 函数式编程"></a>6.3 函数式编程</h3><ul>
@@ -989,11 +1079,12 @@ Swift 中的数组和字典要比 O">
 </ul>
 </li>
 <li>伪单例是最常见的模式，这里我们介绍这种实现方式</li>
-<li>在 Swift 中，类不允许有静态变量，但结构可以有静态变量。因此，我们可以通过嵌套类型在类中嵌套一个结构来实现单例:<br>[swift]<br>class MySoftSingleton {<br>  class var shareInstance: MySoftSingleton {<pre><code>struct Statics {
-    static var instance = MySoftSingleton()
-}
-return Statics.instance
-</code></pre>  }<br>}<br>[/swift][c][/c]<br>我们定义了一个计算属性 shareInstance，属性类型和类相同。我们定义了一个结构，在这个结构中存放了一个静态的 MySoftSingleton 实例。当我们初始化静态（或者全局）变量时，Swift 会用 dispatch_one 方法来初始化变量，这样就保证该变量只会被初始化一次，我们可以用下列代码获得 MySoftSingleton 类的一个单例：<br>[swift]<br>MySoftSingleton.shareInstance<br>[/swift][c][/c]</li>
+<li><p>在 Swift 中，类不允许有静态变量，但结构可以有静态变量。因此，我们可以通过嵌套类型在类中嵌套一个结构来实现单例:</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySoftSingleton</span> </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">var</span> <span class="title">shareInstance</span>: <span class="title">MySoftSingleton</span> </span>&#123;</div><div class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">Statics</span> </span>&#123;</div><div class="line">            <span class="keyword">static</span> <span class="keyword">var</span> instance = <span class="type">MySoftSingleton</span>()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="type">Statics</span>.instance</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>我们定义了一个计算属性 shareInstance，属性类型和类相同。我们定义了一个结构，在这个结构中存放了一个静态的 MySoftSingleton 实例。当我们初始化静态（或者全局）变量时，Swift 会用 dispatch_one 方法来初始化变量，这样就保证该变量只会被初始化一次，我们可以用下列代码获得 MySoftSingleton 类的一个单例：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">MySoftSingleton</span>.shareInstance</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="8-3-使用-GCD"><a href="#8-3-使用-GCD" class="headerlink" title="8.3 使用 GCD"></a>8.3 使用 GCD</h3><ul>
 <li>GCD(Grand Central Dispatch) 提供了一种并行编程的简单方式</li>
@@ -1001,25 +1092,30 @@ return Statics.instance
 <li>在编写准备执行的 GCD 线程时，可以充分利用尾末闭包的写法</li>
 </ul>
 <h4 id="8-3-1-dispatch-one"><a href="#8-3-1-dispatch-one" class="headerlink" title="8.3.1 dispatch_one"></a>8.3.1 dispatch_one</h4><ul>
-<li>需要某段代码只被执行一次，我们可以使用 dispatch_once：</li>
+<li><p>需要某段代码只被执行一次，我们可以使用 dispatch_once：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Statics</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> onceToken: dispatch_once_t = <span class="number">0</span></div><div class="line">&#125;</div><div class="line">dispatch_once(&amp;<span class="type">Statics</span>.onceToken) &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Give me a ping, Vasili. One Ping only, please."</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>[swift]<br>struct Statics {<br>    static var onceToken: dispatch_once_t = 0<br>}<br>dispatch_once(&amp;Statics.onceToken) {<br>    print(“Give me a ping, Vasili. One Ping only, please.”)<br>}<br>[/swift][c][/c]<br>需要把结构中的 onceToken 放到第一个参数中。最终，dispatch_once 方法只会被执行一次</p>
+<p>需要把结构中的 onceToken 放到第一个参数中。最终，dispatch_once 方法只会被执行一次</p>
 <h4 id="8-3-2-dispatch-async"><a href="#8-3-2-dispatch-async" class="headerlink" title="8.3.2 dispatch_async"></a>8.3.2 dispatch_async</h4><ul>
 <li>需要在后台线程执行某些效率比较低的任务，一旦任务完成又会返回主线程继续执行其他任务，比如刷新 UI</li>
 <li>总是应该在主线程中刷新 UI，因为图形 API 并不总是线程安全的</li>
-<li><p>下列例子中，闭包内的代码将在后台线程中执行：<br>[swift]<br>dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {<br>  print(“In the background queue”)</p>
-<p>  dispatch_async(dispatch_get_main_queue()) {</p>
-<pre><code>print(&quot;Back in the main queue&quot;)
-</code></pre><p>  }<br>}<br>[/swift][c][/c]</p>
+<li><p>下列例子中，闭包内的代码将在后台线程中执行：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">dispatch_async(dispatch_get_global_queue(<span class="type">DISPATCH_QUEUE_PRIORITY_BACKGROUND</span>, <span class="number">0</span>)) &#123; </div><div class="line">    <span class="built_in">print</span>(<span class="string">"In the background queue"</span>)</div><div class="line">    </div><div class="line">    dispatch_async(dispatch_get_main_queue()) &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Back in the main queue"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="8-3-3-dispatch-after"><a href="#8-3-3-dispatch-after" class="headerlink" title="8.3.3 dispatch_after"></a>8.3.3 dispatch_after</h4><ul>
-<li>延迟一段时间再执行某些代码，比较简单的方法是调用 dispatch_after 方法，例如以下代码在 5 秒后执行尾末闭包中的代码：<br>[swift]<br>let secondsFromNow = 5.0<br>dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(secondsFromNow * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {<br>  print(“That was so 5 seconds ago…”)<br>}<br>[/swift][c][/c]</li>
+<li><p>延迟一段时间再执行某些代码，比较简单的方法是调用 dispatch_after 方法，例如以下代码在 5 秒后执行尾末闭包中的代码：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> secondsFromNow = <span class="number">5.0</span></div><div class="line">dispatch_after(dispatch_time(<span class="type">DISPATCH_TIME_NOW</span>, <span class="type">Int64</span>(secondsFromNow * <span class="type">Double</span>(<span class="type">NSEC_PER_SEC</span>))), dispatch_get_main_queue()) &#123; </div><div class="line">    <span class="built_in">print</span>(<span class="string">"That was so 5 seconds ago..."</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <h4 id="8-3-4-dispatch-apply"><a href="#8-3-4-dispatch-apply" class="headerlink" title="8.3.4 dispatch_apply"></a>8.3.4 dispatch_apply</h4><ul>
 <li>某些情况下，我们需要并行的执行一些重复的任务。例如某些 App 经常需要下载多个图片。我们需要在后台进行下载，因为不想阻塞主线程。我们也不在乎图片下载的顺序，只要每张图片都能下载就行</li>
-<li>代码是下面的样子：<br>[swift]<br>let arrayOfURLs = getArrayOfURLsForDownload()<br>let myConcurrentQueue = dispatch_queue_create(“com.example.dlqueue”, DISPATCH_QUEUE_CONCURRENT)<br>dispatch_apply(arrayOfURLs.count, myConcurrentQueue) { (index: Int) in<br>  downloadImage(arrayOfURLs[index])<br>}<br>[/swift][c][/c]</li>
-<li>在使用并行编程时，确保闭包中的每一句代码都是线程安全的。闭包中每一次迭代都会被执行，但执行的顺序无法保证，有时甚至会出现多个迭代同时被执行的情况</li>
+<li><p>代码是下面的样子：</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> arrayOfURLs = getArrayOfURLsForDownload()</div><div class="line"><span class="keyword">let</span> myConcurrentQueue = dispatch_queue_create(<span class="string">"com.example.dlqueue"</span>, <span class="type">DISPATCH_QUEUE_CONCURRENT</span>)</div><div class="line">dispatch_apply(arrayOfURLs.<span class="built_in">count</span>, myConcurrentQueue) &#123; (index: <span class="type">Int</span>) <span class="keyword">in</span></div><div class="line">    downloadImage(arrayOfURLs[index])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在使用并行编程时，确保闭包中的每一句代码都是线程安全的。闭包中每一次迭代都会被执行，但执行的顺序无法保证，有时甚至会出现多个迭代同时被执行的情况</p>
+</li>
 </ul>
 <h3 id="8-4-Sequences-和-Generators"><a href="#8-4-Sequences-和-Generators" class="headerlink" title="8.4 Sequences 和 Generators"></a>8.4 Sequences 和 Generators</h3><ul>
 <li>可以在自定义数据结构上使用 for-in 循环，这需要指定的数据结构上实现 SequenceType 协议。这个协议提供了一个名为 generate() 的方法，它返回一个 GeneratorType 对象</li>
@@ -1073,6 +1169,8 @@ return Statics.instance
       
         <div class="post-tags">
           
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
             <a href="/tags/Swift/" rel="tag"># Swift</a>
           
         </div>
@@ -1091,6 +1189,10 @@ return Statics.instance
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/24/网站迁移及安装过程/" rel="prev" title="网站迁移及 Mac 下 Hexo 安装步骤">
+                网站迁移及 Mac 下 Hexo 安装步骤 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1158,7 +1260,7 @@ return Statics.instance
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1175,7 +1277,7 @@ return Statics.instance
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
